@@ -1,0 +1,8 @@
+.settings
+.project
+.classpath
+.idea
+node_modules/
+target/
+dist/
+typings/

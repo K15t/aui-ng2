@@ -1,0 +1,61 @@
+{
+  "name": "aui-ng2",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Sven Walter <sven@k15t.com> (http://www.k15t.com)",
+  "scripts": {
+    "clean:all": "./node_modules/.bin/rimraf node_modules typings target && npm cache clean",
+    "install": "./node_modules/.bin/typings install",
+    "watch": "npm run watch:dev",
+    "watch:dev": "debug=true ./node_modules/.bin/webpack --watch --config webpack-config.js --progress --profile --colors --display-error-details --display-cached",
+    "build": "npm run build:dev",
+    "build:dev": "devMode=true ./node_modules/.bin/webpack --progress --config webpack-config.js --profile --colors --display-error-details --display-cached --display-reasons -d",
+    "build:prod": "./node_modules/.bin/webpack --config webpack-config.js --progress --profile --colors --display-error-details --display-cached --display-reasons -p",
+    "start:server": "devMode=true ./node_modules/.bin/webpack-dev-server --config webpack-config.js --progress --profile --colors --display-error-details --display-cached --inline",
+    "start:tests": "testMode=true ./node_modules/.bin/karma start",
+    "create:docs": "./node_modules/.bin/typedoc --options ./node_modules/k15t-webpack-build/build/typedoc.json  src/**/*.ts --out  ./target/doc",
+    "prepare:release": "./node_modules/.bin/rimraf dist target && release=true npm run build:prod && node node_modules/typescript/bin/tsc --outDir ./dist -d",
+    "release": "release=true npm run prepare:release && npm publish"
+  },
+  "main": "dist",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "atlassian",
+    "angular",
+    "ng2",
+    "frontend",
+    "AUI",
+    "ADG"
+  ],
+  "dependencies": {
+    "angular2": "2.0.0-beta.6",
+    "es6-promise": "3.0.2",
+    "es6-shim": "0.33.3",
+    "es7-reflect-metadata": "1.5.5",
+    "rxjs": "5.0.0-beta.0",
+    "zone.js": "0.5.14"
+  },
+  "devDependencies": {
+    "k15t-webpack-build": "0.0.x",
+    "karma": "0.13.x",
+    "karma-chrome-launcher": "0.2.x",
+    "karma-coverage": "0.5.x",
+    "karma-jasmine": "0.3.x",
+    "karma-phantomjs-launcher": "0.2.x",
+    "karma-sourcemap-loader": "0.3.x",
+    "karma-webpack": "1.7.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/K15t/aui-ng2"
+  },
+  "bugs": {
+    "url": "https://github.com/K15t/aui-ng2/issues"
+  },
+  "engines": {
+    "node": ">= 4.2.1 <= 5",
+    "npm": ">= 3"
+  }
+}

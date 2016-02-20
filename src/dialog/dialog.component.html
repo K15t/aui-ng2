@@ -1,0 +1,20 @@
+<div class="aui-ng-container">
+    <div [ngClass]="dialogClass" style="{{dialogStyle}}">
+        <header class="aui-dialog2-header">
+            <h2 class="aui-dialog2-header-main">{{title}}</h2>
+            <a class="aui-dialog2-header-close" (click)="close($event)">
+                <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
+            </a>
+        </header>
+
+        <div class="aui-dialog2-content" [ngClass]="dialogContentClass" style="{{dialogContentStyle}}">
+            <ng-content select="auiNgDialogContent"></ng-content>
+        </div>
+
+        <footer class="aui-dialog2-footer">
+            <div class="aui-dialog2-footer-actions">
+                <ng-content select="auiNgDialogFooter"></ng-content>
+            </div>
+        </footer>
+    </div>
+</div>
