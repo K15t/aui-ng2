@@ -1,6 +1,6 @@
 {
   "name": "aui-ng2",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": "Sven Walter <sven@k15t.com> (http://www.k15t.com)",
   "scripts": {
@@ -9,8 +9,8 @@
     "watch": "npm run watch:dev",
     "watch:dev": "debug=true ./node_modules/.bin/webpack --watch --config webpack-config.js --progress --profile --colors --display-error-details --display-cached",
     "build": "npm run build:dev",
-    "build:dev": "devMode=true ./node_modules/.bin/webpack --progress --config webpack-config.js --profile --colors --display-error-details --display-cached --display-reasons -d",
-    "build:prod": "./node_modules/.bin/webpack --config webpack-config.js --progress --profile --colors --display-error-details --display-cached --display-reasons -p",
+    "build:dev": "devMode=true ./node_modules/.bin/webpack --progress --config webpack-config.js --profile --colors --display-error-details --display-cached",
+    "build:prod": "./node_modules/.bin/webpack --config webpack-config.js --progress --profile --colors --display-error-details --display-cached",
     "start:server": "devMode=true ./node_modules/.bin/webpack-dev-server --config webpack-config.js --progress --profile --colors --display-error-details --display-cached --inline",
     "start:tests": "testMode=true ./node_modules/.bin/karma start",
     "create:docs": "./node_modules/.bin/typedoc --options ./node_modules/k15t-webpack-build/build/typedoc.json  src/**/*.ts --out  ./target/doc",
