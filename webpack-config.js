@@ -1,6 +1,7 @@
 var master = require('k15t-webpack-build/webpack-master-config.js');
 var utils = require('k15t-webpack-build/utils.js');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 
 if (!!process.env.testMode) {
@@ -17,15 +18,10 @@ if (!!process.env.testMode) {
     });
 } else {
     module.exports = master({
-        metadata: {
-            contextPath: '/aui-ng2',
-            devServer: {
-                host: 'localhost',
-                port: '3000'
-            }
-        },
         entry: {
-            'aui-ng2': './src/index.ts'
+            'aui-ng2': './src/index.ts',
+            vendor: './demo/vendor.ts',
+            main: './demo/main.ts'
         },
         output: {
             filename: '[name].min.js',
@@ -33,10 +29,17 @@ if (!!process.env.testMode) {
             chunkFilename: '[id].chunk.js',
             path: !!process.env.release ? './dist' : './target'
         },
-        plugins: !!process.env.release ?
-            [new CopyWebpackPlugin([{
+        plugins: !!process.env.release ? [
+            new CopyWebpackPlugin([{
                 from: 'src',
                 to: '.'
-            }])] : []
+            }])
+        ] : [
+            new HtmlWebpackPlugin({
+                filename: 'index.html',
+                template: './demo/index.html',
+                inject: false
+            })
+        ]
     });
 }

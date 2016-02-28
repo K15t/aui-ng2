@@ -9,6 +9,15 @@ The library is still under development and is considered in an experimental stat
 $ npm install aui-ng2
 ```
 
+## Run demo app
+
+```
+$ npm run build
+$ npm run start:server
+```
+
+Open http://localhost:3000
+
 ## License
 
 Licensed under The MIT License (MIT).

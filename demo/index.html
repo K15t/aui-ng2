@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+
+    <title>Demo App AUI-NG2</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- base url -->
+    <base href="{%= o.webpackConfig.metadata.contextPath %}/">
+
+    {% for (var css in o.htmlWebpackPlugin.files.css) { %}
+    <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
+    {% } %}
+
+    <link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/5.5.1/css/aui.css" media="all">
+    <link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/5.5.1/css/aui-experimental.css" media="all">
+
+    <style>
+
+        body {
+            background-color: #ffffff;
+        }
+
+        .aui-ng2-flatpack-example {
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin: 10px 0 20px;
+            padding: 10px;
+            padding-right: 20px;
+        }
+
+        .aui-ng2-content {
+            padding: 20px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<app></app>
+
+{% if (o.webpackConfig.metadata.ENV === 'development') { %}
+<!-- Webpack Dev Server reload -->
+<script src="http://{%= o.webpackConfig.metadata.devServer.host %}:{%= o.webpackConfig.metadata.devServer.port %}/webpack-dev-server.js"></script>
+{% } %}
+{% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+<script src="{%= o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
+{% } %}
+
+</body>
+</html>

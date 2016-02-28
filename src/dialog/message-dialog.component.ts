@@ -1,5 +1,8 @@
 import {Component, ComponentRef} from 'angular2/core';
 import {AuiNgDialogComponent} from './dialog.component';
+import {Observable, Subject, Subscriber} from 'rxjs/Rx';
+import {Observer} from 'rxjs/Observer';
+import {AuiNgDialog} from './dialog';
 
 @Component({
     selector: 'auiNgMessageDialog',
@@ -12,7 +15,7 @@ import {AuiNgDialogComponent} from './dialog.component';
         }
     `],
     template: `
-        <auiNgDialog title="Error ..." [hidden]="hidden" dialogClass="aui-ng-dialog-medium" (dialogClose)="close($event)"
+        <auiNgDialog [title]="title" [hidden]="hidden" dialogClass="aui-ng-dialog-medium" (dialogClose)="close($event)"
                      dialogContentStyle="max-height: 200px">
             <auiNgDialogContent>
                 <div class="aui-message aui-message-{{type}}">{{msg}}</div>
@@ -23,34 +26,44 @@ import {AuiNgDialogComponent} from './dialog.component';
         </auiNgDialog>
     `
 })
-export class AuiNgMessageDialogComponent {
+export class AuiNgMessageDialogComponent implements AuiNgDialog {
     hidden: boolean = true;
+    title: string;
     msg: string;
     type: string;
+    observer: Observer<any>;
 
-    private instance: ComponentRef;
-
-    init(msg: string, type: string, instance: ComponentRef) {
-        this.msg = msg;
-        this.type = type;
-        this.instance = instance;
+    init(opts: AuiNgMessageDialogOptions): Observable<any> {
+        this.title = opts.title;
+        this.msg = opts.message;
+        this.type = opts.type;
+        return Observable.create((observer) => {
+            this.observer = observer;
+        });
     }
 
     open() {
         this.hidden = false;
     }
 
-    close($event) {
+    close($event: Event) {
         this.hidden = true;
-        this.instance.dispose();
+        this.observer.next(null);
+        this.observer.complete();
     }
 
 }
 
+export interface AuiNgMessageDialogOptions {
+    title: string;
+    message: string;
+    type: string;
+}
+
 export const AuiNgMessageType = {
-    error: 'error',
-    warning: 'warning',
-    success: 'success',
-    info: 'info',
-    hint: 'hint'
+    ERROR: 'error',
+    WARN: 'warning',
+    SUCCESS: 'success',
+    INFO: 'info',
+    HINT: 'hint'
 };

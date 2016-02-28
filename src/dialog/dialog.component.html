@@ -1,4 +1,4 @@
-<div class="aui-ng-container">
+<div class="aui-ng-container aui-ng-blanket" (keydown.esc)="close($event)">
     <div [ngClass]="dialogClass" style="{{dialogStyle}}">
         <header class="aui-dialog2-header">
             <h2 class="aui-dialog2-header-main">{{title}}</h2>
@@ -11,7 +11,7 @@
             <ng-content select="auiNgDialogContent"></ng-content>
         </div>
 
-        <footer class="aui-dialog2-footer">
+        <footer class="aui-dialog2-footer" #dialog>
             <div class="aui-dialog2-footer-actions">
                 <ng-content select="auiNgDialogFooter"></ng-content>
             </div>

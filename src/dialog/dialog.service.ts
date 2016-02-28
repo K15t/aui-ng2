@@ -1,52 +1,27 @@
-import {Injectable, DynamicComponentLoader, ElementRef, ComponentRef} from 'angular2/core';
+import {Injectable, DynamicComponentLoader, ComponentRef, ElementRef} from 'angular2/core';
 import {Observable, Subject, Subscriber} from 'rxjs/Rx';
 import {AuiNgMessageDialogComponent} from './message-dialog.component';
-import {AbstractAuiNgAtlassianConnectService} from '../services/atlassian-connect.service';
 import {AuiNgDialogOptions} from './dialog-options';
+import {ConcreteType} from 'angular2/src/facade/lang';
+import {AuiNgDialog} from './dialog';
 
 @Injectable()
 export class AuiNgDialogService {
-
     constructor(
-        private componentLoader: DynamicComponentLoader,
-        private atlassianConnectService: AbstractAuiNgAtlassianConnectService
+        private componentLoader: DynamicComponentLoader
     ) {}
 
     closeDialog() {
-        this.atlassianConnectService.getAP().require('dialog', function (dialog) {
-            dialog.close({});
-        });
     }
 
-    openWebItemInDialog(dialogOptions: AuiNgDialogOptions, callback: Function) {
-        this.atlassianConnectService.getAP().require('dialog', function (dialog) {
-            dialog.create({
-                key: dialogOptions.key,
-                size: 'maximum',
-                customData: dialogOptions.customData,
-                chrome: false
-            }).on('close', callback);
-        });
-    }
+    openDialog(componentType: ConcreteType, parentElement: ElementRef, opts: any): Observable<any> {
 
-    openDialog(type, parentElement: ElementRef, input: any): Observable<any> {
-        let observable = Observable.fromPromise(this.componentLoader.loadNextToLocation(type, parentElement));
-        observable.map(containerRef => {
-            containerRef.instance.init(input, observable, null);
-            return containerRef;
-        }).subscribe((containerRef) => {
-            containerRef.instance.dispose();
-        });
-        return observable;
-    }
-
-    openMessageDialog(msg: string, type: string, parentElement: ElementRef): Observable<any> {
-        let observable = <any>Observable.fromPromise(
-            this.componentLoader.loadNextToLocation(AuiNgMessageDialogComponent, parentElement));
-
-        observable.subscribe(containerRef => {
+        let observable = Observable.fromPromise(this.componentLoader.loadNextToLocation(componentType, parentElement));
+        observable.subscribe((containerRef: ComponentRef) => {
                 if (!!containerRef.instance.hidden) {
-                    containerRef.instance.init(msg, type, containerRef.instance);
+                    containerRef.instance.init(opts).subscribe(() => {
+                        containerRef.dispose();
+                    });
                     containerRef.instance.open();
                 }
             },
@@ -54,5 +29,13 @@ export class AuiNgDialogService {
         );
 
         return observable;
+    }
+
+    openMessageDialog(title: string, msg: string, type: string, parentElement: ElementRef): Observable<any> {
+        return this.openDialog(AuiNgMessageDialogComponent, parentElement, {
+            title: title,
+            message: msg,
+            type: type
+        });
     }
 }

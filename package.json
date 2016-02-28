@@ -1,6 +1,6 @@
 {
-  "name": "aui-ng2",
-  "version": "0.0.2",
+  "name": "k15t-aui-ng2",
+  "version": "0.0.3",
   "license": "MIT",
   "author": "Sven Walter <sven@k15t.com> (http://www.k15t.com)",
   "scripts": {
@@ -14,7 +14,7 @@
     "start:server": "devMode=true ./node_modules/.bin/webpack-dev-server --config webpack-config.js --progress --profile --colors --display-error-details --display-cached --inline",
     "start:tests": "testMode=true ./node_modules/.bin/karma start",
     "create:docs": "./node_modules/.bin/typedoc --options ./node_modules/k15t-webpack-build/build/typedoc.json  src/**/*.ts --out  ./target/doc",
-    "prepare:release": "./node_modules/.bin/rimraf dist target && release=true npm run build:prod && node node_modules/typescript/bin/tsc --outDir ./dist -d",
+    "prepare:release": "./node_modules/.bin/rimraf dist target && node node_modules/typescript/bin/tsc --outDir ./dist -d",
     "release": "release=true npm run prepare:release && npm publish"
   },
   "main": "dist",
@@ -30,14 +30,16 @@
     "ADG"
   ],
   "dependencies": {
-    "angular2": "2.0.0-beta.6",
+    "angular2": "2.0.0-beta.7",
     "es6-promise": "3.0.2",
     "es6-shim": "0.33.3",
     "es7-reflect-metadata": "1.5.5",
-    "rxjs": "5.0.0-beta.0",
-    "zone.js": "0.5.14"
+    "reflect-metadata": "0.1.x",
+    "rxjs": "5.0.0-beta.2",
+    "zone.js": "0.5.15"
   },
   "devDependencies": {
+    "html-webpack-plugin": "1.7.x",
     "k15t-webpack-build": "0.0.x",
     "karma": "0.13.x",
     "karma-chrome-launcher": "0.2.x",
