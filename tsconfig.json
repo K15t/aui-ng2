@@ -9,8 +9,9 @@
     "sourceMap": true,
     "declaration": false
   },
-  "files": [
-    "typings/main.d.ts",
-    "src/index.ts"
+  "exclude": [
+    "node_modules",
+    "target",
+    "dist"
   ]
 }

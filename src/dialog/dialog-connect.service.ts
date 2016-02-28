@@ -8,7 +8,7 @@ import {AuiNgDialogService} from './dialog.service';
 @Injectable()
 export class AuiNgConnectDialogService extends AuiNgDialogService {
     constructor(
-        private componentLoader: DynamicComponentLoader,
+        componentLoader: DynamicComponentLoader,
         private atlassianConnectService: AbstractAuiNgAtlassianConnectService
     ) {
         super(componentLoader);

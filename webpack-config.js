@@ -19,9 +19,9 @@ if (!!process.env.testMode) {
 } else {
     module.exports = master({
         entry: {
-            'aui-ng2': './src/index.ts',
-            vendor: './demo/vendor.ts',
-            main: './demo/main.ts'
+            main: './demo/main.ts',
+            vendor: ['./demo/vendor.ts'],
+            'aui-ng2-dialog': ['./src/dialog/index.ts']
         },
         output: {
             filename: '[name].min.js',
