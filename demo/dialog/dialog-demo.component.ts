@@ -1,11 +1,12 @@
-import {Component, ElementRef, provide} from 'angular2/core';
-import {FORM_DIRECTIVES} from 'angular2/common';
+import {Component, ElementRef} from 'angular2/core';
+import {FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/common';
 import {AuiNgDialogService, AuiNgMessageType} from '../../src/dialog/index';
+import {AuiNgCodeBlockComponent} from '../common/code-block.component';
 
 @Component({
     selector: 'demoDialog',
     providers: [AuiNgDialogService],
-    directives: [...FORM_DIRECTIVES],
+    directives: [...FORM_DIRECTIVES, AuiNgCodeBlockComponent],
     template: require('./dialog-demo.component.html')
 })
 export class DialogDemoComponent {

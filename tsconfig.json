@@ -12,6 +12,8 @@
   "exclude": [
     "node_modules",
     "target",
-    "dist"
+    "dist",
+    "typings/browser.d.ts",
+    "typings/browser"
   ]
 }

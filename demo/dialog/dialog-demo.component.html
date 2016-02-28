@@ -12,5 +12,38 @@
             <button class="aui-button" (click)="showDialog('SUCCESS', 'Yes, you did it', 'Detailed information')">Success</button>
             <button class="aui-button" (click)="showDialog('HINT', 'Did you know?', 'Detailed information')">Hint</button>
         </div>
+
+        <h2>Implementation details</h2>
+
+        <auiNgCodeBlock title="Template">
+<button class="aui-button" _sb_click_eb_="showDialog('ERROR', 'Sorry, an error...', 'Detailed information')">Error</button>
+        </auiNgCodeBlock>
+
+        <auiNgCodeBlock title="Component">
+import {Component} from 'angular2/core';
+import {AuiNgDialogService, AuiNgMessageType} from '../../src/dialog/index';
+
+@Component({
+    ...
+    providers: [AuiNgDialogService]
+})
+export class DialogDemoComponent {
+    showDialog(type: string, title: string, msg: string) {
+        this.dialogService.openMessageDialog(title, msg, AuiNgMessageType[type], this.element);
+    }
+}
+        </auiNgCodeBlock>
+
+        <h2>Options</h2>
+        <auiNgCodeBlock title="AuiNgMessageType">
+export const AuiNgMessageType = {
+    ERROR: 'error',
+    WARN: 'warning',
+    SUCCESS: 'success',
+    INFO: 'info',
+    HINT: 'hint'
+};
+        </auiNgCodeBlock>
+
     </div>
 </div>
