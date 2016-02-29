@@ -14,10 +14,10 @@
     "start:server": "devMode=true ./node_modules/.bin/webpack-dev-server --config webpack-config.js --progress --profile --colors --display-error-details --display-cached --inline",
     "start:tests": "testMode=true ./node_modules/.bin/karma start",
     "create:docs": "./node_modules/.bin/typedoc --options ./node_modules/k15t-webpack-build/build/typedoc.json  src/**/*.ts --out  ./target/doc",
-    "prepare:release": "./node_modules/.bin/rimraf dist target && node node_modules/typescript/bin/tsc --outDir ./dist -d && ./node_modules/.bin/rimraf dist/demo",
-    "release": "release=true npm run prepare:release && npm publish"
+    "prepare:release": "./node_modules/.bin/rimraf dist target && release=true npm run build:prod && ./node_modules/.bin/rimraf dist/demo",
+    "release": "npm run prepare:release && npm publish"
   },
-  "main": "dist/src",
+  "main": "dist",
   "files": [
     "dist"
   ],
