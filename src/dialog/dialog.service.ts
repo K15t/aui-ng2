@@ -4,28 +4,30 @@ import {AuiNgMessageDialogComponent} from './message-dialog.component';
 import {AuiNgDialogOptions} from './dialog-options';
 import {ConcreteType} from 'angular2/src/facade/lang';
 import {AuiNgDialog} from './dialog';
+import {LogService} from '../services/log.service';
 
 @Injectable()
 export class AuiNgDialogService {
     constructor(
-        private componentLoader: DynamicComponentLoader
+        private componentLoader: DynamicComponentLoader,
+        private logService: LogService
     ) {}
 
     closeDialog() {
     }
 
-    openDialog(componentType: ConcreteType, parentElement: ElementRef, opts: any): Observable<any> {
+    openDialog(componentType: ConcreteType, parentElement: ElementRef, opts?: any): Observable<any> {
 
         let observable = Observable.fromPromise(this.componentLoader.loadNextToLocation(componentType, parentElement));
         observable.subscribe((containerRef: ComponentRef) => {
-                if (!!containerRef.instance.hidden) {
+                if (containerRef.instance.hidden === undefined || !!containerRef.instance.hidden ) {
                     containerRef.instance.init(opts).subscribe(() => {
                         containerRef.dispose();
                     });
                     containerRef.instance.open();
                 }
             },
-            err => console.log('Error' + err)
+            err => this.logService.logError('Error' + err)
         );
 
         return observable;

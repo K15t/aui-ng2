@@ -7,13 +7,6 @@ import {AuiNgDialog} from './dialog';
 @Component({
     selector: 'auiNgMessageDialog',
     directives: [AuiNgDialogComponent],
-    styles: [`
-        .dialogContainer {
-            z-index: 1000;
-            position: relative;
-            top: 65px;
-        }
-    `],
     template: `
         <auiNgDialog [title]="title" [hidden]="hidden" dialogClass="aui-ng-dialog-medium" (dialogClose)="close($event)"
                      dialogContentStyle="max-height: 200px">
@@ -31,7 +24,7 @@ export class AuiNgMessageDialogComponent implements AuiNgDialog {
     title: string;
     msg: string;
     type: string;
-    observer: Observer<any>;
+    private observer: Observer<any>;
 
     init(opts: AuiNgMessageDialogOptions): Observable<any> {
         this.title = opts.title;

@@ -1,0 +1,24 @@
+<auiNgDialog title="Custom modal dialog" dialogClass="aui-ng-dialog-medium" (dialogClose)="close($event)">
+
+    <auiNgDialogContent>
+        <form class="aui">
+            <div class="field-group">
+                <label for="name">Name</label>
+                <input class="text medium-field" type="text" id="name" name="name" [(ngModel)]="name">
+            </div>
+        </form>
+
+        <hr style="margin-top: 25px; margin-bottom: 25px"/>
+
+        <div style="text-align: center;">
+            <div *ngIf="name">Hello {{name}}</div>
+            <div *ngIf="!name">... type in something to get surprised ... </div>
+        </div>
+
+    </auiNgDialogContent>
+
+    <auiNgDialogFooter>
+        <button class="aui-button" (click)="close($event)">Close</button>
+    </auiNgDialogFooter>
+
+</auiNgDialog>

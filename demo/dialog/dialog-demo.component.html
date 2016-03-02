@@ -1,9 +1,22 @@
 <div class="aui-ng2-content">
 
-    <h2 class="component-heading" style="padding-bottom: 35px">Dialog</h2>
+    <h1 class="component-heading" style="padding-bottom: 35px">Dialog</h1>
+
 
     <div>
-        <h3>Message dialog</h3>
+        <h2>Modal dialog</h2>
+
+        <div class="aui-ng2-flatpack-example">
+            <button class="aui-button" (click)="showCustomDialog()">Open custom dialog</button>
+        </div>
+
+        <auiNgCodeBlock title="Template custom dialog">
+            ...
+        </auiNgCodeBlock>
+    </div>
+
+    <div>
+        <h2>Message dialog</h2>
 
         <div class="aui-ng2-flatpack-example">
             <button class="aui-button" (click)="showDialog('ERROR', 'Sorry, an error...', 'Detailed information')">Error</button>

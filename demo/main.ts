@@ -3,6 +3,7 @@ import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {App} from './app';
+import {LogService} from '../src/services/log.service';
 
 document.addEventListener('DOMContentLoaded', function main() {
     bootstrap(App, [
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function main() {
         ...HTTP_PROVIDERS,
         ...ROUTER_PROVIDERS,
         provide(LocationStrategy, {useClass: HashLocationStrategy}),
+        LogService
     ]);
 });
 
