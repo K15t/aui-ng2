@@ -9,6 +9,11 @@ The library is still under development and is considered in an experimental stat
 $ npm install aui-ng2
 ```
 
+## Features / supported widgets
+* Modal dialogs
+* Message dialogs
+* Tabs
+
 ## Run demo app
 
 ```

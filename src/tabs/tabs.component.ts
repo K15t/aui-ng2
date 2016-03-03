@@ -33,7 +33,7 @@ import {LogService} from '../services/log.service';
  */
 export class AuiNgTabsComponent {
 
-    private tabs: Array<AuiNgTabComponent> = [];
+    tabs: Array<AuiNgTabComponent> = [];
 
     constructor(
         private logService: LogService
@@ -77,6 +77,13 @@ export class AuiNgTabsComponent {
             }
             return this.tabs[0];
         }
+    }
+
+    /**
+     * Unregisters all tabs which is required for dynamic tabs.
+     */
+    unregisterAllTabs() {
+        this.tabs = [];
     }
 
 }
