@@ -2,7 +2,7 @@
     <div [ngClass]="dialogClass" style="{{dialogStyle}}">
         <header class="aui-dialog2-header">
             <h2 class="aui-dialog2-header-main">{{title}}</h2>
-            <a class="aui-dialog2-header-close" (click)="close($event)">
+            <a *ngIf="showXIcon == 'true'" class="aui-dialog2-header-close" (click)="close($event)">
                 <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
             </a>
         </header>

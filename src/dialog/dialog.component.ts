@@ -15,6 +15,7 @@ export class AuiNgDialogComponent {
     @Input() dialogContentClass: string;
     @Input() dialogStyle: string;
     @Input() dialogContentStyle: string;
+    @Input() showXIcon: string = 'true';
 
     @Output() dialogClose: EventEmitter<Event> = new EventEmitter(false);
 
