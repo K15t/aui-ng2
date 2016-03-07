@@ -2,6 +2,10 @@ import {Component, Input} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 import {AuiNgTabsComponent} from './tabs.component';
 
+/**
+ * Single tab component which can be used to register on the related tabs component. For more details please see the
+ * tabs component which show on an example how to use it.
+ */
 @Component({
     selector: 'auiNgTab',
     directives: [...FORM_DIRECTIVES],
@@ -20,9 +24,13 @@ import {AuiNgTabsComponent} from './tabs.component';
 })
 export class AuiNgTabComponent {
 
-    @Input() title: string;
-    active: boolean = false;
+    defaultWidth: string = '200';
 
+    @Input() title: string;
+    @Input() width: string = this.defaultWidth;
+    @Input() maxWidth: string = this.defaultWidth;
+
+    private active: boolean = false;
 
     constructor(tabs: AuiNgTabsComponent) {
         tabs.register(this);

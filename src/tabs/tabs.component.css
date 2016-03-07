@@ -1,0 +1,100 @@
+/**
+ * Tabs menu specific styles
+ */
+
+.aui-ng-tabs-menu {
+    width: 100%;
+    display: inline-flex !important;
+    list-style: none;
+    white-space: nowrap;
+}
+
+.aui-ng-menu-item {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/**
+ * Dropdown specific styles
+ */
+
+.aui-ng-dropdown-options {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
+    list-style: none;
+    padding: 0px;
+    outline: none;
+}
+
+.aui-ng-dropdown-option {
+    cursor: pointer;
+    min-width: 120px;
+    background: none !important;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0 !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.aui-ng-dropdown-option:hover {
+    background: #3572b0 !important;
+    color: #fff !important;
+}
+
+.aui-ng-dropdown-container {
+    position: relative;
+    height: 28px;
+}
+
+.aui-ng-dropdown-options-container {
+    position: absolute;
+    z-index: 3100;
+    right: 0;
+    top: 27px;
+}
+
+.aui-ng-dropdown-button {
+    border-radius: 0 !important;
+    border: 0;
+    height: 28px;
+    border-top: 1px solid #cccccc;
+    min-width: 120px;
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.aui-ng-dropdown-button-select {
+    border-radius: 0 !important;
+    border-top-right-radius: 3px !important;
+    border: 0;
+    height: 28px;
+    border-top: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+}
+
+/** Hover specific overrides for Atlassian specific styles */
+
+.aui-button-split-main:hover {
+    top: 0;
+    border-right: 0 !important;
+    border-top: 1px solid #cccccc;
+}
+
+.aui-button.aui-dropdown2-trigger.aui-button-split-more.active:hover:before,
+.aui-button.aui-dropdown2-trigger.aui-button-split-more.active:before,
+.aui-button.aui-dropdown2-trigger.aui-button-split-more:hover:before,
+.aui-button-split-more:hover {
+    top: 0;
+    border-left: 0 !important;
+    border-top: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+}

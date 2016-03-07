@@ -2,23 +2,23 @@ import {Injectable} from 'angular2/core';
 
 @Injectable()
 export class LogService {
-    log(msg: string): void {
+    log(msg: any): void {
         console.log(msg);
     }
 
-    logError(msg: string): void {
+    logError(msg: any): void {
         console.error(msg);
     }
 
-    logInfo(msg: string): void {
+    logInfo(msg: any): void {
         console.info(msg);
     }
 
-    logDebug(msg: string): void {
+    logDebug(msg: any): void {
         console.debug(msg);
     }
 
-    logWarn(msg: string): void {
+    logWarn(msg: any): void {
         console.warn(msg);
     }
 
