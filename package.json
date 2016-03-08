@@ -5,7 +5,7 @@
   "author": "Sven Walter <sven@k15t.com> (http://www.k15t.com)",
   "scripts": {
     "clean:all": "./node_modules/.bin/rimraf node_modules typings target && npm cache clean",
-    "install": "./node_modules/.bin/typings install",
+    "prepublish": "./node_modules/.bin/typings install",
     "watch": "npm run watch:dev",
     "watch:dev": "debug=true ./node_modules/.bin/webpack --watch --config webpack-config.js --progress --profile --colors --display-error-details --display-cached",
     "build": "npm run build:dev",
