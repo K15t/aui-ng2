@@ -5,3 +5,4 @@ import 'angular2/router';
 import 'angular2/http';
 import 'angular2/core';
 import '../src/common/libs/aui';
+import '../src/common/libs/jquery';
