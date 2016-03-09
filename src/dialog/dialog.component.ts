@@ -1,5 +1,6 @@
 import {Component, Input, Output, EventEmitter, Optional, HostListener} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
+import '../common/libs/aui-styles';
 
 @Component({
     selector: 'auiNgDialog',
