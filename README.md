@@ -13,6 +13,11 @@ $ npm install aui-ng2
 * Modal dialogs
 * Message dialogs
 * Tabs
+* Wizard
+* Tooltip
+
+## Additional libraries which can be used in combination:
+* JQuery
 
 ## Run demo app
 
