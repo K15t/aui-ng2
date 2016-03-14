@@ -30,8 +30,6 @@ export class AuiNgDialogComponent {
         if (event.keyCode === 27) {
             this.close(event);
         }
-
-
     }
 
     private updateDialog($event: CustomEvent) {
