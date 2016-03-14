@@ -3,6 +3,7 @@ import {FORM_DIRECTIVES} from 'angular2/common';
 import {AuiNgTabComponent} from './tab.component';
 import {LogService} from '../services/log.service';
 import {AuiNgAutoFocus} from '../common/directives/focus-element.directive';
+import '../common/libs/aui-styles';
 
 /**
  * Container class to register individual tabs.
