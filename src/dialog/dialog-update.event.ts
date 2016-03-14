@@ -1,7 +1,7 @@
 /**
  * Event to trigger an update of the currently opened dialog.
  */
-export interface DialogUpdateEvent {
+export interface AuiNgDialogUpdateEvent {
 
     title?: string;
 

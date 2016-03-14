@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter, Optional, HostListener} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
-import {DialogUpdateEvent} from './dialog-update.event';
+import {AuiNgDialogUpdateEvent} from './dialog-update.event';
 import '../common/libs/aui-styles';
 
 @Component({
@@ -36,7 +36,7 @@ export class AuiNgDialogComponent {
 
     private updateDialog($event: CustomEvent) {
 
-        let data: DialogUpdateEvent = $event.detail;
+        let data: AuiNgDialogUpdateEvent = $event.detail;
 
         if (data.title) {
             this.title = data.title;

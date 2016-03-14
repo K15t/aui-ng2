@@ -66,6 +66,10 @@ export class AuiNgWizardComponent implements OnInit {
         this.indexCurrentStep = 0;
     }
 
+    getActiveTab(): WizardStep {
+        return this.steps[this.indexCurrentStep];
+    }
+
     next() {
         if (this.indexCurrentStep < this.steps.length - 1 && this.steps[this.indexCurrentStep].validate()) {
             let data = this.steps[this.indexCurrentStep].getData();
