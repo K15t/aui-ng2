@@ -49,6 +49,22 @@ export class AuiNgDialogComponent {
         if (data.toAll !== undefined && !data.toAll) {
             $event.preventDefault();
         }
+
+        if (data.dialogClass) {
+            this.dialogClass = data.dialogClass;
+        }
+
+        if (data.dialogContentClass) {
+            this.dialogContentClass = data.dialogContentClass;
+        }
+
+        if (data.dialogContentStyle) {
+            this.dialogContentStyle = data.dialogContentStyle;
+        }
+
+        if (data.dialogStyle) {
+            this.dialogStyle = data.dialogStyle;
+        }
     }
 
 }

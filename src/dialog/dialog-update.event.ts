@@ -12,4 +12,12 @@ export interface DialogUpdateEvent {
      */
     toAll?: boolean;
 
+    dialogClass?: string;
+
+    dialogContentClass?: string;
+
+    dialogStyle?: string;
+
+    dialogContentStyle?: string;
+
 }
