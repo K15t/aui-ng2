@@ -1,5 +1,6 @@
 import {Component, Input, Output, EventEmitter, Optional, HostListener} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
+import {DialogUpdateEvent} from './dialog-update.event';
 
 @Component({
     selector: 'auiNgDialog',
@@ -27,6 +28,25 @@ export class AuiNgDialogComponent {
         // close on keydown escape
         if (event.keyCode === 27) {
             this.close(event);
+        }
+
+
+    }
+
+    private updateDialog($event: CustomEvent) {
+
+        let data: DialogUpdateEvent = $event.detail;
+
+        if (data.title) {
+            this.title = data.title;
+        }
+
+        if (data.showXIcon !== undefined) {
+            this.showXIcon = data.showXIcon.toString();
+        }
+
+        if (data.toAll !== undefined && !data.toAll) {
+            $event.preventDefault();
         }
     }
 
