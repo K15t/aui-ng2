@@ -1,5 +1,7 @@
-export interface WizardStep {
+import {AuiNgWizardComponent} from './wizard.component';
 
+export interface WizardStep {
+    
     /**
      * Invoked to make the content of the step visible on the screen.
      */
@@ -33,5 +35,10 @@ export interface WizardStep {
      * Gets the current data object e.g. which a previous step has set.
      */
     getData(): any;
+
+    /**
+     * Gets the overall wizard container.
+     */
+    getWizard(): AuiNgWizardComponent;
 
 }

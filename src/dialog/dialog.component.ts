@@ -32,36 +32,37 @@ export class AuiNgDialogComponent {
         }
     }
 
-    private updateDialog($event: CustomEvent) {
-
-        let data: AuiNgDialogUpdateEvent = $event.detail;
-
-        if (data.title) {
-            this.title = data.title;
-        }
-
-        if (data.showXIcon !== undefined) {
-            this.showXIcon = data.showXIcon.toString();
-        }
-
-        if (data.toAll !== undefined && !data.toAll) {
+    onUpdateDialog($event: CustomEvent) {
+        this.updateDialog($event.detail);
+        if ($event.detail.toAll !== undefined && !$event.detail.toAll) {
             $event.preventDefault();
         }
+    }
 
-        if (data.dialogClass) {
-            this.dialogClass = data.dialogClass;
+    updateDialog(update: AuiNgDialogUpdateEvent) {
+
+        if (update.title) {
+            this.title = update.title;
         }
 
-        if (data.dialogContentClass) {
-            this.dialogContentClass = data.dialogContentClass;
+        if (update.showXIcon !== undefined) {
+            this.showXIcon = update.showXIcon.toString();
         }
 
-        if (data.dialogContentStyle) {
-            this.dialogContentStyle = data.dialogContentStyle;
+        if (update.dialogClass) {
+            this.dialogClass = update.dialogClass;
         }
 
-        if (data.dialogStyle) {
-            this.dialogStyle = data.dialogStyle;
+        if (update.dialogContentClass) {
+            this.dialogContentClass = update.dialogContentClass;
+        }
+
+        if (update.dialogContentStyle) {
+            this.dialogContentStyle = update.dialogContentStyle;
+        }
+
+        if (update.dialogStyle) {
+            this.dialogStyle = update.dialogStyle;
         }
     }
 

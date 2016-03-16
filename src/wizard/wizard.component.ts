@@ -70,6 +70,10 @@ export class AuiNgWizardComponent implements OnInit {
         return this.steps[this.indexCurrentStep];
     }
 
+    getCurrentIndex(): number {
+        return this.indexCurrentStep;
+    }
+
     next() {
         if (this.indexCurrentStep < this.steps.length - 1 && this.steps[this.indexCurrentStep].validate()) {
             let data = this.steps[this.indexCurrentStep].getData();
@@ -78,7 +82,6 @@ export class AuiNgWizardComponent implements OnInit {
             this.steps[this.indexCurrentStep + 1].show();
             this.indexCurrentStep++;
         }
-        console.log(this.indexCurrentStep + '/' + this.steps.length);
     }
 
     previous() {
@@ -89,7 +92,6 @@ export class AuiNgWizardComponent implements OnInit {
             this.steps[this.indexCurrentStep - 1].show();
             this.indexCurrentStep--;
         }
-        console.log(this.indexCurrentStep + '/' + this.steps.length);
     }
 
     isLastStep() {
