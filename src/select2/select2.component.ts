@@ -1,4 +1,4 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input, OnInit} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 
 /**
@@ -10,15 +10,16 @@ import {FORM_DIRECTIVES} from 'angular2/common';
     directives: [...FORM_DIRECTIVES],
     template: require('./select2.component.html')
 })
-export class AuiNgSelect2Component {
+export class AuiNgSelect2Component implements OnInit {
 
-    defaultWidth: string = '200';
+    @Input() items: Array<string>;
 
-    @Input() title: string;
-    @Input() width: string = this.defaultWidth;
-    @Input() maxWidth: string = this.defaultWidth;
+    constructor() {
+    }
 
-    constructor() {}
+    ngOnInit() {
+        AJS.$('.select2').auiSelect2();
+    }
 
     /**
      * Sets the state of the tab. To show the tab on the screen set it active set it to true. To ensure that every time only

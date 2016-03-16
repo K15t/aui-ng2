@@ -1,34 +1,22 @@
 <div class="aui-ng2-content">
 
-    <h1 class="component-heading" style="padding-bottom: 35px">Tabs</h1>
-
+    <h1 class="component-heading" style="padding-bottom: 35px">Select2</h1>
 
     <div>
-        <h2>Tabs</h2>
+        <h2>Select2</h2>
 
         <div class="aui-ng2-flatpack-example">
 
-            <auiNgTabs>
-
-                <auiNgTab title="First Tab">
-                    ... content first tab ...
-                </auiNgTab>
-
-                <auiNgTab title="Second Tab">
-                    ... content second tab ...
-                </auiNgTab>
-
-                <auiNgTab title="Third Tab">
-                    ... content third tab ...
-                </auiNgTab>
-
-            </auiNgTabs>
+            <auiNgSelect2 [items]="items"></auiNgSelect2>
 
         </div>
 
-        <auiNgCodeBlock title="Template tabs">
+        <auiNgCodeBlock title="Template Select2">
             ...
         </auiNgCodeBlock>
+        <script>
+            AJS.$("select").auiSelect2();
+        </script>
     </div>
 
 </div>
