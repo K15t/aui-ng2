@@ -6,7 +6,7 @@ The library is still under development and is considered in an experimental stat
 ## Installing
 
 ```
-$ npm install aui-ng2
+$ npm install k15t-aui-ng2
 ```
 
 ## Features / supported widgets
