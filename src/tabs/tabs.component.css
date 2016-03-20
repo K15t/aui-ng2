@@ -50,7 +50,7 @@
 
 .aui-ng-dropdown-container {
     position: relative;
-    height: 28px;
+    height: 30px;
 }
 
 .aui-ng-dropdown-options-container {
@@ -63,7 +63,7 @@
 .aui-ng-dropdown-button {
     border-radius: 0 !important;
     border: 0;
-    height: 28px;
+    height: 30px;
     border-top: 1px solid #cccccc;
     min-width: 120px;
     max-width: 250px;
@@ -76,9 +76,18 @@
     border-radius: 0 !important;
     border-top-right-radius: 3px !important;
     border: 0;
-    height: 28px;
+    height: 30px;
     border-top: 1px solid #cccccc;
     border-right: 1px solid #cccccc;
+}
+
+
+.aui-ng-dropdown-button-select:hover,
+.aui-ng-dropdown-button-select:hover:before{
+    top: 0;
+    border-left: 0 !important;
+    border-top: 1px solid #cccccc;
+    border-right: 1px solid #cccccc !important;
 }
 
 /** Hover specific overrides for Atlassian specific styles */
@@ -94,7 +103,13 @@
 .aui-button.aui-dropdown2-trigger.aui-button-split-more:hover:before,
 .aui-button-split-more:hover {
     top: 0;
-    border-left: 0 !important;
     border-top: 1px solid #cccccc;
-    border-right: 1px solid #cccccc;
+    border-right: 1px solid #cccccc !important;
+    border-left: 1px solid #cccccc !important;
+}
+
+.aui-buttons .aui-button:focus,
+.aui-buttons .aui-button:hover,
+.aui-buttons .aui-button:active {
+    border-color: #cccccc;
 }

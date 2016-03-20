@@ -10,7 +10,7 @@ import '../common/libs/aui-styles';
  *
  * Example to setup tabs in your template:
  * ...
- * <auiNgTabs>
+ * <auiNgTabs maxWidth="500">
  *   <auiNgTab title="My tab" maxWidth="250" width="150">
  *       // ... here you can define your desired markup shown as part of the tab if it becomes visible(active)
  *   <auiNgTab>
@@ -41,6 +41,7 @@ import '../common/libs/aui-styles';
                         </ul>
                     </div>
                 </li>
+                <li style="width: 10px">&nbsp;</li>
             </ul>
             <ng-content></ng-content>
         </div>
@@ -55,6 +56,7 @@ export class AuiNgTabsComponent implements AfterContentInit {
     selectedDropdownTab: AuiNgTabComponent = null;
 
     @ViewChild('tabsMenu') tabsMenuElement: ElementRef;
+    @Input() maxWidth;
 
     constructor(
         private logService: LogService,
@@ -108,11 +110,36 @@ export class AuiNgTabsComponent implements AfterContentInit {
     }
 
     ngAfterContentInit() {
+        this.calcuateTabWidth();
+    }
+
+    showDropdownOptions() {
+        this.showOptions = true;
+    }
+
+    hideDropdownOptions() {
+        this.showOptions = false;
+    }
+
+    /**
+     * Unregisters all tabs which is required for dynamic tabs.
+     */
+    unregisterAllTabs() {
+        this.tabs = [];
+        this.tabsDropDown = [];
+    }
+
+    calcuateTabWidth() {
+        let widthTabsContainer;
 
         // get the current width of the overall tabs container
-        let widthTabsContainer = this.selfElement.nativeElement.getBoundingClientRect().width;
+        if (this.maxWidth != null && this.maxWidth !== undefined) {
+            widthTabsContainer = parseInt(this.maxWidth);
+        } else {
+            widthTabsContainer = this.selfElement.nativeElement.getBoundingClientRect().width;
+        }
         // reserve already the width for the dropdown
-        let currentTabsWidth = 300;
+        let currentTabsWidth = 0;
         let index = 0;
 
         // iterate over all registered tabs check if width or maxWidth is set if not use the default
@@ -139,22 +166,6 @@ export class AuiNgTabsComponent implements AfterContentInit {
                 index++;
             }
         }
-    }
-
-    showDropdownOptions() {
-        this.showOptions = true;
-    }
-
-    hideDropdownOptions() {
-        this.showOptions = false;
-    }
-
-    /**
-     * Unregisters all tabs which is required for dynamic tabs.
-     */
-    unregisterAllTabs() {
-        this.tabs = [];
-        this.tabsDropDown = [];
     }
 
 }
