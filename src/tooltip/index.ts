@@ -1,9 +1,9 @@
-import {AuiNgTooltipComponent} from './tooltip.component';
+import {AuiNgTooltipDirective} from './tooltip.directive';
 
 export {
-    AuiNgTooltipComponent
+    AuiNgTooltipDirective
 };
 
 export const AUI_NG2_TOOLTIP_DIRECTIVES = [
-    AuiNgTooltipComponent
+    AuiNgTooltipDirective
 ];

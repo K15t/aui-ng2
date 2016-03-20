@@ -1,20 +1,20 @@
 {
   "name": "k15t-aui-ng2",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "license": "MIT",
   "author": "Sven Walter <sven@k15t.com> (http://www.k15t.com)",
   "scripts": {
-    "clean:all": "./node_modules/.bin/rimraf node_modules typings target && npm cache clean",
-    "prepublish": "./node_modules/.bin/typings install",
+    "clean:all": "rimraf node_modules typings target && npm cache clean",
+    "prepublish": "typings install",
     "watch": "npm run watch:dev",
-    "watch:dev": "debug=true ./node_modules/.bin/webpack --watch --config webpack-config.js --progress --profile --colors --display-error-details --display-cached",
+    "watch:dev": "debug=true webpack --watch --config webpack-config.js --progress --profile --colors --display-error-details --display-cached",
     "build": "npm run build:dev",
-    "build:dev": "devMode=true ./node_modules/.bin/webpack --progress --config webpack-config.js --profile --colors --display-error-details --display-cached",
-    "build:prod": "./node_modules/.bin/webpack --config webpack-config.js --progress --profile --colors --display-error-details --display-cached",
-    "start:server": "devMode=true ./node_modules/.bin/webpack-dev-server --config webpack-config.js --progress --profile --colors --display-error-details --display-cached --inline",
-    "start:tests": "testMode=true ./node_modules/.bin/karma start",
-    "create:docs": "./node_modules/.bin/typedoc --options ./node_modules/k15t-webpack-build/build/typedoc.json  src/**/*.ts --out  ./target/doc",
-    "prepare:release": "./node_modules/.bin/rimraf dist target && release=true npm run build:prod && ./node_modules/.bin/rimraf dist/demo",
+    "build:dev": "devMode=true webpack --progress --config webpack-config.js --profile --colors --display-error-details --display-cached",
+    "build:prod": "webpack --config webpack-config.js --progress --profile --colors --display-error-details --display-cached",
+    "start:server": "devMode=true webpack-dev-server --config webpack-config.js --progress --profile --colors --display-error-details --display-cached --inline",
+    "start:tests": "testMode=true karma start",
+    "create:docs": "typedoc --options k15t-webpack-build/build/typedoc.json  src/**/*.ts --out  ./target/doc",
+    "prepare:release": "rimraf dist target && release=true npm run build:prod && rimraf dist/demo",
     "release": "npm run prepare:release && npm publish"
   },
   "main": "dist",
@@ -41,7 +41,6 @@
     "zone.js": "0.5.15"
   },
   "devDependencies": {
-    "html-webpack-plugin": "1.7.x",
     "k15t-webpack-build": "0.0.x",
     "karma": "0.13.x",
     "karma-chrome-launcher": "0.2.x",
