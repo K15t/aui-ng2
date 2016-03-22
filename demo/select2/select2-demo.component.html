@@ -7,9 +7,24 @@
 
         <div class="aui-ng2-flatpack-example">
             <form action="" class="aui">
-                <auiNgSelect2 [items]="items"></auiNgSelect2>
+                <auiNgSelect2 fooBar="lol" [(selection)]="selection" [items]="items" idProperty="value" labelProperty="label"></auiNgSelect2>
             </form>
+
+            <h3>selection</h3>
+
+            {{selection | json}}
+
+            <br>
+
+            <h3>actions</h3>
+
+            <button (click)="addItem('Elm')">add another item option</button>
+            <button (click)="removeLast()">remove last selected</button>
         </div>
+
+
+
+
 
         <auiNgCodeBlock title="Template Select2">
             ...
