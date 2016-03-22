@@ -14,6 +14,8 @@ export class Select2DemoComponent {
 
     selection = [{value: 'js', label: 'Javascript'}];
 
+    selected = {value: 'cs', label: 'CoffeeScript'};
+
     items = [
         {value: 'js', label: 'Javascript'},
         {value: 'cs', label: 'CoffeeScript'},
@@ -33,4 +35,11 @@ export class Select2DemoComponent {
         this.selection = this.selection.slice(0, -1);
     }
 
+    onChangedSingle (selected) {
+        this.selected = selected;
+    }
+
+    onChangedMulti (selection) {
+        this.selection = selection;
+    }
 }

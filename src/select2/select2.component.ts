@@ -1,15 +1,17 @@
-import {Component, Input, OnChanges, AfterViewInit, ElementRef, SimpleChange} from 'angular2/core';
+import {Component, Input, Output, OnChanges, AfterViewInit, ElementRef, SimpleChange, EventEmitter} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
+import {Select2Selection} from "./select2-selection";
+import {MultiSelection} from './multi-selection';
+import {SingleSelection} from './single-selection';
 
 /**
- * Single tab component which can be used to register on the related tabs component. For more details please see the
- * tabs component which show on an example how to use it.
+ * Wrapper for select2, supports single and multi item selection
  */
 @Component({
     selector: 'auiNgSelect2',
     directives: [...FORM_DIRECTIVES],
     template: `
-      <select class="select2" multiple>
+      <select class="select2" [multiple]="multiple">
         <option *ngFor="#item of items" value="{{getId(item)}}">{{getLabel(item)}}</option>
       </select>
     `
@@ -19,29 +21,35 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
     @Input() items:any[];
     @Input() idProperty:string;
     @Input() labelProperty:string;
-    @Input() selection:any[];
+    @Input() selection:any;
+    @Input() multiple:boolean;
+    @Output() onChanged:EventEmitter<any> = new EventEmitter<any>();
 
     private _$select2:JQuery;
+    private _selectionService:Select2Selection;
 
     constructor(private elementRef:ElementRef) {
     }
 
     ngAfterViewInit() {
-        this.initSelect2();
+        this.init();
         this.updateValue();
     }
 
     ngOnChanges(changes:{[propertyName:string]:SimpleChange}) {
         if (this._$select2 && changes['items'] || changes['idField'] || changes['labelField']) {
-            this.initSelect2();
+            this.init();
         }
 
-        if (changes['selection']) {
+        if (changes['selection'] && this._selectionService) {
+            this._selectionService.selection = this.selection;
             this.updateValue();
         }
     }
 
-    initSelect2() {
+    init() {
+        this._selectionService = this.getSelectionService();
+
         if (this._$select2) {
             this._$select2.off();
         }
@@ -53,40 +61,43 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
         this._$select2.on('change', this.updateSelection.bind(this));
     }
 
+    getSelectionService () : Select2Selection{
+        if (this.multiple) {
+            return new MultiSelection(
+                this.getId.bind(this),
+                this.getLabel.bind(this),
+                this.items,
+                this.selection
+            );
+        } else {
+            return new SingleSelection(
+                this.getId.bind(this),
+                this.getLabel.bind(this),
+                this.items,
+                this.selection
+            );
+        }
+    }
+
     updateSelection (e) {
         if (e.removed) {
-            this.unselectItem(e.removed.id);
+            this._selectionService.unselectItem(e.removed.id);
         }
 
         if (e.added) {
-            this.selectItem(e.added.id);
+            this._selectionService.selectItem(e.added.id);
         }
-    }
 
-    unselectItem (id) {
-        // using procedural solution, because binding breaks if selection is replaced with a new array
-        for (let i = 0; i < this.selection.length; i++) {
-            if (this.getId(this.selection[i]) == id) {
-                this.selection.splice(i, 1);
-            }
-        }
-    }
-
-    selectItem (id) {
-        let selected = this.items.filter((item) => this.getId(item) == id);
-        this.selection.push(selected[0]);
+        this.onChanged.emit(this._selectionService.selection);
     }
 
     updateValue():void {
+        let [type, value] = this._selectionService.getSelect2Value();
+
         if (this._$select2) {
-            this._$select2.auiSelect2('data', this.getSelection(this.selection));
+            this._$select2.auiSelect2(type, value);
         }
     }
-
-    getSelection(list):[{id:string, text:string}] {
-        return list.map((item) => ({id: this.getId(item), text: this.getLabel(item)}));
-    }
-
 
     getLabel(item:any):string {
         return item[this.labelProperty];

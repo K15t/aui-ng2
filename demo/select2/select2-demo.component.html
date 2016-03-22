@@ -6,13 +6,36 @@
         <h2>Select2</h2>
 
         <div class="aui-ng2-flatpack-example">
+
+            <h3>multi</h3>
+
             <form action="" class="aui">
-                <auiNgSelect2 fooBar="lol" [(selection)]="selection" [items]="items" idProperty="value" labelProperty="label"></auiNgSelect2>
+                <auiNgSelect2 [selection]="selection"
+                              [items]="items"
+                              idProperty="value"
+                              labelProperty="label"
+                              [multiple]="true"
+                              (onChanged)="onChangedMulti($event)"></auiNgSelect2>
             </form>
 
-            <h3>selection</h3>
+            <h4>selection</h4>
 
             {{selection | json}}
+
+            <h3>single</h3>
+
+            <form action="" class="aui">
+                <auiNgSelect2 [selection]="selected"
+                              [items]="items"
+                              idProperty="value"
+                              labelProperty="label"
+                              [multiple]="false"
+                              (onChanged)="onChangedSingle($event)"></auiNgSelect2>
+            </form>
+
+            <h4>selected</h4>
+
+            {{selected | json}}
 
             <br>
 
@@ -21,10 +44,6 @@
             <button (click)="addItem('Elm')">add another item option</button>
             <button (click)="removeLast()">remove last selected</button>
         </div>
-
-
-
-
 
         <auiNgCodeBlock title="Template Select2">
             ...
