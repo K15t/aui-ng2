@@ -4,9 +4,13 @@ import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {App} from './app';
 import {LogService} from '../src/services/log.service';
+import {IS_DEV_MODE} from './constants';
+
+
 
 document.addEventListener('DOMContentLoaded', function main() {
     bootstrap(App, [
+        provide(IS_DEV_MODE, {useValue: process.env.ENV === 'development'}),
         ...('production' === process.env.ENV ? [] : ELEMENT_PROBE_PROVIDERS),
         ...HTTP_PROVIDERS,
         ...ROUTER_PROVIDERS,

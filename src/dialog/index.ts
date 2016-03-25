@@ -16,7 +16,7 @@ export {
     AuiNgMessageDialogOptions
 };
 
-export const AUI_NG2_DIRECTIVES = [
+export const AUI_NG2_DIALOG_DIRECTIVES = [
     AuiNgDialogComponent,
     AuiNgMessageDialogComponent
 ];

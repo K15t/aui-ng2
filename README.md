@@ -12,9 +12,10 @@ $ npm install k15t-aui-ng2
 ## Features / supported widgets
 * Modal dialogs
 * Message dialogs
+* Select (supports single and multi selection)
 * Tabs
-* Wizard
 * Tooltip
+* Wizard
 
 ## Additional libraries which can be used in combination:
 * JQuery

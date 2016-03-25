@@ -1,10 +1,11 @@
-import {Component, OnInit} from 'angular2/core';
-import {FORM_DIRECTIVES} from 'angular2/common';
-import {RouteConfig, Redirect, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component, Inject} from 'angular2/core';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {DialogDemoComponent} from './dialog/dialog-demo.component';
 import {TabsDemoComponent} from './tabs/tabs-demo.component';
 import {TooltipDemoComponent} from './tooltip/tooltip-demo.component';
 import {Select2DemoComponent} from './select2/select2-demo.component';
+import {LogService, LogLevel} from '../src/services/log.service';
+import {IS_DEV_MODE} from './constants';
 
 @Component({
     selector: 'app',
@@ -64,4 +65,14 @@ import {Select2DemoComponent} from './select2/select2-demo.component';
     {path: '/', redirectTo: ['DialogDemoComponent']}
 ])
 export class App {
+
+    constructor(
+        private logService: LogService,
+        @Inject(IS_DEV_MODE) private isDevMode: string
+    ) {
+        if (isDevMode) {
+            this.logService.setLogLevel(LogLevel.DEBUG);
+        }
+    }
+
 }

@@ -1,5 +1,5 @@
 import {Component, ElementRef} from 'angular2/core';
-import {FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/common';
+import {FORM_DIRECTIVES} from 'angular2/common';
 import {AuiNgDialogService, AuiNgMessageType} from '../../src/dialog/index';
 import {AuiNgCodeBlockComponent} from '../common/code-block.component';
 import {CustomDialogComponent} from './custom-dialog.component';
@@ -7,7 +7,7 @@ import {LogService} from '../../src/services/log.service';
 
 @Component({
     selector: 'demoDialog',
-    providers: [AuiNgDialogService, LogService],
+    providers: [AuiNgDialogService],
     directives: [...FORM_DIRECTIVES, AuiNgCodeBlockComponent],
     template: require('./dialog-demo.component.html')
 })
