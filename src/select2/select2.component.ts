@@ -1,8 +1,8 @@
 import {Component, Input, Output, OnChanges, AfterViewInit, ElementRef, SimpleChange, EventEmitter} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
-import {Select2Selection} from "./select2-selection";
-import {MultiSelection} from './multi-selection';
-import {SingleSelection} from './single-selection';
+import {SelectionStrategy} from "./selection-strategy";
+import {MultiSelectionStrategy} from './multi-selection-strategy';
+import {SingleSelectionStrategy} from './single-selection-strategy';
 import {AJS} from '../common/libs/aui';
 
 
@@ -14,65 +14,64 @@ import {AJS} from '../common/libs/aui';
     directives: [...FORM_DIRECTIVES],
     template: `
       <select class="select2" [multiple]="multiple">
-        <option *ngFor="#item of items" value="{{getId(item)}}">{{getLabel(item)}}</option>
+        <option *ngFor="#item of items" value="{{ getId(item) }}">{{ getLabel(item) }}</option>
       </select>
     `
 })
 export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
 
-    @Input() items:any[];
-    @Input() idProperty:string;
-    @Input() labelProperty:string;
-    @Input() selection:any;
-    @Input() multiple:boolean;
-    @Output() onChanged:EventEmitter<any> = new EventEmitter<any>();
+    @Input() items: any[];
+    @Input() idProperty: string;
+    @Input() labelProperty: string;
+    @Input() selection: any;
+    @Input() multiple: boolean;
+    @Output() onChanged: EventEmitter<any> = new EventEmitter<any>();
 
-    private $select2:any;
-    private selectionService:Select2Selection;
+    private $select2: any;
+    private selectionStrategy: SelectionStrategy;
 
-    constructor(private elementRef:ElementRef) {
-    }
+    constructor(
+        private elementRef: ElementRef
+    ) {}
 
     ngAfterViewInit() {
         this.init();
         this.updateValue();
     }
 
-    ngOnChanges(changes:{[propertyName:string]:SimpleChange}) {
+    ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
         if (this.$select2 && changes['items'] || changes['idField'] || changes['labelField']) {
             this.init();
         }
 
-        if (changes['selection'] && this.selectionService) {
-            this.selectionService.selection = this.selection;
+        if (changes['selection'] && this.selectionStrategy) {
+            this.selectionStrategy.selection = this.selection;
             this.updateValue();
         }
     }
 
     init() {
-        this.selectionService = this.getSelectionService();
+        this.selectionStrategy = this.getSelectionStrategy();
 
         if (this.$select2) {
             this.$select2.off();
         }
 
-        this.$select2 = AJS.$(this.elementRef.nativeElement)
-            .find('.select2')
-            .auiSelect2();
+        this.$select2 = AJS.$(this.elementRef.nativeElement).find('.select2').auiSelect2();
 
         this.$select2.on('change', this.updateSelection.bind(this));
     }
 
-    getSelectionService () : Select2Selection{
+    getSelectionStrategy(): SelectionStrategy {
         if (this.multiple) {
-            return new MultiSelection(
+            return new MultiSelectionStrategy(
                 this.getId.bind(this),
                 this.getLabel.bind(this),
                 this.items,
                 this.selection
             );
         } else {
-            return new SingleSelection(
+            return new SingleSelectionStrategy(
                 this.getId.bind(this),
                 this.getLabel.bind(this),
                 this.items,
@@ -81,31 +80,31 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
         }
     }
 
-    updateSelection (e) {
-        if (e.removed) {
-            this.selectionService.unselectItem(e.removed.id);
+    updateSelection(event) {
+        if (event.removed) {
+            this.selectionStrategy.deSelectItem(event.removed.id);
         }
 
-        if (e.added) {
-            this.selectionService.selectItem(e.added.id);
+        if (event.added) {
+            this.selectionStrategy.selectItem(event.added.id);
         }
 
-        this.onChanged.emit(this.selectionService.selection);
+        this.onChanged.emit(this.selectionStrategy.selection);
     }
 
-    updateValue():void {
-        let [type, value] = this.selectionService.getSelect2Value();
+    updateValue(): void {
+        let [type, value] = this.selectionStrategy.getSelection();
 
         if (this.$select2) {
             this.$select2.auiSelect2(type, value);
         }
     }
 
-    getLabel(item:any):string {
+    getLabel(item: any): string {
         return item[this.labelProperty];
     }
 
-    getId(item:any):string {
+    getId(item: any): string {
         return item[this.idProperty];
     }
 }
