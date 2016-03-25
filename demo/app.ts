@@ -4,6 +4,7 @@ import {RouteConfig, Redirect, ROUTER_DIRECTIVES} from 'angular2/router';
 import {DialogDemoComponent} from './dialog/dialog-demo.component';
 import {TabsDemoComponent} from './tabs/tabs-demo.component';
 import {TooltipDemoComponent} from './tooltip/tooltip-demo.component';
+import {Select2DemoComponent} from './select2/select2-demo.component';
 
 @Component({
     selector: 'app',
@@ -42,6 +43,9 @@ import {TooltipDemoComponent} from './tooltip/tooltip-demo.component';
                         <li router-active>
                             <a [routerLink]=" ['TooltipDemoComponent']">Tooltips</a>
                         </li>
+                        <li router-active>
+                            <a [routerLink]=" ['Select2DemoComponent']">Select2</a>
+                        </li>
                      </ul>
                 </td>
                 <td class="aui-ng-content" width="85%">
@@ -56,6 +60,7 @@ import {TooltipDemoComponent} from './tooltip/tooltip-demo.component';
     {path: '/dialog', name: 'DialogDemoComponent', component: DialogDemoComponent},
     {path: '/tabs', name: 'TabsDemoComponent', component: TabsDemoComponent},
     {path: '/tooltip', name: 'TooltipDemoComponent', component: TooltipDemoComponent},
+    {path: '/select2', name: 'Select2DemoComponent', component: Select2DemoComponent},
     {path: '/', redirectTo: ['DialogDemoComponent']}
 ])
 export class App {
