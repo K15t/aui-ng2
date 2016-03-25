@@ -31,14 +31,12 @@
   ],
   "dependencies": {
     "@atlassian/aui": "5.9.14",
-    "angular2": "2.0.0-beta.7",
-    "es6-promise": "3.0.2",
-    "es6-shim": "0.33.3",
     "jquery": "2.2.1",
+    "angular2": "2.0.0-beta.12",
+    "es6-shim": "0.35.0",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
-    "style-loader": "0.13.0",
-    "zone.js": "0.5.15"
+    "zone.js": "0.6.6"
   },
   "devDependencies": {
     "k15t-webpack-build": "0.0.x",
