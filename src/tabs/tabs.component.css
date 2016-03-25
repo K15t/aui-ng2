@@ -13,6 +13,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    height: 21px;
 }
 
 /**
@@ -28,6 +29,9 @@
     list-style: none;
     padding: 0px;
     outline: none;
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .aui-ng-dropdown-option {
@@ -65,7 +69,6 @@
     border: 0;
     height: 30px;
     border-top: 1px solid #cccccc;
-    min-width: 120px;
     max-width: 250px;
     overflow: hidden;
     white-space: nowrap;
@@ -75,26 +78,28 @@
 .aui-ng-dropdown-button-select {
     border-radius: 0 !important;
     border-top-right-radius: 3px !important;
-    border: 0;
     height: 30px;
+    vertical-align: top !important;
     border-top: 1px solid #cccccc;
     border-right: 1px solid #cccccc;
+    border-bottom: 1px solid transparent !important;
+    border-left: 0 !important;
+    margin-left: -1px !important;
 }
 
-
 .aui-ng-dropdown-button-select:hover,
-.aui-ng-dropdown-button-select:hover:before{
-    top: 0;
-    border-left: 0 !important;
+.aui-ng-dropdown-button-select:hover:after {
+    border-left: 1px solid transparent !important;
     border-top: 1px solid #cccccc;
     border-right: 1px solid #cccccc !important;
+    border-bottom: 1px solid transparent !important;
 }
 
 /** Hover specific overrides for Atlassian specific styles */
 
 .aui-button-split-main:hover {
-    top: 0;
-    border-right: 0 !important;
+    border-right: 1px solid transparent !important;
+    border-left: 1px solid #cccccc !important;
     border-top: 1px solid #cccccc;
 }
 
@@ -102,14 +107,20 @@
 .aui-button.aui-dropdown2-trigger.aui-button-split-more.active:before,
 .aui-button.aui-dropdown2-trigger.aui-button-split-more:hover:before,
 .aui-button-split-more:hover {
-    top: 0;
-    border-top: 1px solid #cccccc;
-    border-right: 1px solid #cccccc !important;
-    border-left: 1px solid #cccccc !important;
+    border: 1px solid transparent;
+    border-top: 1px solid #cccccc !important;
 }
 
 .aui-buttons .aui-button:focus,
 .aui-buttons .aui-button:hover,
 .aui-buttons .aui-button:active {
-    border-color: #cccccc;
+    border: 1px solid transparent;
+    border-top: 1px solid #cccccc;
+    border-left: 1px !important;
+    border-right: 1px solid #CCCCCC!important;
+    box-shadow: none !important;
+}
+
+.tabs-menu > .menu-item > a {
+    padding-top: 4px;
 }

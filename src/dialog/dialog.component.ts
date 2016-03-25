@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, Optional, HostListener} from 'angular2/core';
+import {Component, Input, Output, EventEmitter, HostListener} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 import {AuiNgDialogUpdateEvent} from './dialog-update.event';
 import '../common/libs/aui-styles';
@@ -18,11 +18,12 @@ export class AuiNgDialogComponent {
     @Input() dialogStyle: string;
     @Input() dialogContentStyle: string;
     @Input() showXIcon: string = 'true';
+    @Input() showBlanket: boolean = true;
 
-    @Output() dialogClose: EventEmitter<Event> = new EventEmitter(false);
+    @Output() onDialogClose: EventEmitter<Event> = new EventEmitter(false);
 
     close($event: Event) {
-        this.dialogClose.emit($event);
+        this.onDialogClose.emit($event);
     }
 
     @HostListener('window:keydown', ['$event']) onKeydown(event: KeyboardEvent) {

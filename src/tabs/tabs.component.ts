@@ -1,9 +1,25 @@
-import {Component, ViewChild, Input, AfterContentInit, ElementRef} from 'angular2/core';
+import {Component, Directive, ViewChild, Input, AfterViewInit, ElementRef, ContentChildren, ViewChildren, QueryList} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 import {AuiNgTabComponent} from './tab.component';
 import {LogService} from '../services/log.service';
 import {AuiNgAutoFocus} from '../common/directives/focus-element.directive';
 import '../common/libs/aui-styles';
+
+/**
+ * Directive to lookup the native element of the tab headers to determine the actual width.
+ */
+@Directive({
+    selector: '[auiNgTabHeaderElementRef]'
+})
+export class AuiNgTabHeaderElementRef {
+    constructor(
+        private selfElement: ElementRef
+    ) {}
+
+    getWidth() {
+        return this.selfElement.nativeElement.getBoundingClientRect().width;
+    }
+}
 
 /**
  * Container class to register individual tabs.
@@ -20,18 +36,21 @@ import '../common/libs/aui-styles';
 @Component({
     selector: 'auiNgTabs',
     providers: [LogService],
-    directives: [...FORM_DIRECTIVES, AuiNgAutoFocus],
+    directives: [...FORM_DIRECTIVES, AuiNgAutoFocus, AuiNgTabHeaderElementRef],
     styles: [require('./tabs.component.css')],
     template: `
-        <div class="aui-tabs horizontal-tabs">
+        <div class="aui-tabs horizontal-tabs" [style.visibility]="tabContainerVisibility" [style.width]="maxWidthPx">
             <ul class="tabs-menu aui-ng-tabs-menu" #tabsMenu>
-                <li class="menu-item" [ngClass]="{'active-tab': tab.active}" *ngFor="#tab of tabs" [style.width.px]="tab.width" [style.max-width.px]="tab.maxWidth">
+                <li class="menu-item" style="max-width: 300px" [ngClass]="{'active-tab': tab.active}" *ngFor="#tab of tabs;" auiNgTabHeaderElementRef>
                     <a (click)="setActiveTab(tab)" class="aui-ng-menu-item">{{ tab.title }}</a>
                 </li>
                 <li *ngIf="tabsDropDown.length > 0" class="menu-item aui-ng-dropdown-container" [ngClass]="{'active-tab': selectedDropdownTab.isActive()}">
                     <div class="aui-buttons">
-                        <a class="aui-button aui-button-split-main aui-ng-dropdown-button" (click)="setActiveTab(selectedDropdownTab)">{{ selectedDropdownTab.title }}</a>
-                        <a class="aui-button aui-dropdown2-trigger aui-button-split-more aui-ng-dropdown-button-select" (click)="showDropdownOptions()" (blur)="hideDropdownOptions()"></a>
+                        <a class="aui-button aui-button-split-main aui-ng-dropdown-button" (click)="setActiveTab(selectedDropdownTab)"
+                            style="border-right: 1px !important;">{{ selectedDropdownTab.title }}</a>
+                        <a class="aui-button aui-button-split-more aui-ng-dropdown-button-select" (click)="showDropdownOptions()" (blur)="hideDropdownOptions()">
+                            <span class="aui-icon aui-icon-small aui-iconfont-more"></span>  
+                        </a>
                     </div>
                     <div class="aui-ng-dropdown-options-container" [hidden]="!showOptions" *ngIf="showOptions">
                         <ul class="aui-ng-dropdown-options aui-list-truncate" (blur)="hideDropdownOptions()" tabindex="-1" auiNgAutoFocus>
@@ -47,16 +66,16 @@ import '../common/libs/aui-styles';
         </div>
     `
 })
-export class AuiNgTabsComponent implements AfterContentInit {
+export class AuiNgTabsComponent implements AfterViewInit {
 
     tabs: Array<AuiNgTabComponent> = [];
     tabsDropDown: Array<AuiNgTabComponent> = [];
-    isTabsDropDownActive: boolean = false;
     showOptions: boolean = false;
     selectedDropdownTab: AuiNgTabComponent = null;
+    tabContainerVisibility: string = 'hidden';
 
-    @ViewChild('tabsMenu') tabsMenuElement: ElementRef;
-    @Input() maxWidth;
+    @Input() maxWidthPx;
+    @ViewChildren(AuiNgTabHeaderElementRef) tabTitles: QueryList<AuiNgTabHeaderElementRef>;
 
     constructor(
         private logService: LogService,
@@ -109,8 +128,8 @@ export class AuiNgTabsComponent implements AfterContentInit {
         }
     }
 
-    ngAfterContentInit() {
-        this.calcuateTabWidth();
+    ngAfterViewInit() {
+        this.calculateTabWidth();
     }
 
     showDropdownOptions() {
@@ -125,47 +144,54 @@ export class AuiNgTabsComponent implements AfterContentInit {
      * Unregisters all tabs which is required for dynamic tabs.
      */
     unregisterAllTabs() {
+        this.hideTabs();
         this.tabs = [];
         this.tabsDropDown = [];
     }
 
-    calcuateTabWidth() {
-        let widthTabsContainer;
+    hideTabs() {
+        this.tabContainerVisibility = 'hidden';
+    }
 
-        // get the current width of the overall tabs container
-        if (this.maxWidth != null && this.maxWidth !== undefined) {
-            widthTabsContainer = parseInt(this.maxWidth);
-        } else {
-            widthTabsContainer = this.selfElement.nativeElement.getBoundingClientRect().width;
-        }
-        // reserve already the width for the dropdown
-        let currentTabsWidth = 0;
-        let index = 0;
+    showTabs() {
+        this.tabContainerVisibility = 'visible';
+    }
 
-        // iterate over all registered tabs check if width or maxWidth is set if not use the default
-        // and check if the tabs is basically visible on the screen. In case if not split the registered tabs
-        // and move the rest to the dropdown component.
-        for (let tab of this.tabs) {
+    calculateTabWidth() {
 
-            let width = tab.maxWidth != undefined && tab.maxWidth != null ? parseInt(tab.maxWidth) : null;
+        setTimeout(() => {
+            let widthTabsContainer;
 
-            if (width === null) {
-                if (tab.width != undefined && tab.width != null) {
-                    width = parseInt(tab.width);
+            // get the current width of the overall tabs container
+            if (this.maxWidthPx != null && this.maxWidthPx !== undefined) {
+                widthTabsContainer = parseInt(this.maxWidthPx);
+            } else {
+                widthTabsContainer = this.selfElement.nativeElement.getBoundingClientRect().width;
+            }
+            // reserve already the width for the dropdown
+            let currentTabsWidth = 0;
+            let index = 0;
+
+            // iterate over all registered tabs check if width or maxWidth is set if not use the default
+            // and check if the tabs is basically visible on the screen. In case if not split the registered tabs
+            // and move the rest to the dropdown component.
+            for (let tab of this.tabs) {
+
+                let width = this.tabTitles.toArray()[index].getWidth();
+
+                if (width + currentTabsWidth > widthTabsContainer && (index !== this.tabs.length - 1 && width < 300)) {
+                    this.tabsDropDown = this.tabs.splice(index, this.tabs.length - 1);
+                    this.selectedDropdownTab = this.tabsDropDown[0];
+                    break;
                 } else {
-                    width = 200;
+                    currentTabsWidth += width;
+                    index++;
                 }
             }
 
-            if (width + currentTabsWidth > widthTabsContainer && (index !== this.tabs.length - 1 && width < 300)) {
-                this.tabsDropDown = this.tabs.splice(index, this.tabs.length - 1);
-                this.selectedDropdownTab = this.tabsDropDown[0];
-                break;
-            } else {
-                currentTabsWidth += width;
-                index++;
-            }
-        }
+            this.showTabs();
+
+        }, 100);
     }
 
 }

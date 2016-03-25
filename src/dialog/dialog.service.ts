@@ -1,9 +1,7 @@
 import {Injectable, DynamicComponentLoader, ComponentRef, ElementRef} from 'angular2/core';
-import {Observable, Subject, Subscriber} from 'rxjs/Rx';
+import {Observable} from 'rxjs/Rx';
 import {AuiNgMessageDialogComponent} from './message-dialog.component';
-import {AuiNgDialogOptions} from './dialog-options';
 import {ConcreteType} from 'angular2/src/facade/lang';
-import {AuiNgDialog} from './dialog';
 import {LogService} from '../services/log.service';
 
 @Injectable()

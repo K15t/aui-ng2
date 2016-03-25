@@ -1,4 +1,4 @@
-import {Observable, Subject, Subscriber} from 'rxjs/Rx';
+import {Observable} from 'rxjs/Rx';
 import {AuiNgMessageDialogOptions} from './message-dialog.component';
 
 export interface AuiNgDialog {

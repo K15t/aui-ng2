@@ -1,6 +1,6 @@
 {
   "name": "k15t-aui-ng2",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "license": "MIT",
   "author": "Sven Walter <sven@k15t.com> (http://www.k15t.com)",
   "scripts": {
@@ -43,8 +43,6 @@
   "devDependencies": {
     "k15t-webpack-build": "0.0.x",
     "karma": "0.13.x",
-    "karma-chrome-launcher": "0.2.x",
-    "karma-coverage": "0.5.x",
     "karma-jasmine": "0.3.x",
     "karma-phantomjs-launcher": "0.2.x",
     "karma-sourcemap-loader": "0.3.x",

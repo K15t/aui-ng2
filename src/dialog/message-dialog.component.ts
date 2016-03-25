@@ -1,6 +1,6 @@
-import {Component, ComponentRef} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {AuiNgDialogComponent} from './dialog.component';
-import {Observable, Subject, Subscriber} from 'rxjs/Rx';
+import {Observable} from 'rxjs/Rx';
 import {Observer} from 'rxjs/Observer';
 import {AuiNgDialog} from './dialog';
 
@@ -8,7 +8,7 @@ import {AuiNgDialog} from './dialog';
     selector: 'auiNgMessageDialog',
     directives: [AuiNgDialogComponent],
     template: `
-        <auiNgDialog [title]="title" [hidden]="hidden" dialogClass="aui-ng-dialog-medium" (dialogClose)="close($event)"
+        <auiNgDialog [title]="title" [hidden]="hidden" dialogClass="aui-ng-dialog-medium" (onDialogClose)="close($event)"
                      dialogContentStyle="max-height: 200px">
             <auiNgDialogContent>
                 <div class="aui-message aui-message-{{type}}">{{msg}}</div>

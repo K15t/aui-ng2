@@ -1,4 +1,4 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input, ElementRef} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 import {AuiNgTabsComponent} from './tabs.component';
 
@@ -24,17 +24,15 @@ import {AuiNgTabsComponent} from './tabs.component';
 })
 export class AuiNgTabComponent {
 
-    defaultWidth: string = '200';
-
     @Input() title: string;
-    @Input() width: string = this.defaultWidth;
-    @Input() maxWidth: string = this.defaultWidth;
-
     private active: boolean = false;
 
-    constructor(tabs: AuiNgTabsComponent) {
+    constructor(
+        private tabs: AuiNgTabsComponent
+    ) {
         tabs.register(this);
     }
+
 
     /**
      * Sets the state of the tab. To show the tab on the screen set it active set it to true. To ensure that every time only

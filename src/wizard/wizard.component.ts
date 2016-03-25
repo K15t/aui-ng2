@@ -7,7 +7,7 @@ import {WizardStep} from './wizard-step';
  *
  * Example to build a wizard dialog:
  *
- * <auiNgDialog title="My dialog" dialogClass="aui-ng-dialog-medium" (dialogClose)="close($event)">
+ * <auiNgDialog title="My dialog" dialogClass="aui-ng-dialog-medium" (onDialogClose)="close($event)">
  *   <auiNgDialogContent>
  *     <auiNgWizard navigation="true">
  *       <auiNgWizardStep>
@@ -47,7 +47,8 @@ import {WizardStep} from './wizard-step';
 export class AuiNgWizardComponent implements OnInit {
 
     @Input() navigation: boolean = true;
-    @Input() onNext: EventEmitter<Event> = new EventEmitter(false);
+    @Output() onNext: EventEmitter<WizardStep> = new EventEmitter(false);
+    @Output() onPrevious: EventEmitter<WizardStep> = new EventEmitter(false);
 
     private steps: Array<WizardStep> = [];
     private indexCurrentStep: number = 0;
@@ -81,6 +82,7 @@ export class AuiNgWizardComponent implements OnInit {
             this.steps[this.indexCurrentStep + 1].setData(data);
             this.steps[this.indexCurrentStep + 1].show();
             this.indexCurrentStep++;
+            this.onNext.emit(this.steps[this.indexCurrentStep]);
         }
     }
 
@@ -91,6 +93,7 @@ export class AuiNgWizardComponent implements OnInit {
             this.steps[this.indexCurrentStep - 1].setData(data);
             this.steps[this.indexCurrentStep - 1].show();
             this.indexCurrentStep--;
+            this.onPrevious.emit(this.steps[this.indexCurrentStep]);
         }
     }
 

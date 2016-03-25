@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output, EventEmitter} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 import {WizardStep} from './wizard-step';
 import {AuiNgWizardComponent} from './wizard.component';

@@ -1,6 +1,4 @@
-import {Injectable, DynamicComponentLoader, ElementRef} from 'angular2/core';
-import {Observable, Subject, Subscriber} from 'rxjs/Rx';
-import {AuiNgMessageDialogComponent} from './message-dialog.component';
+import {Injectable, DynamicComponentLoader} from 'angular2/core';
 import {AbstractAuiNgAtlassianConnectService} from '../services/atlassian-connect.service';
 import {AuiNgDialogOptions} from './dialog-options';
 import {AuiNgDialogService} from './dialog.service';
