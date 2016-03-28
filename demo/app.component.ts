@@ -6,6 +6,7 @@ import {TabsDemoComponent} from './tabs/tabs-demo.component';
 import {TooltipDemoComponent} from './tooltip/tooltip-demo.component';
 import {Select2DemoComponent} from './select2/select2-demo.component';
 import {LogService, LogLevel} from '../src/common/services/log.service.ts';
+import {OverlayDemoComponent} from './overlay/overlay-demo.component';
 import {IS_DEV_MODE} from './constants';
 import {RadioButtonGroupDemoComponent} from './radio-button-group/radio-button-group-demo.component';
 
@@ -52,6 +53,9 @@ import {RadioButtonGroupDemoComponent} from './radio-button-group/radio-button-g
                         <li router-active>
                             <a [routerLink]=" ['RadioButtonGroupDemoComponent']">Radio button group</a>
                         </li>
+                        <li router-active>
+                            <a [routerLink]=" ['OverlayDemoComponent']">Overlays</a>
+                        </li>
                      </ul>
                 </td>
                 <td class="aui-ng-content" width="85%">
@@ -68,6 +72,7 @@ import {RadioButtonGroupDemoComponent} from './radio-button-group/radio-button-g
     {path: '/tooltip', name: 'TooltipDemoComponent', component: TooltipDemoComponent},
     {path: '/select2', name: 'Select2DemoComponent', component: Select2DemoComponent},
     {path: '/radio-button-group', name: 'RadioButtonGroupDemoComponent', component: RadioButtonGroupDemoComponent},
+    {path: '/overlay', name: 'OverlayDemoComponent', component: OverlayDemoComponent},
     {path: '/', redirectTo: ['DialogDemoComponent']}
 ])
 export class AppComponent {
