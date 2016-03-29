@@ -1,10 +1,11 @@
-import {DynamicComponentLoader, Injectable, ComponentRef, ElementRef} from 'angular2/core';
+import {DynamicComponentLoader, Injectable, Injector, ComponentRef, ElementRef, Provider} from 'angular2/core';
 import AuiNgPortal from './portal.service.ts';
 import {Type} from 'angular2/src/facade/lang';
 
-export class Overlay {
+export class OverlayRef {
 
-    constructor(public ref: ComponentRef, public host) {}
+    public ref: ComponentRef;
+    public host;
 
     dispose() {
         this.ref.dispose();
@@ -24,7 +25,7 @@ export default class AuiNgOverlayService {
     /**
      * Register a Component as Overlay.
      */
-    register(type: Type, origin: ElementRef):Promise<Overlay> {
+    register(type: Type, origin: ElementRef):Promise<OverlayRef> {
         if (!this._container) {
             this._createContainer();
         }
@@ -32,8 +33,15 @@ export default class AuiNgOverlayService {
         const host = document.createElement('div');
         this._container.appendChild(host);
 
-        return this._portal.port(type, origin, host)
-            .then((ref: ComponentRef) => new Overlay(ref, host));
+        const overlay = new OverlayRef();
+        const providers = Injector.resolve([new Provider(OverlayRef, {useValue: overlay})]);
+
+        return this._portal.port(type, origin, host, providers)
+            .then((ref: ComponentRef) => {
+                overlay.ref = ref;
+                overlay.host = host;
+                return overlay;
+            });
     }
 
     _createContainer(): void {

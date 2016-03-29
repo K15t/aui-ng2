@@ -1,13 +1,15 @@
-import {Component} from 'angular2/core';
+import {Component, Inject} from 'angular2/core';
+import {OverlayRef} from '../../src/common/services/overlay.service';
 
 @Component({
     selector: 'customOverlay',
-    directives: [],
-    providers: [],
     template: require('./custom-overlay.component.html')
 })
 export default class CustomOverlay {
 
-    constructor() {}
+    constructor(private _overlay: OverlayRef) {}
 
+    close() {
+        this._overlay.dispose();
+    }
 }

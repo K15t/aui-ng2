@@ -14,9 +14,7 @@ export class OverlayDemoComponent {
     constructor(private _el: ElementRef, private _overlays: AuiNgOverlayService) {}
 
     createOverlay() {
-        this._overlays.register(CustomOverlay, this._el).then((overlay) => {
-            setTimeout(() => { overlay.dispose(); }, 5000);
-        });
+        this._overlays.register(CustomOverlay, this._el);
     }
 
 }
