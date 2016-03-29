@@ -8,6 +8,18 @@ export class OverlayRef {
     public host: any;
     public options: any;
 
+    show() {
+        this.host.style.display = 'block';
+    }
+
+    hide() {
+        this.host.style.display = 'none';
+    }
+
+    isHidden() {
+        return this.host.style.display === 'none';
+    }
+
     remove() {
         this.ref.dispose();
         // remove from DOM
