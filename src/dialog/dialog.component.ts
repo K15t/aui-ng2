@@ -18,7 +18,7 @@ export class AuiNgDialogComponent {
     @Input() dialogStyle: string;
     @Input() dialogContentStyle: string;
     @Input() showXIcon: string = 'true';
-    @Input() showBlanket: boolean = true;
+    @Input() showBlanket: string = 'true';
 
     @Output() onDialogClose: EventEmitter<Event> = new EventEmitter(false);
 

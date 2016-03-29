@@ -1,4 +1,4 @@
-<div class="aui-ng-container" [ngClass]="{'aui-ng-blanket': showBlanket}" (keydown.esc)="close($event)" (onUpdateDialog)="onUpdateDialog($event)">
+<div class="aui-ng-container" [ngClass]="{'aui-ng-blanket': showBlanket === 'true'}" (keydown.esc)="close($event)" (onUpdateDialog)="onUpdateDialog($event)">
     <div [ngClass]="dialogClass" style="{{dialogStyle}}">
         <header class="aui-dialog2-header">
             <h2 class="aui-dialog2-header-main">{{title}}</h2>
