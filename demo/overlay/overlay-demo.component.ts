@@ -14,7 +14,7 @@ export class OverlayDemoComponent {
     constructor(private _el: ElementRef, private _overlays: AuiNgOverlayService) {}
 
     createOverlay() {
-        this._overlays.register(CustomOverlay, this._el);
+        this._overlays.register(CustomOverlay, this._el, {name: 'Foo'});
     }
 
 }

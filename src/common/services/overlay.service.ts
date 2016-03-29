@@ -5,9 +5,10 @@ import {Type} from 'angular2/src/facade/lang';
 export class OverlayRef {
 
     public ref: ComponentRef;
-    public host;
+    public host: any;
+    public options: any;
 
-    dispose() {
+    remove() {
         this.ref.dispose();
         // remove from DOM
         this.host.outerHTML = '';
@@ -25,7 +26,7 @@ export default class AuiNgOverlayService {
     /**
      * Register a Component as Overlay.
      */
-    register(type: Type, origin: ElementRef):Promise<OverlayRef> {
+    register(type: Type, origin: ElementRef, options?: any):Promise<OverlayRef> {
         if (!this._container) {
             this._createContainer();
         }
@@ -40,6 +41,8 @@ export default class AuiNgOverlayService {
             .then((ref: ComponentRef) => {
                 overlay.ref = ref;
                 overlay.host = host;
+                overlay.options = options;
+
                 return overlay;
             });
     }

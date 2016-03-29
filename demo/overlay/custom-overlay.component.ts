@@ -7,9 +7,9 @@ import {OverlayRef} from '../../src/common/services/overlay.service';
 })
 export default class CustomOverlay {
 
-    constructor(private _overlay: OverlayRef) {}
+    constructor(public overlay: OverlayRef) {}
 
     close() {
-        this._overlay.dispose();
+        this.overlay.remove();
     }
 }
