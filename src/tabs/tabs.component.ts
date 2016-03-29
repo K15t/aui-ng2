@@ -172,14 +172,14 @@ export class AuiNgTabsComponent implements AfterViewInit {
             let currentTabsWidth = 0;
             let index = 0;
 
-            // iterate over all registered tabs check if width or maxWidth is set if not use the default
-            // and check if the tabs is basically visible on the screen. In case if not split the registered tabs
-            // and move the rest to the dropdown component.
+            // iterate over all registered tabs check verify the width of the tab if it is basically visible on the screen.
+            // In case if not split the registered tabs and move the rest to the dropdown component.
             for (let tab of this.tabs) {
 
                 let width = this.tabTitles.toArray()[index].getWidth();
 
-                if (width + currentTabsWidth > widthTabsContainer && (index !== this.tabs.length - 1 && width < 300)) {
+                if (width + currentTabsWidth > widthTabsContainer || (index !== this.tabs.length - 1
+                    && width + currentTabsWidth + this.tabTitles.toArray()[index + 1].getWidth() > widthTabsContainer - 30)) {
                     this.tabsDropDown = this.tabs.splice(index, this.tabs.length - 1);
                     this.selectedDropdownTab = this.tabsDropDown[0];
                     break;
