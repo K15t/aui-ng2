@@ -5,6 +5,8 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 import {TRANSLATE_PROVIDERS} from 'ng2-translate/ng2-translate';
 import {AppComponent} from './app.component';
 import {LogService} from '../src/common/services/log.service.ts';
+import AuiNgOverlayService from '../src/common/services/overlay.service';
+import AuiNgPortal from '../src/common/services/portal.service';
 import {IS_DEV_MODE} from './constants';
 
 document.addEventListener('DOMContentLoaded', function main() {
@@ -15,7 +17,9 @@ document.addEventListener('DOMContentLoaded', function main() {
         ...ROUTER_PROVIDERS,
         ...TRANSLATE_PROVIDERS,
         provide(LocationStrategy, {useClass: HashLocationStrategy}),
-        LogService
+        LogService,
+        AuiNgOverlayService,
+        AuiNgPortal
     ]);
 });
 

@@ -131,6 +131,5 @@
         {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
         <script src="{%= o.webpackConfig.envProperties.SERVER_CONTEXT %}{%= o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
         {% } %}
-
     </body>
 </html>

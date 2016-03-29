@@ -2,32 +2,6 @@ import {DynamicComponentLoader, Injectable, Injector, ComponentRef, ElementRef, 
 import AuiNgPortal from './portal.service.ts';
 import {Type} from 'angular2/src/facade/lang';
 
-export class OverlayRef {
-
-    public ref: ComponentRef;
-    public host: HTMLElement;
-    public options: any;
-
-    show() {
-        this.host.style.display = 'block';
-    }
-
-    hide() {
-        this.host.style.display = 'none';
-    }
-
-    isHidden() {
-        return this.host.style.display === 'none';
-    }
-
-    remove() {
-        this.ref.dispose();
-        // remove from DOM
-        this.host.outerHTML = '';
-    }
-
-}
-
 @Injectable()
 export default class AuiNgOverlayService {
 
@@ -54,7 +28,7 @@ export default class AuiNgOverlayService {
     }
 
     _getContainer(): HTMLElement {
-        const containerId = 'aui_overlay_container';
+        const containerId = 'aui-overlay-container';
         let container = document.getElementById(containerId);
 
         if (container) {
@@ -66,6 +40,32 @@ export default class AuiNgOverlayService {
         document.body.appendChild(container);
 
         return container;
+    }
+
+}
+
+export class OverlayRef {
+
+    public ref: ComponentRef;
+    public host: HTMLElement;
+    public options: any;
+
+    show() {
+        this.host.style.display = 'block';
+    }
+
+    hide() {
+        this.host.style.display = 'none';
+    }
+
+    isHidden() {
+        return this.host.style.display === 'none';
+    }
+
+    remove() {
+        this.ref.dispose();
+        // remove from DOM
+        this.host.outerHTML = '';
     }
 
 }
