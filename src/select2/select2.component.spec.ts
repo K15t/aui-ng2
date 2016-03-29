@@ -55,4 +55,28 @@ describe('Select2 Component', () => {
             expect(select2.nativeElement.querySelectorAll('.select2 option').length).toEqual(3);
         });
     });
+
+    describe('custom templating', () => {
+
+        beforeEach(() => {
+            select2.componentInstance.multiple = false;
+            select2.componentInstance.selection = items[0];
+            select2.componentInstance.labelProperty = function (object) {
+                return '**' + object.name + '**';
+            };
+            select2.detectChanges();
+        });
+
+        it('should display selected item with special template', () => {
+            expect(select2.nativeElement.querySelector('.select2-chosen').innerText).toEqual('**foo**');
+        });
+
+        it('should display options with special template', () => {
+            let options = select2.nativeElement.querySelectorAll('.select2 option');
+
+            expect(options[0].innerText).toEqual('**foo**');
+            expect(options[1].innerText).toEqual('**bar**');
+            expect(options[2].innerText).toEqual('**baz**');
+        });
+    });
 });
