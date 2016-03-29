@@ -22,7 +22,7 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
 
     @Input() items: any[];
     @Input() idProperty: string;
-    @Input() labelProperty: string;
+    @Input() labelProperty: any;
     @Input() selection: any;
     @Input() multiple: boolean;
     @Output() changed: EventEmitter<any> = new EventEmitter<any>();
@@ -101,6 +101,9 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
     }
 
     getLabel(item: any): string {
+        if (typeof this.labelProperty === "function") {
+            return this.labelProperty(item);
+        }
         return item[this.labelProperty];
     }
 
