@@ -15,7 +15,7 @@ export class OverlayDemoComponent {
     constructor(private _el: ElementRef, private _dialogService: AuiNgDialogService) {}
 
     createOverlay() {
-        this._dialogService.openDialog(CustomOverlay, this._el, {name: 'Foo'});
+        this._dialogService.openDialog(CustomOverlay, this._el, {name: 'Foo'}).subscribe();
     }
 
 }

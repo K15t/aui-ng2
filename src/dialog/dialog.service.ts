@@ -17,15 +17,15 @@ export class AuiNgDialogService {
     closeDialog() {
     }
 
-    openDialog(componentType: ConcreteType, parentElement: ElementRef, opts?: any): Promise<OverlayRef> {
+    openDialog(componentType: ConcreteType, parentElement: ElementRef, opts?: any): Observable<OverlayRef> {
         return this.overlayService.register(componentType, parentElement, opts)
-            .then((overlay) => {
+            .map((overlay) => {
                 overlay.host.classList.add('aui-dialog-host');
                 return overlay;
             });
     }
 
-    openMessageDialog(title: string, msg: string, type: string, parentElement: ElementRef): Promise<OverlayRef> {
+    openMessageDialog(title: string, msg: string, type: string, parentElement: ElementRef): Observable<OverlayRef> {
         return this.openDialog(AuiNgMessageDialogComponent, parentElement, {
             title: title,
             message: msg,

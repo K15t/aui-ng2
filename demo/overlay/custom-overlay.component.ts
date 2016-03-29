@@ -16,7 +16,7 @@ export default class CustomOverlay {
     constructor(public overlay: OverlayRef, private _el: ElementRef, private _dialogService: AuiNgDialogService) {}
 
     createSubDialog() {
-        this._dialogService.openDialog(CustomOverlay, this._el, {name: 'Child Dialog!'});
+        this._dialogService.openDialog(CustomOverlay, this._el, {name: 'Child Dialog!'}).subscribe();
     }
 
 }
