@@ -9,6 +9,9 @@ if (!!process.env.testMode) {
         basePath: '',
         autoWatch: true,
         autoWatchBatchDelay: 300,
+        output: {
+            path : './target'
+        },
         module: {
             noParse: [
                 utils.getAbsolutePath('zone.js/dist'),
