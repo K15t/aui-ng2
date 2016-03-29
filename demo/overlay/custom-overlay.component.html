@@ -1,3 +1,9 @@
-<h1>Hello: {{ overlay.options.name }}</h1>
-<button class="aui-button" (click)="close()">close</button>
-<button class="aui-button" (click)="overlay.hide()">hide</button>
+<auiNgDialog title="Custom modal dialog" dialogClass="aui-ng-dialog-medium" (onDialogClose)="overlay.remove()">
+    <auiNgDialogContent>
+        <h1>Hello: {{ overlay.options.name }}</h1>
+    </auiNgDialogContent>
+
+    <auiNgDialogFooter>
+        <button class="aui-button" (click)="overlay.remove()">Close</button>
+    </auiNgDialogFooter>
+</auiNgDialog>
