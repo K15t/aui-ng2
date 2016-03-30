@@ -1,12 +1,11 @@
-import {DynamicComponentLoader, Injectable, Injector, ComponentRef, ElementRef, Provider} from 'angular2/core';
-import AuiNgPortal from './portal.service.ts';
+import {DynamicComponentLoader, Injectable, Injector, ComponentRef, ElementRef, Provider, ResolvedProvider} from 'angular2/core';
 import {Type} from 'angular2/src/facade/lang';
 import {Observable} from 'rxjs/Rx';
 
 @Injectable()
 export default class AuiNgOverlayService {
 
-    constructor(private _portal: AuiNgPortal) {}
+    constructor(private _componentLoader: DynamicComponentLoader) {}
 
     /**
      * Register a Component as Overlay.
@@ -18,14 +17,21 @@ export default class AuiNgOverlayService {
         const overlay = new OverlayRef();
         const providers = Injector.resolve([new Provider(OverlayRef, {useValue: overlay})]);
 
-        return this._portal.port(type, origin, host, providers)
-            .map((ref: ComponentRef) => {
+        return Observable.create(observer => {
+            this._componentLoader.loadNextToLocation(type, origin, providers).then(ref => {
+                // this is where the magic happens:
+                // moves the DOM node to a new location (can also be outside of
+                // the angular app context)
+                host.appendChild(ref.hostView.rootNodes[0]);
+
                 overlay.ref = ref;
                 overlay.host = host;
                 overlay.options = options;
 
-                return overlay;
+                observer.next(overlay);
+                observer.complete();
             });
+        });
     }
 
     _getContainer(): HTMLElement {
@@ -51,19 +57,19 @@ export class OverlayRef {
     public host: HTMLElement;
     public options: any;
 
-    show() {
+    show():void {
         this.host.style.display = 'block';
     }
 
-    hide() {
+    hide():void {
         this.host.style.display = 'none';
     }
 
-    isHidden() {
+    isHidden():boolean {
         return this.host.style.display === 'none';
     }
 
-    remove() {
+    remove():void {
         this.ref.dispose();
         // remove from DOM
         this.host.outerHTML = '';
