@@ -39,15 +39,16 @@ export class AuiNgTabHeaderElementRef {
     directives: [...FORM_DIRECTIVES, AuiNgAutoFocus, AuiNgTabHeaderElementRef],
     styles: [require('./tabs.component.css')],
     template: `
-        <div class="aui-tabs horizontal-tabs" [style.visibility]="tabContainerVisibility" [style.width]="maxWidthPx">
+        <div class="aui-tabs horizontal-tabs" [style.visibility]="tabContainerVisibility" [style.width.px]="maxWidthPx">
             <ul class="tabs-menu aui-ng-tabs-menu" #tabsMenu>
                 <li class="menu-item" style="max-width: 300px" [ngClass]="{'active-tab': tab.active}" *ngFor="#tab of tabs;" auiNgTabHeaderElementRef>
                     <a (click)="setActiveTab(tab)" class="aui-ng-menu-item">{{ tab.title }}</a>
                 </li>
-                <li *ngIf="tabsDropDown.length > 0" class="menu-item aui-ng-dropdown-container" [ngClass]="{'active-tab': selectedDropdownTab.isActive()}">
+                <li *ngIf="tabsDropDown.length > 0" class="menu-item aui-ng-dropdown-container" [style.max-width.px]="maxWidthDropdownPx" 
+                    [ngClass]="{'active-tab': selectedDropdownTab.isActive()}">
                     <div class="aui-buttons">
                         <a class="aui-button aui-button-split-main aui-ng-dropdown-button" (click)="setActiveTab(selectedDropdownTab)"
-                            style="border-right: 1px !important;">{{ selectedDropdownTab.title }}</a>
+                            style="border-right: 1px !important;" [style.max-width.px]="maxWidthDropdownPx - 40" >{{ selectedDropdownTab.title }}</a>
                         <a class="aui-button aui-button-split-more aui-ng-dropdown-button-select" (click)="showDropdownOptions()" (blur)="hideDropdownOptions()">
                             <span class="aui-icon aui-icon-small aui-iconfont-more"></span>  
                         </a>
@@ -73,6 +74,7 @@ export class AuiNgTabsComponent implements AfterViewInit {
     showOptions: boolean = false;
     selectedDropdownTab: AuiNgTabComponent = null;
     tabContainerVisibility: string = 'hidden';
+    maxWidthDropdownPx: number = 170;
 
     @Input() maxWidthPx;
     @ViewChildren(AuiNgTabHeaderElementRef) tabTitles: QueryList<AuiNgTabHeaderElementRef>;
@@ -179,7 +181,7 @@ export class AuiNgTabsComponent implements AfterViewInit {
                 let width = this.tabTitles.toArray()[index].getWidth();
 
                 if (width + currentTabsWidth > widthTabsContainer || (index !== this.tabs.length - 1
-                    && width + currentTabsWidth + this.tabTitles.toArray()[index + 1].getWidth() > widthTabsContainer - 30)) {
+                    && width + currentTabsWidth + this.maxWidthDropdownPx > widthTabsContainer - 50)) {
                     this.tabsDropDown = this.tabs.splice(index, this.tabs.length - 1);
                     this.selectedDropdownTab = this.tabsDropDown[0];
                     break;

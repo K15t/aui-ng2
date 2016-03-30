@@ -70,7 +70,6 @@
     border: 0;
     height: 30px;
     border-top: 1px solid #cccccc;
-    max-width: 250px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
