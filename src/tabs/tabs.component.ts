@@ -53,7 +53,7 @@ export class AuiNgTabHeaderElementRef {
                             <span class="aui-icon aui-icon-small aui-iconfont-more"></span>  
                         </a>
                     </div>
-                    <div class="aui-ng-dropdown-options-container" [hidden]="!showOptions" *ngIf="showOptions">
+                    <div class="aui-ng-dropdown-options-container" [hidden]="!showOptions" *ngIf="showOptions" [style.right]="dropdownListOrientation">
                         <ul class="aui-ng-dropdown-options aui-list-truncate" (blur)="hideDropdownOptions()" tabindex="-1" auiNgAutoFocus>
                             <li *ngFor="#tab of tabsDropDown" (click)="setActiveTab(tab); selectedDropdownTab = tab;" [hidden]="selectedDropdownTab == tab" class="aui-ng-dropdown-option">
                                 {{ tab.title }}
@@ -75,6 +75,7 @@ export class AuiNgTabsComponent implements AfterViewInit {
     selectedDropdownTab: AuiNgTabComponent = null;
     tabContainerVisibility: string = 'hidden';
     maxWidthDropdownPx: number = 170;
+    dropdownListOrientation: string = '0';
 
     @Input() maxWidthPx;
     @ViewChildren(AuiNgTabHeaderElementRef) tabTitles: QueryList<AuiNgTabHeaderElementRef>;
@@ -103,17 +104,20 @@ export class AuiNgTabsComponent implements AfterViewInit {
      * @returns {boolean} true if the state was changed other false e.g. in case of validation error.
      */
     setActiveTab(tab: AuiNgTabComponent): boolean {
-        if (this.tabs.length === 0) {
+        if (this.tabs.length === 0 && this.tabsDropDown.length === 0) {
             this.logService.logInfo('There are no tabs registered yet and thus, nothing to activate.');
-        } else if (this.getActiveTab().setActive(false)) {
+        } else if (tab !== undefined && tab !== null) {
             this.hideDropdownOptions();
+            if (this.getActiveTab() !== undefined && this.getActiveTab() !== null) {
+                this.getActiveTab().setActive(false);
+            }
             return tab.setActive(true);
         }
         return false;
     }
 
     getActiveTab() {
-        if (this.tabs.length === 0) {
+        if (this.tabs.length === 0 && this.tabsDropDown.length === 0) {
             this.logService.logInfo('There are no tab registered yet and thus, there is no active tab.');
         } else {
             for (let tab of this.tabs) {
@@ -182,13 +186,17 @@ export class AuiNgTabsComponent implements AfterViewInit {
 
                 if (width + currentTabsWidth > widthTabsContainer || (index !== this.tabs.length - 1
                     && width + currentTabsWidth + this.maxWidthDropdownPx > widthTabsContainer - 50)) {
-                    this.tabsDropDown = this.tabs.splice(index, this.tabs.length - 1);
+                    this.tabsDropDown = this.tabs.splice(index, this.tabs.length);
                     this.selectedDropdownTab = this.tabsDropDown[0];
                     break;
                 } else {
                     currentTabsWidth += width;
                     index++;
                 }
+            }
+
+            if (this.tabs.length <= 2 ) {
+                this.dropdownListOrientation = 'inherit';
             }
 
             this.showTabs();
