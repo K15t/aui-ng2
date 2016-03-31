@@ -1,9 +1,8 @@
-import {Component, Directive, ViewChild, Input, AfterViewInit, ElementRef, ContentChildren, ViewChildren, QueryList} from 'angular2/core';
+import {Component, Directive, Input, AfterViewInit, ElementRef, ViewChildren, QueryList} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 import {AuiNgTabComponent} from './tab.component';
 import {LogService} from '../services/log.service';
 import {AuiNgAutoFocus} from '../common/directives/focus-element.directive';
-import '../common/libs/aui-styles';
 
 /**
  * Directive to lookup the native element of the tab headers to determine the actual width.

@@ -30,7 +30,6 @@
     "ADG"
   ],
   "dependencies": {
-    "@atlassian/aui": "5.9.14",
     "jquery": "2.2.1",
     "angular2": "2.0.0-beta.12",
     "es6-shim": "0.35.0",

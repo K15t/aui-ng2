@@ -7,12 +7,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.js"></script>
-    <script src="//aui-cdn.atlassian.com/aui-adg/5.9.15/js/aui.js"></script>
-    <script src="//aui-cdn.atlassian.com/aui-adg/5.9.15/js/aui-experimental.js"></script>
+
     <link rel="stylesheet" type="text/css" href="//aui-cdn.atlassian.com/aui-adg/5.9.15/css/aui.css"/>
     <link rel="stylesheet" type="text/css" href="//aui-cdn.atlassian.com/aui-adg/5.9.15/css/aui-experimental.css"/>
+
     <!-- base url -->
     <base href="{%= o.webpackConfig.metadata.contextPath %}/">
 
@@ -58,6 +56,11 @@
 <body>
 
 <app></app>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="http://aui-cdn.atlassian.com/aui-adg/5.9.15/js/aui.js"></script>
+<script src="http://aui-cdn.atlassian.com/aui-adg/5.9.15/js/aui-experimental.js"></script>
 
 {% if (o.webpackConfig.metadata.ENV === 'development') { %}
 <!-- Webpack Dev Server reload -->

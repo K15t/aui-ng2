@@ -1,6 +1,5 @@
-import '../common/libs/aui';
-import $ from '../common/libs/jquery';
-import {Component, AfterViewInit, Directive, ElementRef} from 'angular2/core';
+import {AJS} from '../common/libs/aui';
+import {AfterViewInit, Directive, ElementRef} from 'angular2/core';
 
 @Directive({
     selector: '[auiNgTooltip]'
@@ -12,7 +11,6 @@ export class AuiNgTooltipDirective implements AfterViewInit {
     ) {}
 
     ngAfterViewInit() {
-        let jquery: any = $(this.elementRef.nativeElement);
-        jquery.tooltip();
+        AJS.$(this.elementRef.nativeElement).tooltip();
     }
 }
