@@ -20,13 +20,12 @@ if (!!process.env.testMode) {
     module.exports = master({
         entry: {
             main: './demo/main.ts',
-            vendor: ['./demo/vendor.ts'],
-            'aui-ng2-dialog': ['./src/dialog/index.ts']
+            vendor: ['./demo/vendor.ts']
         },
         output: {
-            filename: '[name].min.js',
-            sourceMapFilename: '[name].map',
-            chunkFilename: '[id].chunk.js',
+            filename: './demo/[name].min.js',
+            sourceMapFilename: './demo/[name].map',
+            chunkFilename: './demo/[id].chunk.js',
             path: !!process.env.release ? './dist' : './target'
         },
         plugins: !!process.env.release ? [
