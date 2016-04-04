@@ -14,11 +14,11 @@
                               idProperty="value"
                               labelProperty="label"
                               [multiple]="true"
-                              (changed)="onChangedMulti($event)"></auiNgSelect2>
+                              (changed)="selection = $event"></auiNgSelect2>
             </form>
 
             <h4>Selected values</h4>
-            {{selection | json}}
+            <pre>{{selection | json}}</pre>
 
             <h3>Actions</h3>
 
@@ -40,18 +40,68 @@
                               idProperty="value"
                               labelProperty="label"
                               [multiple]="false"
-                              (changed)="onChangedSingle($event)"></auiNgSelect2>
+                              (changed)="selected = $event"></auiNgSelect2>
             </form>
 
             <h4>Selected values</h4>
 
-            {{selected | json}}
+            <pre>{{selected | json}}</pre>
 
         </div>
 
         <auiNgCodeBlock title="Template Select2">
             ...
         </auiNgCodeBlock>
+
+
+        <div class="aui-ng2-flatpack-example">
+
+            <h3>Single select with query</h3>
+
+            <form action="" class="aui">
+                <auiNgSelect2 [selection]="selected2"
+                              idProperty="value"
+                              labelProperty="label"
+                              [multiple]="false"
+                              [query]="true"
+                              (onQuery)="onQuery($event)"
+                              (onChanged)="selected2 = $event"></auiNgSelect2>
+            </form>
+
+            <h4>Selected value</h4>
+
+            <pre>{{selected2 | json}}</pre>
+
+        </div>
+
+        <auiNgCodeBlock title="Template Select2">
+            ...
+        </auiNgCodeBlock>
+
+        <div class="aui-ng2-flatpack-example">
+
+            <h3>Multi Select with query</h3>
+
+            <form action="" class="aui">
+                <auiNgSelect2 [selection]="selection2"
+                              idProperty="value"
+                              labelProperty="label"
+                              [multiple]="true"
+                              [query]="true"
+                              (onQuery)="onQuery($event)"
+                              (onChanged)="selection2 = $event"></auiNgSelect2>
+            </form>
+
+            <h4>Selected values</h4>
+
+            <pre>{{selection2 | json}}</pre>
+
+        </div>
+
+        <auiNgCodeBlock title="Template Select2">
+            ...
+        </auiNgCodeBlock>
+
 
     </div>
 

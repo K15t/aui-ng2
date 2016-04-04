@@ -20,7 +20,7 @@ describe('Single Selection Strategy', () => {
         items = [{id: 1,  label: 'foo', color: 'red'}, {id: 2, label: 'bar'}, {id: 3, label: 'baz'}];
         selection = [items[0]];
 
-        selectionStrategy = new MultiSelectionStrategy(idGetter, labelGetter, items, selection);
+        selectionStrategy = new MultiSelectionStrategy(idGetter, labelGetter, selection);
     });
 
     it('should return preset selection', () => {
@@ -33,12 +33,12 @@ describe('Single Selection Strategy', () => {
     });
 
     it('should deselect nothing if item isn\'t selected', () => {
-        selectionStrategy.deSelectItem(2);
+        selectionStrategy.deSelectItem(100);
         expect(selectionStrategy.getSelection()).toEqual(['data', [{id: 1, text: 'foo'}]]);
     });
 
     it('should select item', () => {
-        selectionStrategy.selectItem(3);
+        selectionStrategy.selectItem(items[2]);
         expect(selectionStrategy.getSelection()).toEqual(['data', [{id: 1, text: 'foo'}, {id: 3, text: 'baz'}]]);
     });
 });

@@ -33,10 +33,6 @@ describe('Select2 Component', () => {
             expect(selectedItems.length).toEqual(1);
             expect(selectedItems[0].innerText).toEqual('foo');
         });
-
-        it('should have options', () => {
-            expect(select2.nativeElement.querySelectorAll('.select2 option').length).toEqual(3);
-        });
     });
 
     describe('single selection', () => {
@@ -49,10 +45,6 @@ describe('Select2 Component', () => {
 
         it('should have an selected item', () => {
             expect(select2.nativeElement.querySelector('.select2-chosen').innerText).toEqual("baz");
-        });
-
-        it('should have options', () => {
-            expect(select2.nativeElement.querySelectorAll('.select2 option').length).toEqual(3);
         });
     });
 
@@ -69,14 +61,6 @@ describe('Select2 Component', () => {
 
         it('should display selected item with special template', () => {
             expect(select2.nativeElement.querySelector('.select2-chosen').innerText).toEqual('**foo**');
-        });
-
-        it('should display options with special template', () => {
-            let options = select2.nativeElement.querySelectorAll('.select2 option');
-
-            expect(options[0].innerText).toEqual('**foo**');
-            expect(options[1].innerText).toEqual('**bar**');
-            expect(options[2].innerText).toEqual('**baz**');
         });
     });
 });
