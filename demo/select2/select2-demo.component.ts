@@ -9,11 +9,10 @@ import {AuiNgCodeBlockComponent} from '../common/code-block.component';
     template: require('./select2-demo.component.html')
 })
 export class Select2DemoComponent {
-
     selection = [{value: 'js', label: 'Javascript'}];
-
+    selection2 = [];
     selected = {value: 'cs', label: 'CoffeeScript'};
-
+    selected2 = null;
     items = [
         {value: 'js', label: 'Javascript'},
         {value: 'cs', label: 'CoffeeScript'},
@@ -21,19 +20,29 @@ export class Select2DemoComponent {
         {value: 'ng', label: 'Angular', version: 2.0},
     ];
 
-    addItem(option: String) {
-        this.items.push({value: 'item_' + Math.random(), label: 'Another'});
+    addItem(option:String) {
+        this.items = this.items.concat([{value: 'item_' + Math.random(), label: 'Another'}]);
     }
 
     removeLast() {
         this.selection = this.selection.slice(0, -1);
     }
 
-    onChangedSingle(selected) {
-        this.selected = selected;
-    }
+    onQuery(query) {
+        setTimeout(function () {
+            if (query.term && query.term.length > 0) {
 
-    onChangedMulti(selection) {
-        this.selection = selection;
+                var items = [], i, j, s;
+                for (i = 1; i < 5; i++) {
+                    s = "";
+                    for (j = 0; j < i; j++) {
+                        s = s + query.term;
+                    }
+                    items.push({value: query.term + i, label: s, v: 5});
+                }
+
+                query.callback(items);
+            }
+        }, 1000);
     }
 }
