@@ -24,10 +24,23 @@ export class AuiNgCodeBlockComponent implements AfterViewInit {
         let textarea = this.codeBlockContent.nativeElement.querySelector('textarea');
 
         if (textarea) {
-            CodeMirror.fromTextArea(textarea, {
+            let editor = CodeMirror.fromTextArea(textarea, {
                 mode: this.getMode(),
                 readOnly: true
             });
+
+            AuiNgCodeBlockComponent.fixIndentation(editor);
+
+        }
+    }
+
+    static fixIndentation (editor) {
+        let line = editor.getLine(0);
+        let indentation = line.match(/^\W*/)[0].length;
+
+
+        for (let i = 0; i < editor.lineCount(); i++) {
+            editor.indentLine(i, -indentation);
         }
     }
 
