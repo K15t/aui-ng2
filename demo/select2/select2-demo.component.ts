@@ -21,7 +21,7 @@ export class Select2DemoComponent {
     ];
 
     addItem(option:String) {
-        this.items.push({value: 'item_' + Math.random(), label: 'Another'});
+        this.items = this.items.concat([{value: 'item_' + Math.random(), label: 'Another'}]);
     }
 
     removeLast() {
