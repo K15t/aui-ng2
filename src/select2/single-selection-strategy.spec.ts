@@ -20,7 +20,7 @@ describe('Single Selection Strategy', () => {
         items = [{id: 1,  label: 'foo', color: 'red'}, {id: 2, label: 'bar'}];
         selection = items[0];
 
-        selectionStrategy = new SingleSelectionStrategy(idGetter, labelGetter, items, selection);
+        selectionStrategy = new SingleSelectionStrategy(idGetter, labelGetter, selection);
     });
 
     it('should return preset selection', () => {
@@ -33,7 +33,7 @@ describe('Single Selection Strategy', () => {
     });
 
     it('should select item', () => {
-        selectionStrategy.selectItem(2);
+        selectionStrategy.selectItem(items[1]);
         expect(selectionStrategy.getSelection()).toEqual(['val', 2]);
     });
 });
