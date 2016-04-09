@@ -1,18 +1,10 @@
 import {EventEmitter} from 'angular2/src/facade/async';
 
-export enum Type {
-    Generic,
-    Error,
-    Warning,
-    Success,
-    Info,
-    Hint
-};
-
 export interface Notification {
-    type: Type;
+    type: string;
     title: string;
     message: string;
+    ns?: string;
     details?: string;
 };
 

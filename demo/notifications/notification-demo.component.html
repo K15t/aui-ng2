@@ -4,8 +4,10 @@
 
     <div>
         <div class="aui-ng2-flatpack-example">
-            <button class="aui-button" (click)="createNotification()">Create Notification</button>
+            <button class="aui-button aui-button-primary" (click)="createNotification()">Create Notification</button>
+            <button class="aui-button" (click)="notificationCmp.clear()">Clear</button>
         </div>
     </div>
 
+    <auiNgNotification #notificationCmp [notification]="notificationEmitter | async" [closeable]="true"></auiNgNotification>
 </div>

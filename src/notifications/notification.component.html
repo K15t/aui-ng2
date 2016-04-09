@@ -1,0 +1,7 @@
+<div *ngIf="notification" class="aui-message aui-message-{{notification.type}} {{notification.type}}" [ngClass]="{closeable: closeable}">
+    <p class="title">
+        <strong>{{notification.title}}</strong>
+    </p>
+    {{notification.message}}
+    <span *ngIf="closeable" (click)="clear()" class="aui-icon icon-close" role="button"></span>
+</div>

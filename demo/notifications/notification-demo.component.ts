@@ -1,27 +1,25 @@
 import {Component} from 'angular2/core';
-import NotificationEmitter from '../../src/notifications/notification-emitter.ts';
-import {Notification, Type} from '../../src/notifications/notification-emitter.ts';
+import NotificationEmitter from '../../src/notifications/notification-emitter';
+import {Notification} from '../../src/notifications/notification-emitter';
+import {AuiNgNotificationComponent} from '../../src/notifications/notification.component';
+import {AuiNgMessageType} from '../../src/dialog/message-dialog.component';
 
 @Component({
-    directives: [],
-    providers: [],
+    directives: [AuiNgNotificationComponent],
     template: require('./notification-demo.component.html')
 })
 export class NotificationDemoComponent {
 
-    private _emitter: NotificationEmitter<Notification>;
-
-    constructor() {
-        this._emitter = new NotificationEmitter(true);
-
-        this._emitter.subscribe((notification: Notification) => {
-            console.log(notification);
-        });
-    }
+    public notificationEmitter: NotificationEmitter<Notification> = new NotificationEmitter(true);
+    public notification: Notification;
 
     createNotification() {
-        this._emitter.emit({
-            type: Type.Error,
+        this.notificationEmitter.subscribe((notification) => {
+            this.notification = notification;
+        });
+
+        this.notificationEmitter.emit({
+            type: AuiNgMessageType.ERROR,
             title: 'foo',
             message: 'bar'
         });
