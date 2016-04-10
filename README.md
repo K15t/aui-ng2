@@ -17,8 +17,12 @@ $ npm install k15t-aui-ng2
 * Tooltip
 * Wizard
 
-## Additional libraries which can be used in combination:
-* JQuery
+## Additional libraries which cloud be used:
+* [JQuery](https://jquery.com) - jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal 
+  and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. 
+  The library is required to for using AJS. Outside that scope, **it is highly recommended to use the Angular APIs interact with the dom**!  
+  
+* [AJS](https://docs.atlassian.com/aui/latest/docs/auiselect2.html) - JavaScript library from Atlassian for using AUI components.
 
 ## Run demo app
 
