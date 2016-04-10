@@ -34,6 +34,21 @@ $ npm run start:server
 
 If the server is up and running, you can access the examples under [http://localhost:3000](http://localhost:3000) in your browser.
 
+## How to use it in your application
+Besides the aui-ng2 dependency as part of your package.json, the following resources needs to be added on your start page as well
+
+```
+    <link rel="stylesheet" type="text/css" href="//aui-cdn.atlassian.com/aui-adg/5.9.15/css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="//aui-cdn.atlassian.com/aui-adg/5.9.15/css/aui-experimental.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    ...
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="//aui-cdn.atlassian.com/aui-adg/5.9.15/js/aui.js"></script>
+    <script src="//aui-cdn.atlassian.com/aui-adg/5.9.15/js/aui-experimental.js"></script>   
+```
+
+For an detailed example, please see the demo app.
+
 ## Contribute to this project
 If you like to contribute on this project, request a new feature or you find a bug please see [CONTRIBUTING.md](https://github.com/K15t/aui-ng2/blob/master/CONTRIBUTING.md)
 for further details.
