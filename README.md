@@ -24,14 +24,17 @@ $ npm install k15t-aui-ng2
   
 * [AJS](https://docs.atlassian.com/aui/latest/docs/auiselect2.html) - JavaScript library from Atlassian for using AUI components.
 
-## Run demo app
+## Run the demo app
+
+The demo shows the different widgets in action based on several code examples. 
 
 ```
 $ npm run build
 $ npm run start:server
 ```
 
-Open http://localhost:3000
+If the server is up and running, you can access the examples under [http://localhost:3000](http://localhost:3000) in your browser.
+
 
 ## License
 
