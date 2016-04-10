@@ -3,7 +3,7 @@ import {FORM_DIRECTIVES} from 'angular2/common';
 import {AuiNgDialogService, AuiNgMessageType} from '../../src/dialog/index';
 import {AuiNgCodeBlockComponent} from '../common/code-block.component';
 import {CustomDialogComponent} from './custom-dialog.component';
-import {LogService} from '../../src/services/log.service';
+import {LogService} from '../../src/common/services/log.service.ts';
 
 @Component({
     selector: 'demoDialog',

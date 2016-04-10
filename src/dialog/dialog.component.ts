@@ -19,20 +19,21 @@ export class AuiNgDialogComponent {
     @Input() showXIcon: string = 'true';
     @Input() showBlanket: string = 'true';
 
-    @Output() onDialogClose: EventEmitter<Event> = new EventEmitter(false);
+    @Output() dialogClosed: EventEmitter<Event> = new EventEmitter(false);
 
-    close($event: Event) {
-        this.onDialogClose.emit($event);
+    onDialogClose($event: Event) {
+        $event.preventDefault();
+        this.dialogClosed.emit($event);
     }
 
     @HostListener('window:keydown', ['$event']) onKeydown(event: KeyboardEvent) {
         // close on keydown escape
         if (event.keyCode === 27) {
-            this.close(event);
+            this.onDialogClose(event);
         }
     }
 
-    onUpdateDialog($event: CustomEvent) {
+    onDialogUpdate($event: CustomEvent) {
         this.updateDialog($event.detail);
         if ($event.detail.toAll !== undefined && !$event.detail.toAll) {
             $event.preventDefault();

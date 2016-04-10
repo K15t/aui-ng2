@@ -4,7 +4,7 @@ import {DialogDemoComponent} from './dialog/dialog-demo.component';
 import {TabsDemoComponent} from './tabs/tabs-demo.component';
 import {TooltipDemoComponent} from './tooltip/tooltip-demo.component';
 import {Select2DemoComponent} from './select2/select2-demo.component';
-import {LogService, LogLevel} from '../src/services/log.service';
+import {LogService, LogLevel} from '../src/common/services/log.service.ts';
 import {IS_DEV_MODE} from './constants';
 
 @Component({

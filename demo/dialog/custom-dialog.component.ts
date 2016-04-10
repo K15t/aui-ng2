@@ -18,7 +18,8 @@ export class CustomDialogComponent implements AuiNgDialog {
     open() {
     }
 
-    close($event: Event) {
+    onDialogClosed($event: Event) {
+        $event.preventDefault();
         this.observer.next(null);
         this.observer.complete();
     }

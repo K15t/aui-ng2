@@ -1,4 +1,4 @@
-<auiNgDialog title="Custom modal dialog" dialogClass="aui-ng-dialog-medium" (onDialogClose)="close($event)">
+<auiNgDialog title="Custom modal dialog" dialogClass="aui-ng-dialog-medium" (dialogClosed)="onDialogClosed($event)">
 
     <auiNgDialogContent>
         <form class="aui">
@@ -18,7 +18,7 @@
     </auiNgDialogContent>
 
     <auiNgDialogFooter>
-        <button class="aui-button" (click)="close($event)">Close</button>
+        <button class="aui-button" (click)="onDialogClosed($event)">Close</button>
     </auiNgDialogFooter>
 
 </auiNgDialog>

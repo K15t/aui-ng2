@@ -1,19 +1,19 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "noEmitHelpers": false,
-    "sourceMap": true,
-    "declaration": false
-  },
-  "exclude": [
-    "node_modules",
-    "target",
-    "dist",
-    "typings/browser.d.ts",
-    "typings/browser"
-  ]
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "noEmitHelpers": false,
+        "sourceMap": true,
+        "declaration": false
+    },
+    "exclude": [
+        "node_modules",
+        "target",
+        "dist",
+        "typings/browser.d.ts",
+        "typings/browser"
+    ]
 }
