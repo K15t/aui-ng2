@@ -20,7 +20,7 @@ Fork, then clone the repo:
 
     git clone git@github.com:your-username/feature-name.git
 
-Follow the [readme](https://github.com/K15t/aui-ng2/README.md) to setup the project on your local system.
+Follow the [readme](https://github.com/K15t/aui-ng2/blob/master/README.md) to setup the project on your local system.
 
 If the project is setup, you can start now:
 
