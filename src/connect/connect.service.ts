@@ -7,7 +7,7 @@ import {BASE_URL} from '../common/constants';
 export class AuiNgConnectService {
 
     constructor(
-        @Optional() @Inject(BASE_URL) private baseUrl: string
+        @Optional() @Inject(BASE_URL) private baseUrl?: string
     ) {}
 
     getAP() {
