@@ -21,7 +21,7 @@ export class AuiNgConfluenceConnectService {
         this.connectService.getAP().request({
             contentType: 'application/json',
             type: 'POST',
-            url: `{${this.connectService.getBaseUrl()}/rpc/json-rpc/confluenceservice-v2/getAttachmentData`,
+            url: `${this.connectService.getBaseUrl()}/rpc/json-rpc/confluenceservice-v2/getAttachmentData`,
             data: JSON.stringify(data),
             success: successCallback,
             error: errorCallback
@@ -32,7 +32,7 @@ export class AuiNgConfluenceConnectService {
         this.connectService.getAP().request({
             type: 'POST',
             contentType: 'application/json',
-            url: `{${this.connectService.getBaseUrl()}/rpc/json-rpc/confluenceservice-v2/getSpaces`,
+            url: `${this.connectService.getBaseUrl()}/rpc/json-rpc/confluenceservice-v2/getSpaces`,
             success: successCallback,
             error: errorCallback
         });
@@ -40,7 +40,7 @@ export class AuiNgConfluenceConnectService {
 
     getAttachments(contentEntityId: string, successCallback: Function, errorCallback: Function): void {
         this.connectService.getAP().request({
-            url: `{${this.connectService.getBaseUrl()}/rest/api/content/${contentEntityId}/child/attachment?expand=version,container`,
+            url: `${this.connectService.getBaseUrl()}/rest/api/content/${contentEntityId}/child/attachment?expand=version,container`,
             success: successCallback,
             error: errorCallback
         });
@@ -49,7 +49,7 @@ export class AuiNgConfluenceConnectService {
     searchByCql(cql: string, limit: number, start: number, successCallback: Function, errorCallback: Function): void {
         return this.connectService.getAP().request({
             contentType: 'application/json',
-            url: `{${this.connectService.getBaseUrl()}/rest/api/content/search?cql=${cql}&limit=${limit}&start=${start}`,
+            url: `${this.connectService.getBaseUrl()}/rest/api/content/search?cql=${cql}&limit=${limit}&start=${start}`,
             success: successCallback,
             error: errorCallback
         });
@@ -57,7 +57,7 @@ export class AuiNgConfluenceConnectService {
 
     getMacroDetails(pageId: string, pageVersion: number, macroId: string, successCallback: Function, errorCallback: Function): void {
         this.connectService.getAP().request({
-            url: `{${this.connectService.getBaseUrl()}/rest/api/content/${pageId}/history/${pageVersion}/macro/id/${macroId}`,
+            url: `${this.connectService.getBaseUrl()}/rest/api/content/${pageId}/history/${pageVersion}/macro/id/${macroId}`,
             success: successCallback,
             error: errorCallback
         });
