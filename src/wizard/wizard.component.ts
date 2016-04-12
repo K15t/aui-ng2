@@ -47,8 +47,8 @@ import {WizardStep} from './wizard-step';
 export class AuiNgWizardComponent implements OnInit {
 
     @Input() navigation: boolean = true;
-    @Output() onNext: EventEmitter<WizardStep> = new EventEmitter(false);
-    @Output() onPrevious: EventEmitter<WizardStep> = new EventEmitter(false);
+    @Output() next: EventEmitter<WizardStep> = new EventEmitter(false);
+    @Output() previous: EventEmitter<WizardStep> = new EventEmitter(false);
 
     private steps: Array<WizardStep> = [];
     private indexCurrentStep: number = 0;
@@ -82,7 +82,7 @@ export class AuiNgWizardComponent implements OnInit {
             this.steps[this.indexCurrentStep + 1].setData(data);
             this.steps[this.indexCurrentStep + 1].show();
             this.indexCurrentStep++;
-            this.onNext.emit(this.steps[this.indexCurrentStep]);
+            this.next.emit(this.steps[this.indexCurrentStep]);
         }
     }
 
@@ -93,7 +93,7 @@ export class AuiNgWizardComponent implements OnInit {
             this.steps[this.indexCurrentStep - 1].setData(data);
             this.steps[this.indexCurrentStep - 1].show();
             this.indexCurrentStep--;
-            this.onPrevious.emit(this.steps[this.indexCurrentStep]);
+            this.previous.emit(this.steps[this.indexCurrentStep]);
         }
     }
 

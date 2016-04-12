@@ -2,7 +2,7 @@ import {Injectable, DynamicComponentLoader, ComponentRef, ElementRef} from 'angu
 import {Observable} from 'rxjs/Rx';
 import {AuiNgMessageDialogComponent} from './message-dialog.component';
 import {ConcreteType} from 'angular2/src/facade/lang';
-import {LogService} from '../services/log.service';
+import {LogService} from '../common/services/log.service.ts';
 
 @Injectable()
 export class AuiNgDialogService {
@@ -18,7 +18,7 @@ export class AuiNgDialogService {
 
         let observable = Observable.fromPromise(this.componentLoader.loadNextToLocation(componentType, parentElement));
         observable.subscribe((containerRef: ComponentRef) => {
-                if (containerRef.instance.hidden === undefined || !!containerRef.instance.hidden ) {
+                if (containerRef.instance.hidden === undefined || !!containerRef.instance.hidden) {
                     containerRef.instance.init(opts).subscribe(() => {
                         containerRef.dispose();
                     });

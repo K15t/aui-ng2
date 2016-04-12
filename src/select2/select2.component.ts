@@ -25,7 +25,7 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
     @Input() labelProperty: string;
     @Input() selection: any;
     @Input() multiple: boolean;
-    @Output() onChanged: EventEmitter<any> = new EventEmitter<any>();
+    @Output() changed: EventEmitter<any> = new EventEmitter<any>();
 
     private $select2: any;
     private selectionStrategy: SelectionStrategy;
@@ -89,7 +89,7 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
             this.selectionStrategy.selectItem(event.added.id);
         }
 
-        this.onChanged.emit(this.selectionStrategy.selection);
+        this.changed.emit(this.selectionStrategy.selection);
     }
 
     updateValue(): void {

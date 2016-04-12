@@ -3,10 +3,8 @@ import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {App} from './app';
-import {LogService} from '../src/services/log.service';
+import {LogService} from '../src/common/services/log.service.ts';
 import {IS_DEV_MODE} from './constants';
-
-
 
 document.addEventListener('DOMContentLoaded', function main() {
     bootstrap(App, [

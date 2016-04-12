@@ -8,13 +8,13 @@ import {AuiNgDialog} from './dialog';
     selector: 'auiNgMessageDialog',
     directives: [AuiNgDialogComponent],
     template: `
-        <auiNgDialog [title]="title" [hidden]="hidden" dialogClass="aui-ng-dialog-medium" (onDialogClose)="close($event)"
+        <auiNgDialog [title]="title" [hidden]="hidden" dialogClass="aui-ng-dialog-medium" (dialogClosed)="onDialogClosed($event)"
                      dialogContentStyle="max-height: 200px">
             <auiNgDialogContent>
                 <div class="aui-message aui-message-{{type}}">{{msg}}</div>
             </auiNgDialogContent>
             <auiNgDialogFooter>
-                <button class="aui-button" (click)="close($event)">Close</button>
+                <button class="aui-button" (click)="onDialogClosed($event)">Close</button>
             </auiNgDialogFooter>
         </auiNgDialog>
     `
@@ -39,7 +39,8 @@ export class AuiNgMessageDialogComponent implements AuiNgDialog {
         this.hidden = false;
     }
 
-    close($event: Event) {
+    onDialogClosed($event: Event) {
+        $event.preventDefault();
         this.hidden = true;
         this.observer.next(null);
         this.observer.complete();
