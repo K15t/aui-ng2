@@ -3,6 +3,8 @@ import {AuiNgDialogComponent} from './dialog.component';
 import {Observable} from 'rxjs/Rx';
 import {Observer} from 'rxjs/Observer';
 import {AuiNgDialog} from './dialog';
+import {AuiNgTranslations} from "../common/services/translations.service";
+import {TranslatePipe} from "ng2-translate/ng2-translate";
 
 @Component({
     selector: 'auiNgMessageDialog',
@@ -14,10 +16,12 @@ import {AuiNgDialog} from './dialog';
                 <div class="aui-message aui-message-{{type}}">{{msg}}</div>
             </auiNgDialogContent>
             <auiNgDialogFooter>
-                <button class="aui-button" (click)="onDialogClosed($event)">Close</button>
+                <button class="aui-button" (click)="onDialogClosed($event)">{{'auing.close'| translate}}</button>
             </auiNgDialogFooter>
         </auiNgDialog>
-    `
+    `,
+    providers: [AuiNgTranslations],
+    pipes: [TranslatePipe]
 })
 export class AuiNgMessageDialogComponent implements AuiNgDialog {
     hidden: boolean = true;
@@ -25,6 +29,9 @@ export class AuiNgMessageDialogComponent implements AuiNgDialog {
     msg: string;
     type: string;
     private observer: Observer<any>;
+
+    constructor (translations : AuiNgTranslations) { // translations is required for TranslatePipe
+    }
 
     init(opts: AuiNgMessageDialogOptions): Observable<any> {
         this.title = opts.title;

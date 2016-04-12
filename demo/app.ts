@@ -1,5 +1,6 @@
 import {Component, Inject} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {TranslateService} from 'ng2-translate/ng2-translate';
 import {DialogDemoComponent} from './dialog/dialog-demo.component';
 import {TabsDemoComponent} from './tabs/tabs-demo.component';
 import {TooltipDemoComponent} from './tooltip/tooltip-demo.component';
@@ -68,11 +69,15 @@ export class App {
 
     constructor(
         private logService: LogService,
-        @Inject(IS_DEV_MODE) private isDevMode: string
+        @Inject(IS_DEV_MODE) private isDevMode: string,
+        translate : TranslateService
     ) {
         if (isDevMode) {
             this.logService.setLogLevel(LogLevel.DEBUG);
         }
+
+        translate.setTranslation('en', {});
+        translate.use('en');
     }
 
 }
