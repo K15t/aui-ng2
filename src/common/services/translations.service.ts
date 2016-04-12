@@ -3,17 +3,19 @@ import {TranslateService} from 'ng2-translate/ng2-translate';
 
 @Injectable()
 export class AuiNgTranslations {
-    constructor (translate : TranslateService) {
-        const langs = translate.getLangs();
 
-        // en
-        if (langs.indexOf('en') !== -1) {
-            translate.set('auing.close', 'close', 'en');
-        }
+    constructor(private translate:TranslateService) {
+        this.extendTranslation('de');
+        this.extendTranslation('en');
+    }
 
-        // de
-        if (langs.indexOf('de') !== -1) {
-            translate.set('auing.close', 'schließen', 'de');
+    extendTranslation(lang:string) {
+        if (this.translate.getLangs().indexOf(lang) !== -1) {
+            var translation = require('../../../assets/i18n/' + lang + '.json');
+
+            for (var key in translation) {
+                this.translate.set(key, translation[key], lang);
+            }
         }
     }
 }
