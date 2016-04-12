@@ -30,11 +30,10 @@ export class AuiNgCodeBlockComponent implements AfterViewInit {
             });
 
             AuiNgCodeBlockComponent.fixIndentation(editor);
-
         }
     }
 
-    static fixIndentation (editor) {
+    static fixIndentation(editor) {
         let line = editor.getLine(0);
         let indentation = line.match(/^\W*/)[0].length;
 
