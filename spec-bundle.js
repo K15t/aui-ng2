@@ -3,9 +3,10 @@ require('phantomjs-polyfill');
 require('es6-promise');
 require('es6-shim');
 require('reflect-metadata');
-require('./lib/jquery-1.8.3');
 require('./lib/aui-5.9.15');
 require('./lib/aui-experimental-5.9.15');
+
+window.jQuery = require('jquery');
 
 var testing = require('angular2/testing');
 var browser = require('angular2/platform/testing/browser');
