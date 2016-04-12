@@ -3,7 +3,6 @@ import {AuiNgDialogComponent} from './dialog.component';
 import {Observable} from 'rxjs/Rx';
 import {Observer} from 'rxjs/Observer';
 import {AuiNgDialog} from './dialog';
-import {AuiNgTranslations} from "../common/services/translations.service";
 import {TranslatePipe} from "ng2-translate/ng2-translate";
 
 @Component({
@@ -20,7 +19,6 @@ import {TranslatePipe} from "ng2-translate/ng2-translate";
             </auiNgDialogFooter>
         </auiNgDialog>
     `,
-    providers: [AuiNgTranslations],
     pipes: [TranslatePipe]
 })
 export class AuiNgMessageDialogComponent implements AuiNgDialog {
@@ -29,9 +27,6 @@ export class AuiNgMessageDialogComponent implements AuiNgDialog {
     msg: string;
     type: string;
     private observer: Observer<any>;
-
-    constructor (translations : AuiNgTranslations) { // translations is required for TranslatePipe
-    }
 
     init(opts: AuiNgMessageDialogOptions): Observable<any> {
         this.title = opts.title;

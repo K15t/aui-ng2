@@ -76,7 +76,8 @@ export class App {
             this.logService.setLogLevel(LogLevel.DEBUG);
         }
 
-        translate.setTranslation('en', {});
+        translate.setTranslation('en', Object.assign({}, require('../src/assets/i18n/en.json'), require('./assets/i18n/en.json')));
+        translate.setTranslation('de', Object.assign({}, require('../src/assets/i18n/de.json'), require('./assets/i18n/de.json')));
         translate.use('en');
     }
 
