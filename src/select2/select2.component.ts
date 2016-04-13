@@ -23,23 +23,24 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
     @Input() labelProperty: any;
     @Input() selection: any;
     @Input() multiple: boolean;
+    @Input() query: boolean;
+
     @Output() changed: EventEmitter<any> = new EventEmitter<any>();
-    @Input() query:boolean;
-    @Output() onQuery:EventEmitter<any> = new EventEmitter<any>();
-    
+    @Output() onQuery: EventEmitter<any> = new EventEmitter<any>();
 
-    private $select2:any;
-    private selectionStrategy:SelectionStrategy;
+    private $select2: any;
+    private selectionStrategy: SelectionStrategy;
 
-    constructor(private elementRef:ElementRef) {
-    }
+    constructor(
+        private elementRef: ElementRef
+    ) {}
 
     ngAfterViewInit() {
         this.init();
         this.updateValue();
     }
 
-    ngOnChanges(changes:{[propertyName:string]:SimpleChange}) {
+    ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
         if (this.$select2 && changes['items'] || changes['idField'] || changes['labelField']) {
             this.init();
         }
@@ -96,7 +97,7 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
         return this.items.map((item) => ({id: this.getId(item), text: this.getLabel(item)}));
     }
 
-    getSelectionStrategy():SelectionStrategy {
+    getSelectionStrategy(): SelectionStrategy {
         if (this.multiple) {
             return new MultiSelectionStrategy(
                 this.getId.bind(this),
@@ -128,7 +129,7 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
         return this.items.filter((item) => this.getId(item) === id)[0];
     }
 
-    updateValue():void {
+    updateValue(): void {
         let [type, value] = this.selectionStrategy.getSelection();
 
         if (this.$select2) {
@@ -136,14 +137,14 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
         }
     }
 
-    getLabel(item:any):string {
+    getLabel(item: any): string {
         if (typeof this.labelProperty === "function") {
             return this.labelProperty(item);
         }
         return item[this.labelProperty];
     }
 
-    getId(item:any):string {
+    getId(item: any): string {
         return item[this.idProperty];
     }
 }

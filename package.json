@@ -11,9 +11,9 @@
     "build": "npm run build:dev",
     "build:dev": "devMode=true webpack --progress --config webpack-config.js --profile --colors --display-error-details --display-cached",
     "build:prod": "webpack --config webpack-config.js --progress --profile --colors --display-error-details --display-cached",
-    "server": "npm run demo",
+    "start": "npm run demo",
     "demo": "devMode=true webpack-dev-server --config webpack-config.js --progress --profile --colors --display-error-details --display-cached --inline",
-    "tests": "testMode=true karma start",
+    "test": "testMode=true karma start",
     "create:docs": "typedoc --options k15t-webpack-build/build/typedoc.json  src/**/*.ts --out  ./target/doc",
     "prepare:release": "rimraf dist target && release=true npm run build:prod && rimraf dist/demo && rimraf dist/*.js",
     "release": "npm run prepare:release && npm publish"
@@ -42,11 +42,17 @@
   },
   "devDependencies": {
     "k15t-webpack-build": "0.0.x",
+    "jasmine-core": "2.4.x",
+    "phantomjs": "1.9.x",
+    "phantomjs-polyfill": "0.0.x",
     "karma": "0.13.x",
     "karma-jasmine": "0.3.x",
+    "karma-coverage": "0.5.x",
     "karma-phantomjs-launcher": "0.2.x",
     "karma-sourcemap-loader": "0.3.x",
-    "karma-webpack": "1.7.x"
+    "karma-verbose-summary-reporter": "0.0.x",
+    "karma-webpack": "1.7.x",
+    "rimraf": "2.5.x"
   },
   "repository": {
     "type": "git",
