@@ -18,14 +18,14 @@ $ npm install k15t-aui-ng2
 * Wizard
 
 ## Additional libraries which cloud be used:
-* [JQuery](https://jquery.com) - jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal 
-  and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. 
-  The library is required to for using AJS. Outside that scope, **it is highly recommended to use the Angular APIs interact with the dom**!  
-  
+* [JQuery](https://jquery.com) - jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal
+  and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
+  The library is required to for using AJS. Outside that scope, **it is highly recommended to use the Angular APIs interact with the dom**!
+
 * [AJS](https://docs.atlassian.com/aui/latest/docs/auiselect2.html) - JavaScript library from Atlassian for using AUI components.
 
 ## Run the demo app
-The demo shows the different widgets in action based on several code examples. 
+The demo shows the different widgets in action based on several code examples.
 
 ```
 $ npm run build
@@ -44,10 +44,15 @@ Besides the aui-ng2 dependency as part of your package.json, the following resou
     ...
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="//aui-cdn.atlassian.com/aui-adg/5.9.15/js/aui.js"></script>
-    <script src="//aui-cdn.atlassian.com/aui-adg/5.9.15/js/aui-experimental.js"></script>   
+    <script src="//aui-cdn.atlassian.com/aui-adg/5.9.15/js/aui-experimental.js"></script>
 ```
 
 For an detailed example, please see the demo app.
+
+### i18n
+aui-ng2 requires [ng2-translate]("https://github.com/ocombe/ng2-translate") because some components
+contain text labels which have to be translated to the users locale. If you want to use aui-ng you need to
+configure ng2-translate in your angular app. Translations for English and German are provided with the library. You can combine them with your exisiting translations or provide your own.
 
 ## Contribute to this project
 If you like to contribute on this project, request a new feature or you find a bug please see [CONTRIBUTING.md](https://github.com/K15t/aui-ng2/blob/master/CONTRIBUTING.md)
