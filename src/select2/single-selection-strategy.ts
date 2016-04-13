@@ -3,20 +3,17 @@ import {SelectionStrategy} from "./selection-strategy";
 export class SingleSelectionStrategy implements SelectionStrategy {
     private idGetter: (any) => string;
     private labelGetter: (any) => string;
-    private items: any[];
 
     selection: any;
 
-    constructor(idGetter, lableGetter, items, selection) {
+    constructor(idGetter, lableGetter, selection) {
         this.idGetter = idGetter;
         this.labelGetter = lableGetter;
-        this.items = items;
         this.selection = selection;
     }
 
-    selectItem(id): any {
-        let selected = this.items.filter((item) => this.idGetter(item) == id);
-        this.selection = selected[0];
+    selectItem(item): any {
+        this.selection = item;
     }
 
     deSelectItem(id): any {
