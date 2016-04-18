@@ -4,46 +4,68 @@
 
 
     <div>
-        <h2>Radio button group</h2>
+        <h2>Radio button group (vertical)</h2>
 
         <div class="aui-ng2-flatpack-example">
             <form class="aui">
                 <auiNgRadioButtonGroup title="Favorite color"
-                                       name="favoriteColor1"
-                                       [selection]="selection"
-                                       [items]="items"
+                                       name="color-group1"
+                                       [selection]="color1"
+                                       [items]="colorItems"
                                        labelProperty="name"
                                        idProperty="id"
-                                       orientation="vertical"
-                                       (changed)="selection = $event"></auiNgRadioButtonGroup>
-
-                <auiNgRadioButtonGroup title="Favorite color"
-                                       name="favoriteColor2"
-                                       [selection]="selection"
-                                       [items]="items"
-                                       labelProperty="name"
-                                       idProperty="id"
-                                       orientation="horizontal"
-                                       (changed)="selection = $event"></auiNgRadioButtonGroup>
-
+                                       (changed)="color1 = $event"></auiNgRadioButtonGroup>
             </form>
 
-            <h4>Selected values</h4>
-            {{selection | json}}
+            <h4>Selected color</h4>
+            {{color1 | json}}
+
         </div>
 
         <auiNgCodeBlock title="Template radio button group">
             <textarea ngNonBindable>
                 <auiNgRadioButtonGroup title="Favorite color"
-                                       name="favoriteColor"
-                                       [selection]="selection"
-                                       [items]="items"
+                                       name="color-group"
+                                       [selection]="color"
+                                       [items]="colorItems"
                                        labelProperty="name"
                                        idProperty="id"
-                                       orientation="vertical"
-                                       (changed)="selection = $event"></auiNgRadioButtonGroup>
+                                       (changed)="color = $event"></auiNgRadioButtonGroup>
             </textarea>
         </auiNgCodeBlock>
+
+        <h2>Radio button group (horizontal)</h2>
+
+        <div class="aui-ng2-flatpack-example">
+            <form class="aui">
+                <auiNgRadioButtonGroup title="Favorite Color"
+                                       name="color-group2"
+                                       [selection]="color2"
+                                       [items]="colorItems"
+                                       labelProperty="name"
+                                       idProperty="id"
+                                       orientation="horizontal"
+                                       (changed)="color2 = $event"></auiNgRadioButtonGroup>
+            </form>
+
+            <h4>Selected color</h4>
+            {{color2 | json}}
+
+        </div>
+
+        <auiNgCodeBlock title="Template radio button group">
+            <textarea ngNonBindable>
+                <auiNgRadioButtonGroup title="Favorite Color"
+                                       name="color-group"
+                                       [selection]="color"
+                                       [items]="colorItems"
+                                       labelProperty="name"
+                                       idProperty="id"
+                                       orientation="horizontal"
+                                       (changed)="color = $event"></auiNgRadioButtonGroup>
+            </textarea>
+        </auiNgCodeBlock>
+
     </div>
 
 </div>

@@ -44,11 +44,11 @@ export class AuiNgRadioButtonGroupComponent {
         if (typeof this.labelProperty === "function") {
             return this.labelProperty(item);
         }
-        return item[this.labelProperty];
+        return item&& item[this.labelProperty];
     }
 
     private getId(item:any):string {
-        return item[this.idProperty];
+        return item && item[this.idProperty];
     }
 
 }

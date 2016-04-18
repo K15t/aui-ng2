@@ -9,12 +9,13 @@ import {AuiNgCodeBlockComponent} from '../common/code-block.component';
     template: require('./radio-button-group-demo.component.html')
 })
 export class RadioButtonGroupDemoComponent {
-    private items: any = [
+    private colorItems: any = [
         {name: 'yellow', id: 1},
         {name: 'blue', id: 2},
         {name: 'green', id: 3},
         {name: 'red', id: 4}
     ];
 
-    private selection: any = this.items[1];
+    private color1: any = this.colorItems[1];
+    private color2: any;
 }
