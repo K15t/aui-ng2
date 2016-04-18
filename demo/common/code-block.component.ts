@@ -29,7 +29,7 @@ export class AuiNgCodeBlockComponent implements AfterViewInit {
             let editor = CodeMirror.fromTextArea(textarea, {
                 mode: this.getMode(),
                 readOnly: 'nocursor',
-                lineNumbers: true,
+                lineNumbers: false,
                 lineWrapping: false,
                 gutter: true,
                 autofocus: false,
