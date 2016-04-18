@@ -16,7 +16,7 @@ import {FORM_DIRECTIVES} from 'angular2/common';
         <div class="radio"
              *ngFor="#item of items">
             <input class="radio" type="radio" name="{{name}}"
-                   id="{{name}}{{getId(item)}}"
+                   id="{{name}}-{{getId(item)}}"
                    (change)="onChange(item)"
                    [checked]="getId(selection) == getId(item)">
             <label attr.for="{{name}}-{{getId(item)}}">{{getLabel(item)}}</label>
@@ -27,6 +27,7 @@ import {FORM_DIRECTIVES} from 'angular2/common';
 export class AuiNgRadioButtonGroupComponent {
     @Input() orientation: string;
     @Input() title: string;
+    @Input() name: string;
     @Input() selection: any;
     @Input() items: any[];
     @Input() idProperty: string;
