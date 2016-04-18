@@ -78,8 +78,8 @@
                               idProperty="value"
                               labelProperty="label"
                               [multiple]="false"
-                              [query]="true"
-                              (onQuery)="onQuery($event)"
+                              [useQuery]="true"
+                              (query)="onQuery($event)"
                               (changed)="selected2 = $event"></auiNgSelect2>
             </form>
 
@@ -94,8 +94,8 @@
                                   idProperty="value"
                                   labelProperty="label"
                                   [multiple]="false"
-                                  [query]="true"
-                                  (onQuery)="onQuery($event)"
+                                  [useQuery]="true"
+                                  (query)="onQuery($event)"
                                   (changed)="selected = $event"></auiNgSelect2>
                 </textarea>
         </auiNgCodeBlock>
@@ -109,8 +109,8 @@
                               idProperty="value"
                               labelProperty="label"
                               [multiple]="true"
-                              [query]="true"
-                              (onQuery)="onQuery($event)"
+                              [useQuery]="true"
+                              (query)="onQuery($event)"
                               (changed)="selection2 = $event"></auiNgSelect2>
             </form>
 
@@ -126,8 +126,8 @@
                               idProperty="value"
                               labelProperty="label"
                               [multiple]="true"
-                              [query]="true"
-                              (onQuery)="onQuery($event)"
+                              [useQuery]="true"
+                              (query)="onQuery($event)"
                               (changed)="selection = $event"></auiNgSelect2>
             </textarea>
         </auiNgCodeBlock>

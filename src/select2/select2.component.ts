@@ -23,11 +23,9 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
     @Input() labelProperty: any;
     @Input() selection: any;
     @Input() multiple: boolean;
-    @Input() query: boolean;
-
+    @Input() useQuery:boolean;
     @Output() changed: EventEmitter<any> = new EventEmitter<any>();
-    @Input() query:boolean;
-    @Output() onQuery:EventEmitter<any> = new EventEmitter<any>();
+    @Output() query:EventEmitter<any> = new EventEmitter<any>();
 
     private $select2:any;
     private selectionStrategy:SelectionStrategy;
@@ -72,9 +70,9 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
             }
         };
 
-        if (this.query) {
+        if (this.useQuery) {
             selectConfig.query = (query) => {
-                this.onQuery.emit({
+                this.query.emit({
                     term: query.term,
                     callback: (items) => {
                         this.items = items;
