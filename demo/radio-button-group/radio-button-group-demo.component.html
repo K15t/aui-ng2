@@ -9,11 +9,23 @@
         <div class="aui-ng2-flatpack-example">
             <form class="aui">
                 <auiNgRadioButtonGroup title="Favorite color"
+                                       name="favoriteColor1"
                                        [selection]="selection"
                                        [items]="items"
                                        labelProperty="name"
                                        idProperty="id"
+                                       orientation="vertical"
                                        (changed)="selection = $event"></auiNgRadioButtonGroup>
+
+                <auiNgRadioButtonGroup title="Favorite color"
+                                       name="favoriteColor2"
+                                       [selection]="selection"
+                                       [items]="items"
+                                       labelProperty="name"
+                                       idProperty="id"
+                                       orientation="horizontal"
+                                       (changed)="selection = $event"></auiNgRadioButtonGroup>
+
             </form>
 
             <h4>Selected values</h4>
@@ -23,10 +35,12 @@
         <auiNgCodeBlock title="Template radio button group">
             <textarea ngNonBindable>
                 <auiNgRadioButtonGroup title="Favorite color"
+                                       name="favoriteColor"
                                        [selection]="selection"
                                        [items]="items"
                                        labelProperty="name"
                                        idProperty="id"
+                                       orientation="vertical"
                                        (changed)="selection = $event"></auiNgRadioButtonGroup>
             </textarea>
         </auiNgCodeBlock>
