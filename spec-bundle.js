@@ -3,10 +3,15 @@ require('phantomjs-polyfill');
 require('es6-promise');
 require('es6-shim');
 require('reflect-metadata');
-require('./lib/aui-5.9.15');
-require('./lib/aui-experimental-5.9.15');
+require('zone.js');
+require('rxjs');
 
-window.jQuery = require('jquery');
+var jQuery = require('jquery/dist/jquery.js');
+window.jQuery = jQuery;
+window.$ = jQuery;
+
+require('./test/lib/aui-5.9.15.js');
+require('./test/lib/aui-experimental-5.9.15.js');
 
 var testing = require('angular2/testing');
 var browser = require('angular2/platform/testing/browser');

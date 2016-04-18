@@ -29,34 +29,41 @@
         <h2>Implementation details</h2>
 
         <auiNgCodeBlock title="Template">
-<button class="aui-button" _sb_click_eb_="showDialog('ERROR', 'Sorry, an error...', 'Detailed information')">Error</button>
+            <textarea ngNonBindable>
+              <button class="aui-button" _sb_click_eb_="showDialog('ERROR', 'Sorry, an error...', 'Detailed information')">Error</button>
+            </textarea>
         </auiNgCodeBlock>
 
-        <auiNgCodeBlock title="Component">
-import {Component} from 'angular2/core';
-import {AuiNgDialogService, AuiNgMessageType} from '../../src/dialog/index';
+        <auiNgCodeBlock title="Component" lang="javascript">
+          <textarea ngNonBindable>
+            import {Component} from 'angular2/core';
+            import {AuiNgDialogService, AuiNgMessageType} from '../../src/dialog/index';
 
-@Component({
-    ...
-    providers: [AuiNgDialogService]
-})
-export class DialogDemoComponent {
-    showDialog(type: string, title: string, msg: string) {
-        this.dialogService.openMessageDialog(title, msg, AuiNgMessageType[type], this.element);
-    }
-}
+            @Component({
+                ...
+                providers: [AuiNgDialogService]
+            })
+            export class DialogDemoComponent {
+                showDialog(type: string, title: string, msg: string) {
+                    this.dialogService.openMessageDialog(title, msg, AuiNgMessageType[type], this.element);
+                }
+            }
+          </textarea>
         </auiNgCodeBlock>
 
         <h2>Options</h2>
-        <auiNgCodeBlock title="AuiNgMessageType">
-export const AuiNgMessageType = {
-    ERROR: 'error',
-    WARN: 'warning',
-    SUCCESS: 'success',
-    INFO: 'info',
-    HINT: 'hint'
-};
-        </auiNgCodeBlock>
+
+      <auiNgCodeBlock title="AuiNgMessageType" lang="javascript">
+        <textarea ngNonBindable>
+          export const AuiNgMessageType = {
+              ERROR: 'error',
+              WARN: 'warning',
+              SUCCESS: 'success',
+              INFO: 'info',
+              HINT: 'hint'
+          };
+        </textarea>
+      </auiNgCodeBlock>
 
     </div>
 </div>

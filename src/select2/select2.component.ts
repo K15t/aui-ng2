@@ -23,6 +23,8 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
     @Input() labelProperty: any;
     @Input() selection: any;
     @Input() multiple: boolean;
+    @Input() query: boolean;
+
     @Output() changed: EventEmitter<any> = new EventEmitter<any>();
     @Input() query:boolean;
     @Output() onQuery:EventEmitter<any> = new EventEmitter<any>();
@@ -96,7 +98,7 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
         return this.items.map((item) => ({id: this.getId(item), text: this.getLabel(item)}));
     }
 
-    getSelectionStrategy():SelectionStrategy {
+    getSelectionStrategy(): SelectionStrategy {
         if (this.multiple) {
             return new MultiSelectionStrategy(
                 this.getId.bind(this),
@@ -128,7 +130,7 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
         return this.items.filter((item) => this.getId(item) === id)[0];
     }
 
-    updateValue():void {
+    updateValue(): void {
         let [type, value] = this.selectionStrategy.getSelection();
 
         if (this.$select2) {
@@ -136,7 +138,7 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
         }
     }
 
-    getLabel(item:any):string {
+    getLabel(item: any): string {
         if (typeof this.labelProperty === "function") {
             return this.labelProperty(item);
         }

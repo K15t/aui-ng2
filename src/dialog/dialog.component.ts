@@ -11,7 +11,6 @@ import {AuiNgDialogUpdateEvent} from './dialog-update.event';
 export class AuiNgDialogComponent {
 
     @Input() title: string;
-
     @Input() dialogClass: string;
     @Input() dialogContentClass: string;
     @Input() dialogStyle: string;
