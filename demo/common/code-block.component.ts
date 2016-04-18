@@ -1,10 +1,5 @@
 import {Component, Input, ViewChild, AfterViewInit} from 'angular2/core';
 const CodeMirror = require('codemirror');
-require('codemirror/lib/codemirror.css');
-require('codemirror/mode/htmlmixed/htmlmixed');
-require('codemirror/mode/javascript/javascript');
-
-const CodeMirror = require('codemirror');
 require('codemirror/mode/htmlmixed/htmlmixed');
 require('codemirror/mode/javascript/javascript');
 

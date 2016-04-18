@@ -28,7 +28,6 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
     @Output() changed: EventEmitter<any> = new EventEmitter<any>();
     @Input() query:boolean;
     @Output() onQuery:EventEmitter<any> = new EventEmitter<any>();
-    
 
     private $select2:any;
     private selectionStrategy:SelectionStrategy;
