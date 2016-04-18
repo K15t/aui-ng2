@@ -1,0 +1,35 @@
+<div class="aui-ng2-content">
+
+    <h1 class="component-heading" style="padding-bottom: 35px">Radio button group</h1>
+
+
+    <div>
+        <h2>Radio button group</h2>
+
+        <div class="aui-ng2-flatpack-example">
+            <form class="aui">
+                <auiNgRadioButtonGroup title="Favorite color"
+                                       [selection]="selection"
+                                       [items]="items"
+                                       labelProperty="name"
+                                       idProperty="id"
+                                       (changed)="selection = $event"></auiNgRadioButtonGroup>
+            </form>
+
+            <h4>Selected values</h4>
+            {{selection | json}}
+        </div>
+
+        <auiNgCodeBlock title="Template radio button group">
+            <textarea ngNonBindable>
+                <auiNgRadioButtonGroup title="Favorite color"
+                                       [selection]="selection"
+                                       [items]="items"
+                                       labelProperty="name"
+                                       idProperty="id"
+                                       (changed)="selection = $event"></auiNgRadioButtonGroup>
+            </textarea>
+        </auiNgCodeBlock>
+    </div>
+
+</div>
