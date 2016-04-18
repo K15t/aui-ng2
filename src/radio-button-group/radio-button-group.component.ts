@@ -10,9 +10,10 @@ import {FORM_DIRECTIVES} from 'angular2/common';
         <div class="radio"
              *ngFor="#item of items">
             <input class="radio" type="radio" name="radioButtonGroup{{title}}"
+                   id="radioButtonGroup{{title}}{{getId(item)}}"
                    (change)="onChange(item)"
                    [checked]="getId(selection) == getId(item)">
-            <label>{{getLabel(item)}}</label>
+            <label attr.for="radioButtonGroup{{title}}{{getId(item)}}">{{getLabel(item)}}</label>
         </div>
       </fieldset>
     `
