@@ -59,5 +59,4 @@ If you like to contribute on this project, request a new feature or you find a b
 for further details.
 
 ## License
-
 Licensed under The MIT License (MIT).

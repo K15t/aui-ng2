@@ -1,9 +1,10 @@
 import {Injectable, Inject} from 'angular2/core';
 import {Observer} from 'rxjs/Rx';
 import {AuiNgConnectService} from './connect.service';
+import {AuiNgConfluenceService} from '../common/services/confluence-service';
 
 @Injectable()
-export class AuiNgConfluenceConnectService {
+export class AuiNgConfluenceConnectService implements AuiNgConfluenceService {
 
     constructor(
         @Inject(AuiNgConnectService) private connectService: AuiNgConnectService
@@ -69,6 +70,23 @@ export class AuiNgConfluenceConnectService {
                 callback.next(data.context.contentId);
                 callback.complete();
             });
+        });
+    }
+
+    resize(width: string, height: string): void {
+        this.connectService.getAP().resize(width, height);
+    }
+
+    requireEvents(callback: Observer<any>): void {
+        this.connectService.getAP().require(["events"], (events) => {
+            callback.next(events);
+        });
+    }
+
+    requireDialog(callback: Observer<any>): void {
+        this.connectService.getAP().require(["dialog"], (dialog) => {
+            callback.next(dialog);
+            callback.complete();
         });
     }
 

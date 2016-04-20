@@ -1,5 +1,4 @@
 import {Injectable, Inject, Optional} from 'angular2/core';
-import {Observer} from 'rxjs/Rx';
 import {AuiNgRequestProperties} from './request-parameters';
 import {BASE_URL} from '../common/constants';
 
@@ -21,13 +20,6 @@ export class AuiNgConnectService {
     close() {
         this.getAP().require('dialog', function (dialog) {
             dialog.close({});
-        });
-    }
-
-    requireDialog(callback: Observer<any>): void {
-        this.getAP().require(["dialog"], (dialog) => {
-            callback.next(dialog);
-            callback.complete();
         });
     }
 
