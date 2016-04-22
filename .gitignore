@@ -2,7 +2,10 @@
 .project
 .classpath
 .idea
+.DS_Store
 node_modules/
 target/
 dist/
 typings/
+THIRD-PARTY-LICENSES-DEF.properties
+npm-debug.log
