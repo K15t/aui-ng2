@@ -4,7 +4,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 
-if (!!process.env.testMode) {
+if (process.env.testMode === 'false') {
     module.exports = master({
         basePath: '',
         autoWatch: true,
