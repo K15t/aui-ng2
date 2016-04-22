@@ -7,6 +7,7 @@ import {TooltipDemoComponent} from './tooltip/tooltip-demo.component';
 import {Select2DemoComponent} from './select2/select2-demo.component';
 import {LogService, LogLevel} from '../src/common/services/log.service.ts';
 import {IS_DEV_MODE} from './constants';
+import {RadioButtonGroupDemoComponent} from "./radio-button-group/radio-button-group-demo.component";
 
 @Component({
     selector: 'app',
@@ -48,6 +49,9 @@ import {IS_DEV_MODE} from './constants';
                         <li router-active>
                             <a [routerLink]=" ['Select2DemoComponent']">Select2</a>
                         </li>
+                        <li router-active>
+                            <a [routerLink]=" ['RadioButtonGroupDemoComponent']">Radio button group</a>
+                        </li>
                      </ul>
                 </td>
                 <td class="aui-ng-content" width="85%">
@@ -63,6 +67,7 @@ import {IS_DEV_MODE} from './constants';
     {path: '/tabs', name: 'TabsDemoComponent', component: TabsDemoComponent},
     {path: '/tooltip', name: 'TooltipDemoComponent', component: TooltipDemoComponent},
     {path: '/select2', name: 'Select2DemoComponent', component: Select2DemoComponent},
+    {path: '/radio-button-group', name: 'RadioButtonGroupDemoComponent', component: RadioButtonGroupDemoComponent},
     {path: '/', redirectTo: ['DialogDemoComponent']}
 ])
 export class App {

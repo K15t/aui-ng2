@@ -1,0 +1,71 @@
+<div class="aui-ng2-content">
+
+    <h1 class="component-heading" style="padding-bottom: 35px">Radio button group</h1>
+
+
+    <div>
+        <h2>Radio button group (vertical)</h2>
+
+        <div class="aui-ng2-flatpack-example">
+            <form class="aui">
+                <auiNgRadioButtonGroup title="Favorite color"
+                                       name="color-group1"
+                                       [selection]="color1"
+                                       [items]="colorItems"
+                                       labelProperty="name"
+                                       idProperty="id"
+                                       (changed)="color1 = $event"></auiNgRadioButtonGroup>
+            </form>
+
+            <h4>Selected color</h4>
+            {{color1 | json}}
+
+        </div>
+
+        <auiNgCodeBlock title="Template radio button group">
+            <textarea ngNonBindable>
+                <auiNgRadioButtonGroup title="Favorite color"
+                                       name="color-group"
+                                       [selection]="color"
+                                       [items]="colorItems"
+                                       labelProperty="name"
+                                       idProperty="id"
+                                       (changed)="color = $event"></auiNgRadioButtonGroup>
+            </textarea>
+        </auiNgCodeBlock>
+
+        <h2>Radio button group (horizontal)</h2>
+
+        <div class="aui-ng2-flatpack-example">
+            <form class="aui">
+                <auiNgRadioButtonGroup title="Favorite Color"
+                                       name="color-group2"
+                                       [selection]="color2"
+                                       [items]="colorItems"
+                                       labelProperty="name"
+                                       idProperty="id"
+                                       orientation="horizontal"
+                                       (changed)="color2 = $event"></auiNgRadioButtonGroup>
+            </form>
+
+            <h4>Selected color</h4>
+            {{color2 | json}}
+
+        </div>
+
+        <auiNgCodeBlock title="Template radio button group">
+            <textarea ngNonBindable>
+                <auiNgRadioButtonGroup title="Favorite Color"
+                                       name="color-group"
+                                       [selection]="color"
+                                       [items]="colorItems"
+                                       labelProperty="name"
+                                       idProperty="id"
+                                       orientation="horizontal"
+                                       (changed)="color = $event"></auiNgRadioButtonGroup>
+            </textarea>
+        </auiNgCodeBlock>
+
+    </div>
+
+</div>
