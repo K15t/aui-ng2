@@ -3,24 +3,21 @@ import {SelectionStrategy} from "./selection-strategy";
 export class MultiSelectionStrategy implements SelectionStrategy {
     private idGetter: (any) => string;
     private labelGetter: (any) => string;
-    private items: any[];
 
     selection: any[];
 
-    constructor(idGetter, labelGetter, items, selection) {
+    constructor(idGetter, labelGetter, selection) {
         this.idGetter = idGetter;
         this.labelGetter = labelGetter;
-        this.items = items;
         this.selection = selection;
     }
 
-    selectItem(id): void {
-        let selected = this.items.filter((item) => this.idGetter(item) == id);
-        this.selection.push(selected[0]);
+    selectItem(item): void {
+        this.selection.push(item);
     }
 
     deSelectItem(id): void {
-        this.selection = this.selection.filter((item) => this.idGetter(item) !== id);
+        this.selection = this.selection.filter((other) => this.idGetter(other) !== id);
     }
 
     getSelection(): [string, any] {

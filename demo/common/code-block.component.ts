@@ -1,5 +1,4 @@
 import {Component, Input, ViewChild, AfterViewInit} from 'angular2/core';
-
 const CodeMirror = require('codemirror');
 require('codemirror/mode/htmlmixed/htmlmixed');
 require('codemirror/mode/javascript/javascript');
@@ -30,7 +29,7 @@ export class AuiNgCodeBlockComponent implements AfterViewInit {
             let editor = CodeMirror.fromTextArea(textarea, {
                 mode: this.getMode(),
                 readOnly: 'nocursor',
-                lineNumbers: true,
+                lineNumbers: false,
                 lineWrapping: false,
                 gutter: true,
                 autofocus: false,

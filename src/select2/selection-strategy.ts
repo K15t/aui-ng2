@@ -8,12 +8,12 @@ export interface SelectionStrategy {
     /**
      * Selects the entry with the related id.
      */
-    selectItem (id: string): void;
+    selectItem (item: any): void;
 
     /**
-     * Deselects the entry wit hthe related id.
+     * Deselects the entry with the related id.
      */
-    deSelectItem (id: string): void;
+    deSelectItem (id: any): void;
 
     /**
      * Gets the current selected entry

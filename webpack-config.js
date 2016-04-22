@@ -4,11 +4,14 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 
-if (!!process.env.testMode) {
+if (process.env.testMode === 'false') {
     module.exports = master({
         basePath: '',
         autoWatch: true,
         autoWatchBatchDelay: 300,
+        output: {
+            path : './target'
+        },
         module: {
             noParse: [
                 utils.getAbsolutePath('zone.js/dist'),

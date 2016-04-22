@@ -14,20 +14,28 @@
                               idProperty="value"
                               labelProperty="label"
                               [multiple]="true"
-                              (changed)="onChangedMulti($event)"></auiNgSelect2>
+                              (changed)="selection = $event"></auiNgSelect2>
             </form>
 
             <h4>Selected values</h4>
-            {{selection | json}}
+            <pre>{{selection | json}}</pre>
 
             <h3>Actions</h3>
 
             <button (click)="addItem('Elm')" class="aui-button">Add another item option</button>
             <button (click)="removeLast()" class="aui-button">Remove last selected</button>
+
         </div>
 
-        <auiNgCodeBlock title="Template Select2">
-            ...
+        <auiNgCodeBlock title="Template multi select">
+                <textarea ngNonBindable>
+                    <auiNgSelect2 [selection]="selection"
+                                  [items]="items"
+                                  idProperty="value"
+                                  labelProperty="label"
+                                  [multiple]="true"
+                                  (changed)="selection = $event"></auiNgSelect2>
+                </textarea>
         </auiNgCodeBlock>
 
         <div class="aui-ng2-flatpack-example">
@@ -40,17 +48,88 @@
                               idProperty="value"
                               labelProperty="label"
                               [multiple]="false"
-                              (changed)="onChangedSingle($event)"></auiNgSelect2>
+                              (changed)="selected = $event"></auiNgSelect2>
             </form>
 
             <h4>Selected values</h4>
 
-            {{selected | json}}
+            <pre>{{selected | json}}</pre>
 
         </div>
 
-        <auiNgCodeBlock title="Template Select2">
-            ...
+        <auiNgCodeBlock title="Template single select">
+                <textarea ngNonBindable>
+                    <auiNgSelect2 [selection]="selected"
+                                  [items]="items"
+                                  idProperty="value"
+                                  labelProperty="label"
+                                  [multiple]="false"
+                                  (changed)="selected = $event"></auiNgSelect2>
+                </textarea>
+        </auiNgCodeBlock>
+
+
+        <div class="aui-ng2-flatpack-example">
+
+            <h3>Single select with query</h3>
+
+            <form action="" class="aui">
+                <auiNgSelect2 [selection]="selected2"
+                              idProperty="value"
+                              labelProperty="label"
+                              [multiple]="false"
+                              [useQuery]="true"
+                              (query)="onQuery($event)"
+                              (changed)="selected2 = $event"></auiNgSelect2>
+            </form>
+
+            <h4>Selected value</h4>
+
+            <pre>{{selected2 | json}}</pre>
+        </div>
+
+        <auiNgCodeBlock title="Template single select with query">
+                <textarea ngNonBindable>
+                    <auiNgSelect2 [selection]="selected"
+                                  idProperty="value"
+                                  labelProperty="label"
+                                  [multiple]="false"
+                                  [useQuery]="true"
+                                  (query)="onQuery($event)"
+                                  (changed)="selected = $event"></auiNgSelect2>
+                </textarea>
+        </auiNgCodeBlock>
+
+        <div class="aui-ng2-flatpack-example">
+
+            <h3>Multi select with query</h3>
+
+            <form action="" class="aui">
+                <auiNgSelect2 [selection]="selection2"
+                              idProperty="value"
+                              labelProperty="label"
+                              [multiple]="true"
+                              [useQuery]="true"
+                              (query)="onQuery($event)"
+                              (changed)="selection2 = $event"></auiNgSelect2>
+            </form>
+
+            <h4>Selected values</h4>
+
+            <pre>{{selection2 | json}}</pre>
+        </div>
+
+
+        <auiNgCodeBlock title="Template multi select with query">
+            <textarea ngNonBindable>
+                <auiNgSelect2 [selection]="selection"
+                              idProperty="value"
+                              labelProperty="label"
+                              [multiple]="true"
+                              [useQuery]="true"
+                              (query)="onQuery($event)"
+                              (changed)="selection = $event"></auiNgSelect2>
+            </textarea>
         </auiNgCodeBlock>
 
     </div>
