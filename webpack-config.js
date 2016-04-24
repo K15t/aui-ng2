@@ -21,6 +21,17 @@ if (process.env.testMode === 'true') {
         }
     });
 } else {
+
+    var targetDir;
+    console.log(process.env);
+    if (process.env.release === 'true') {
+        targetDir = './dist';
+    } else if (process.env.npm_config_releasedemo === 'true') {
+        targetDir = './public';
+    } else {
+        targetDir = './target';
+    }
+
     module.exports = master({
         entry: {
             main: './demo/main.ts',
@@ -35,7 +46,7 @@ if (process.env.testMode === 'true') {
             filename: './demo/[name].min.js',
             sourceMapFilename: './demo/[name].map',
             chunkFilename: './demo/[id].chunk.js',
-            path: process.env.release === 'true' ? './dist' : './target'
+            path: targetDir
         },
         addPlugins: function(devModeEnabled, testingEnabled, debugModeEnabled) {
 

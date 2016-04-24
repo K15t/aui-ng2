@@ -15,7 +15,7 @@
     "demo": "devMode=true startDemo=true webpack-dev-server --config webpack-config.js --progress --profile --colors --display-error-details --display-cached --inline",
     "test": "testMode=true karma start",
     "create:docs": "typedoc --options k15t-webpack-build/build/typedoc.json  src/**/*.ts --out  ./target/doc",
-    "deploy": "releaseDemo=true rimraf target && npm run build && git subtree push --prefix=target origin gh-pages",
+    "deploy": "npm run --releaseDemo=true build && git add -A public && git commit -am 'New release' && git subtree push --prefix=public origin gh-pages",
     "prepare:release": "rimraf dist target && release=true npm run build:prod && rimraf dist/demo && rimraf dist/*.js",
     "release": "npm run prepare:release && npm publish && npm run delpoy"
   },
