@@ -75,6 +75,14 @@
                 border: 1px solid #CCC;
             }
 
+            .aui-ng2-version-info {
+                padding-top: 19px;
+                font-style: italic;
+                font-size: smaller;
+                float: right;
+                vertical-align: bottom;
+            }
+
         </style>
 
     </head>
@@ -98,8 +106,8 @@
                     <div class="aui-page-header-main">
                         <h1>Documentation</h1>
                     </div>
-                    <div style="float: right; vertical-align: bottom">
-                       version {%= o.webpackConfig.envProperties.PRODUCT_VERSION %} ({%= o.webpackConfig.envProperties.BUILD_TIME%})
+                    <div class="aui-ng2-version-info">
+                       Version {%= o.webpackConfig.envProperties.PRODUCT_VERSION %} ({%= o.webpackConfig.envProperties.BUILD_TIME%})
                     </div>
                 </div>
             </header>
