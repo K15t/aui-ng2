@@ -40,7 +40,7 @@ if (process.env.testMode === 'true') {
         envProperties: {
             PRODUCT_VERSION: require("./package.json").version,
             BUILD_TIME: (new Date).toLocaleString(),
-            SERVER_CONTEXT: process.env.npm_config_releasedemo === 'true' ? '/aui-ng2/' : ''
+            SERVER_CONTEXT: process.env.npm_config_releasedemo === 'true' ? 'http://k15t.github.io/aui-ng2/' : ''
         },
         output: {
             filename: './demo/[name].min.js',
