@@ -3,9 +3,9 @@
 aui-ng2 is a set of angular 2 components, directives and services to simplify the integration with Atlassian products based on AUI/ADG.
 The library is still under development and is considered in an experimental state. So be aware that things will change rapidly.
 
-## Demo
+## Demo page
 
-Open the [demo](http://k15t.github.io/aui-ng2/) to get a first impressions of aui-ng2.
+Open the [demo page](http://k15t.github.io/aui-ng2/) to get a first impressions of aui-ng2.
 
 ## Installing
 
