@@ -1,93 +1,124 @@
 <!DOCTYPE html>
 <html lang="">
-<head>
+    <head>
 
-    <title>Demo App AUI-NG2</title>
+        <title>Demo App AUI-NG2</title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.js"></script>
-    <link rel="stylesheet" type="text/css" href="//aui-cdn.atlassian.com/aui-adg/5.9.15/css/aui.css"/>
-    <link rel="stylesheet" type="text/css" href="//aui-cdn.atlassian.com/aui-adg/5.9.15/css/aui-experimental.css"/>
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/codemirror.css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.js"></script>
+        <link rel="stylesheet" type="text/css" href="//aui-cdn.atlassian.com/aui-adg/5.9.15/css/aui.css"/>
+        <link rel="stylesheet" type="text/css" href="//aui-cdn.atlassian.com/aui-adg/5.9.15/css/aui-experimental.css"/>
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/codemirror.css"/>
 
-    <!-- base url -->
-    <base href="{%= o.webpackConfig.metadata.contextPath %}/">
+        <!-- base url -->
+        <base href="{%= o.webpackConfig.metadata.contextPath %}/">
 
-    {% for (var css in o.htmlWebpackPlugin.files.css) { %}
-    <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
-    {% } %}
+        {% for (var css in o.htmlWebpackPlugin.files.css) { %}
+        <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
+        {% } %}
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-    <style>
+        <style>
 
-        body {
-            background-color: #ffffff;
-        }
+            body {
+                background-color: #ffffff;
+            }
 
-        .aui-ng2-flatpack-example {
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            margin: 10px 0 20px;
-            padding: 10px;
-            padding-right: 20px;
-        }
+            .aui-ng2-flatpack-example {
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                margin: 10px 0 20px;
+                padding: 10px;
+                padding-right: 20px;
+            }
 
-        .aui-ng2-content {
-            padding: 20px;
-        }
+            .aui-ng2-content {
+                padding: 20px;
+            }
 
-        pre{
-            font-family: Consolas, Courier, monospace, serif;
-            margin-bottom: 10px;
-            overflow: auto;
-            width: auto;
-            padding: 10px;
-            background-color: #eee;
-            width: 650px!ie7;
-            padding-bottom: 20px!ie7;
-            max-height: 600px;
-        }
+            pre{
+                font-family: Consolas, Courier, monospace, serif;
+                margin-bottom: 10px;
+                overflow: auto;
+                width: auto;
+                padding: 10px;
+                background-color: #eee;
+                width: 650px!ie7;
+                padding-bottom: 20px!ie7;
+                max-height: 600px;
+            }
 
-        .CodeMirror {
-            border: 1px solid #CCC;
-            border-radius: 5px;
-            height: auto;
-            margin-bottom: 50px;
-        }
+            .CodeMirror {
+                border: 1px solid #CCC;
+                border-radius: 5px;
+                height: auto;
+                margin-bottom: 50px;
+            }
 
-        .CodeMirror-line {
-            padding-left: 12px !important;
-        }
+            .CodeMirror-line {
+                padding-left: 12px !important;
+            }
 
-        .CodeMirror-sizer {
-            background-color: #f5f5f5;
-        }
+            .CodeMirror-sizer {
+                background-color: #f5f5f5;
+            }
 
-    </style>
+            .aui-page-header {
+                background: #f5f5f5;
+                color: #333;
+                border: 1px solid #CCC;
+            }
 
-</head>
-<body>
+        </style>
 
-<app></app>
+    </head>
+    <body>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <header id="header" role="banner">
+            <nav class="aui-header aui-dropdown2-trigger-group" role="navigation" data-aui-responsive="true">
+                <div class="aui-header-inner">
+                    <div class="aui-header-primary">
+                        <h1 id="logo" class="aui-header-logo aui-header-logo-textonly">
+                            <a href="../"><span class="aui-header-logo-device">aui-ng2</span></a>
+                        </h1>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
-<script src="//aui-cdn.atlassian.com/aui-adg/5.9.15/js/aui.js"></script>
-<script src="//aui-cdn.atlassian.com/aui-adg/5.9.15/js/aui-experimental.js"></script>
+        <section id="content" role="main">
+            <header class="aui-page-header">
+                <div class="aui-page-header-inner">
+                    <div class="aui-page-header-main">
+                        <h1>Documentation</h1>
+                    </div>
+                    <div style="float: right; vertical-align: bottom">
+                       version {%= o.webpackConfig.envProperties.PRODUCT_VERSION %} ({%= o.webpackConfig.envProperties.BUILD_TIME%})
+                    </div>
+                </div>
+            </header>
+        </section>
 
-{% if (o.webpackConfig.metadata.ENV === 'development') { %}
-<!-- Webpack Dev Server reload -->
-<script src="http://{%= o.webpackConfig.metadata.devServer.host %}:{%= o.webpackConfig.metadata.devServer.port %}/webpack-dev-server.js"></script>
-{% } %}
-{% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
-<script src="{%= o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
-{% } %}
+        <app></app>
 
-</body>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+        <script src="//aui-cdn.atlassian.com/aui-adg/5.9.15/js/aui.js"></script>
+        <script src="//aui-cdn.atlassian.com/aui-adg/5.9.15/js/aui-experimental.js"></script>
+
+        {% if (o.webpackConfig.metadata.ENV === 'development') { %}
+        <!-- Webpack Dev Server reload -->
+        <script src="http://{%= o.webpackConfig.metadata.devServer.host %}:{%= o.webpackConfig.metadata.devServer.port %}/webpack-dev-server.js"></script>
+        {% } %}
+        {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+        <script src="{%= o.webpackConfig.envProperties.SERVER_CONTEXT %}{%= o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
+        {% } %}
+
+    </body>
 </html>
