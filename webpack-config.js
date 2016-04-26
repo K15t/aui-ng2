@@ -26,7 +26,7 @@ if (process.env.testMode === 'true') {
 
     if (process.env.release === 'true') {
         targetDir = './dist';
-    } else if (process.env.npm_config_releasedemo === 'true') {
+    } else if (process.env.npm_config_releaseDemo === 'true') {
         targetDir = './public';
     } else {
         targetDir = './target';
@@ -46,7 +46,7 @@ if (process.env.testMode === 'true') {
             sourceMapFilename: './demo/[name].map',
             chunkFilename: './demo/[id].chunk.js',
             path: targetDir,
-            publicPath: process.env.npm_config_releasedemo === 'true' ? 'http://k15t.github.io/aui-ng2/' : ''
+            publicPath: process.env.npm_config_releaseDemo === 'true' ? 'http://k15t.github.io/aui-ng2/' : ''
         },
         addPlugins: function(devModeEnabled, testingEnabled, debugModeEnabled) {
 
