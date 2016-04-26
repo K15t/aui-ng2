@@ -1,5 +1,5 @@
 import {Component, Input, ViewChild, AfterViewInit} from 'angular2/core';
-const CodeMirror = require('codemirror');
+const codeMirror = require('codemirror');
 require('codemirror/mode/htmlmixed/htmlmixed');
 require('codemirror/mode/javascript/javascript');
 
@@ -26,7 +26,7 @@ export class AuiNgCodeBlockComponent implements AfterViewInit {
             if (textarea.value && textarea.value !== undefined) {
                 textarea.value = textarea.value.replace(/\s+$/g, '');
             }
-            let editor = CodeMirror.fromTextArea(textarea, {
+            let editor = codeMirror.fromTextArea(textarea, {
                 mode: this.getMode(),
                 readOnly: 'nocursor',
                 lineNumbers: true,

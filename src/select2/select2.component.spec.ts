@@ -44,7 +44,7 @@ describe('Select2 Component', () => {
         });
 
         it('should have an selected item', () => {
-            expect(select2.nativeElement.querySelector('.select2-chosen').innerText).toEqual("baz");
+            expect(select2.nativeElement.querySelector('.select2-chosen').innerText).toEqual('baz');
         });
     });
 
