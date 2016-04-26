@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Rx';
 @Injectable()
 export default class AuiNgOverlayService {
 
-    constructor(private _componentLoader: DynamicComponentLoader) {}
+    constructor(private componentLoader: DynamicComponentLoader) {}
 
     /**
      * Register a Component as Overlay.
@@ -18,7 +18,7 @@ export default class AuiNgOverlayService {
         const providers = Injector.resolve([new Provider(OverlayRef, {useValue: overlay})]);
 
         return Observable.create(observer => {
-            this._componentLoader.loadNextToLocation(type, origin, providers).then(ref => {
+            this.componentLoader.loadNextToLocation(type, origin, providers).then(ref => {
                 // this is where the magic happens:
                 // moves the DOM node to a new location (can also be outside of
                 // the angular app context)

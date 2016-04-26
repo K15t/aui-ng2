@@ -12,10 +12,10 @@ import {AuiNgDialogService} from '../../src/dialog/index';
 })
 export default class CustomOverlay {
 
-    constructor(public overlay: OverlayRef, private _el: ElementRef, private _dialogService: AuiNgDialogService) {}
+    constructor(public overlay: OverlayRef, private el: ElementRef, private dialogService: AuiNgDialogService) {}
 
     createSubDialog() {
-        this._dialogService.openDialog(CustomOverlay, this._el, {name: 'Child Dialog!'}).subscribe();
+        this.dialogService.openDialog(CustomOverlay, this.el, {name: 'Child Dialog!'}).subscribe();
     }
 
 }

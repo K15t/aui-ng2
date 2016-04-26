@@ -3,15 +3,17 @@ import {AuiNgConnectService} from '../connect/connect.service';
 import {AuiNgDialogOptions} from './dialog-options';
 import {AuiNgDialogService} from './dialog.service';
 import {LogService} from '../common/services/log.service.ts';
+import AuiNgOverlayService from '../common/services/overlay.service';
 
 @Injectable()
 export class AuiNgConnectDialogService extends AuiNgDialogService {
     constructor(
         componentLoader: DynamicComponentLoader,
         private connectService: AuiNgConnectService,
-        logService: LogService
+        logService: LogService,
+        overlayService: AuiNgOverlayService
     ) {
-        super(componentLoader, logService);
+        super(componentLoader, logService, overlayService);
     }
 
     closeDialog() {

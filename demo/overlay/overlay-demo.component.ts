@@ -11,10 +11,10 @@ import {AuiNgDialogService} from '../../src/dialog/index';
 })
 export class OverlayDemoComponent {
 
-    constructor(private _el: ElementRef, private _dialogService: AuiNgDialogService) {}
+    constructor(private el: ElementRef, private dialogService: AuiNgDialogService) {}
 
     createOverlay() {
-        this._dialogService.openDialog(CustomOverlay, this._el, {name: 'Foo'}).subscribe();
+        this.dialogService.openDialog(CustomOverlay, this.el, {name: 'Foo'}).subscribe();
     }
 
 }

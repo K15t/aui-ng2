@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import NotificationEmitter from '../../src/notifications/notification-emitter';
 import {Notification} from '../../src/notifications/notification-emitter';
 import {AuiNgNotificationComponent} from '../../src/notifications/notification.component';
-import {AuiNgMessageType} from '../../src/dialog/message-dialog.component';
+import {AUI_NG_MESSAGE_TYPE} from '../../src/dialog/message-dialog.component';
 
 @Component({
     directives: [AuiNgNotificationComponent],
@@ -19,7 +19,7 @@ export class NotificationDemoComponent {
         });
 
         this.notificationEmitter.emit({
-            type: AuiNgMessageType.ERROR,
+            type: AUI_NG_MESSAGE_TYPE.ERROR,
             title: 'foo',
             message: 'bar'
         });
