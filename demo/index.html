@@ -8,15 +8,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.js"></script>
         <link rel="stylesheet" type="text/css" href="//aui-cdn.atlassian.com/aui-adg/5.9.15/css/aui.css"/>
         <link rel="stylesheet" type="text/css" href="//aui-cdn.atlassian.com/aui-adg/5.9.15/css/aui-experimental.css"/>
         <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/codemirror.css"/>
 
         <!-- base url -->
-        <base href="{%= o.webpackConfig.metadata.contextPath %}/">
+        <base href="{%= o.webpackConfig.output.publicPath %}/">
 
         {% for (var css in o.htmlWebpackPlugin.files.css) { %}
         <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">

@@ -23,7 +23,7 @@ if (process.env.testMode === 'true') {
 } else {
 
     var targetDir;
-    console.log(process.env);
+
     if (process.env.release === 'true') {
         targetDir = './dist';
     } else if (process.env.npm_config_releasedemo === 'true') {
@@ -39,14 +39,14 @@ if (process.env.testMode === 'true') {
         },
         envProperties: {
             PRODUCT_VERSION: require("./package.json").version,
-            BUILD_TIME: (new Date).toLocaleString(),
-            SERVER_CONTEXT: process.env.npm_config_releasedemo === 'true' ? 'http://k15t.github.io/aui-ng2/' : ''
+            BUILD_TIME: (new Date).toLocaleString()
         },
         output: {
             filename: './demo/[name].min.js',
             sourceMapFilename: './demo/[name].map',
             chunkFilename: './demo/[id].chunk.js',
-            path: targetDir
+            path: targetDir,
+            publicPath: process.env.npm_config_releasedemo === 'true' ? 'http://k15t.github.io/aui-ng2/' : ''
         },
         addPlugins: function(devModeEnabled, testingEnabled, debugModeEnabled) {
 
