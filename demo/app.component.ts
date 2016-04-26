@@ -70,7 +70,7 @@ import {RadioButtonGroupDemoComponent} from './radio-button-group/radio-button-g
     {path: '/radio-button-group', name: 'RadioButtonGroupDemoComponent', component: RadioButtonGroupDemoComponent},
     {path: '/', redirectTo: ['DialogDemoComponent']}
 ])
-export class App {
+export class AppComponent {
 
     constructor(
         private logService: LogService,

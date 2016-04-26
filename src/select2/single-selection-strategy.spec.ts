@@ -7,7 +7,6 @@ describe('Single Selection Strategy', () => {
         return obj.label;
     }
 
-
     function idGetter(obj) {
         return obj.id;
     }
@@ -19,7 +18,6 @@ describe('Single Selection Strategy', () => {
     beforeEach(() => {
         items = [{id: 1,  label: 'foo', color: 'red'}, {id: 2, label: 'bar'}];
         selection = items[0];
-
         selectionStrategy = new SingleSelectionStrategy(idGetter, labelGetter, selection);
     });
 
