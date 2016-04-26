@@ -33,6 +33,7 @@ if (process.env.testMode === 'true') {
     }
 
     module.exports = master({
+        appPrefix: 'auiNg',
         entry: {
             main: './demo/main.ts',
             vendor: './demo/vendor.ts'
