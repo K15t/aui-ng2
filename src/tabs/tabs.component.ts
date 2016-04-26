@@ -2,7 +2,7 @@ import {Component, Directive, Input, AfterViewInit, ElementRef, ViewChildren, Qu
 import {FORM_DIRECTIVES} from 'angular2/common';
 import {AuiNgTabComponent} from './tab.component';
 import {LogService} from '../common/services/log.service.ts';
-import {AuiNgAutoFocus} from '../common/directives/focus-element.directive';
+import {AuiNgAutoFocusDirective} from '../common/directives/focus-element.directive';
 
 /**
  * Directive to lookup the native element of the tab headers to determine the actual width.
@@ -10,7 +10,7 @@ import {AuiNgAutoFocus} from '../common/directives/focus-element.directive';
 @Directive({
     selector: '[auiNgTabHeaderElementRef]'
 })
-export class AuiNgTabHeaderElementRef {
+export class AuiNgTabHeaderElementRefDirective {
     constructor(
         private selfElement: ElementRef
     ) {}
@@ -35,7 +35,7 @@ export class AuiNgTabHeaderElementRef {
 @Component({
     selector: 'auiNgTabs',
     providers: [LogService],
-    directives: [...FORM_DIRECTIVES, AuiNgAutoFocus, AuiNgTabHeaderElementRef],
+    directives: [...FORM_DIRECTIVES, AuiNgAutoFocusDirective, AuiNgTabHeaderElementRefDirective],
     styles: [require('./tabs.component.css')],
     template: require('./tabs.component.html')
 })
@@ -50,7 +50,7 @@ export class AuiNgTabsComponent implements AfterViewInit {
     dropdownListOrientation: string = '0';
 
     @Input() maxWidthPx;
-    @ViewChildren(AuiNgTabHeaderElementRef) tabTitles: QueryList<AuiNgTabHeaderElementRef>;
+    @ViewChildren(AuiNgTabHeaderElementRefDirective) tabTitles: QueryList<AuiNgTabHeaderElementRefDirective>;
 
     constructor(
         private logService: LogService,
