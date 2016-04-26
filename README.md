@@ -54,7 +54,7 @@ Besides the aui-ng2 dependency as part of your package.json, the following resou
 For an detailed example, please see the demo app.
 
 ### i18n
-aui-ng2 requires [ng2-translate]("https://github.com/ocombe/ng2-translate") because some components
+aui-ng2 requires [ng2-translate](https://github.com/ocombe/ng2-translate) because some components
 contain text labels which have to be translated to the users locale. If you want to use aui-ng you need to
 configure ng2-translate in your angular app. Translations for English and German are provided with the library. You can combine them with your exisiting translations or provide your own.
 
