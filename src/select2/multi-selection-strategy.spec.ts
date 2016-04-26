@@ -1,5 +1,5 @@
-import {it, beforeEach} from "angular2/testing";
-import {MultiSelectionStrategy} from "./multi-selection-strategy";
+import {it, beforeEach} from 'angular2/testing';
+import {MultiSelectionStrategy} from './multi-selection-strategy';
 
 describe('Single Selection Strategy', () => {
 

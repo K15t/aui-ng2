@@ -1,5 +1,5 @@
-import {it, beforeEach} from "angular2/testing";
-import {SingleSelectionStrategy} from "./single-selection-strategy";
+import {it, beforeEach} from 'angular2/testing';
+import {SingleSelectionStrategy} from './single-selection-strategy';
 
 describe('Single Selection Strategy', () => {
 

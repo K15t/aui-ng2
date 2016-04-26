@@ -37,34 +37,7 @@ export class AuiNgTabHeaderElementRef {
     providers: [LogService],
     directives: [...FORM_DIRECTIVES, AuiNgAutoFocus, AuiNgTabHeaderElementRef],
     styles: [require('./tabs.component.css')],
-    template: `
-        <div class="aui-tabs horizontal-tabs" [style.visibility]="tabContainerVisibility" [style.width.px]="maxWidthPx">
-            <ul class="tabs-menu aui-ng-tabs-menu" #tabsMenu>
-                <li class="menu-item" style="max-width: 300px" [ngClass]="{'active-tab': tab.active}" *ngFor="#tab of tabs;" auiNgTabHeaderElementRef>
-                    <a (click)="setActiveTab(tab)" class="aui-ng-menu-item">{{ tab.title }}</a>
-                </li>
-                <li *ngIf="tabsDropDown.length > 0" class="menu-item aui-ng-dropdown-container" [style.max-width.px]="maxWidthDropdownPx" 
-                    [ngClass]="{'active-tab': selectedDropdownTab.isActive()}">
-                    <div class="aui-buttons">
-                        <a class="aui-button aui-button-split-main aui-ng-dropdown-button" (click)="setActiveTab(selectedDropdownTab)"
-                            style="border-right: 1px !important;" [style.max-width.px]="maxWidthDropdownPx - 40" >{{ selectedDropdownTab.title }}</a>
-                        <a class="aui-button aui-button-split-more aui-ng-dropdown-button-select" (click)="showDropdownOptions()" (blur)="hideDropdownOptions()">
-                            <span class="aui-icon aui-icon-small aui-iconfont-more"></span>  
-                        </a>
-                    </div>
-                    <div class="aui-ng-dropdown-options-container" [hidden]="!showOptions" *ngIf="showOptions" [style.right]="dropdownListOrientation">
-                        <ul class="aui-ng-dropdown-options aui-list-truncate" (blur)="hideDropdownOptions()" tabindex="-1" auiNgAutoFocus>
-                            <li *ngFor="#tab of tabsDropDown" (click)="setActiveTab(tab); selectedDropdownTab = tab;" [hidden]="selectedDropdownTab == tab" class="aui-ng-dropdown-option">
-                                {{ tab.title }}
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li style="width: 10px">&nbsp;</li>
-            </ul>
-            <ng-content></ng-content>
-        </div>
-    `
+    template: require('./tabs.component.html')
 })
 export class AuiNgTabsComponent implements AfterViewInit {
 

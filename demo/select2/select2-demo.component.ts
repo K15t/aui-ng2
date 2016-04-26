@@ -34,7 +34,7 @@ export class Select2DemoComponent {
 
                 var items = [], i, j, s;
                 for (i = 1; i < 5; i++) {
-                    s = "";
+                    s = '';
                     for (j = 0; j < i; j++) {
                         s = s + query.term;
                     }
