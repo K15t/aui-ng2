@@ -10,7 +10,7 @@ import {IS_DEV_MODE} from './constants';
 import {RadioButtonGroupDemoComponent} from './radio-button-group/radio-button-group-demo.component';
 
 @Component({
-    selector: 'app',
+    selector: 'auiNgApp',
     directives: [...ROUTER_DIRECTIVES],
     styles: [`
         .aui-ng-page {

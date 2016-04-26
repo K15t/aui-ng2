@@ -7,7 +7,7 @@ import {Observer} from 'rxjs/Observer';
 import {AuiNgDialogComponent} from '../../src/dialog/dialog.component';
 
 @Component({
-    selector: 'customDialog',
+    selector: 'auiNgCustomDialog',
     directives: [...FORM_DIRECTIVES, AuiNgDialogComponent],
     template: require('./custom-dialog.component.html')
 })

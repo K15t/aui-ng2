@@ -6,7 +6,7 @@ import {CustomDialogComponent} from './custom-dialog.component';
 import {LogService} from '../../src/common/services/log.service.ts';
 
 @Component({
-    selector: 'demoDialog',
+    selector: 'auiNgDemoDialog',
     providers: [AuiNgDialogService],
     directives: [...FORM_DIRECTIVES, AuiNgCodeBlockComponent],
     template: require('./dialog-demo.component.html')
