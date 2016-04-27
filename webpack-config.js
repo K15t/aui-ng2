@@ -34,7 +34,8 @@ if (process.env.testMode === 'true') {
 
     module.exports = master({
         metadata: {
-            contextPath: process.env.npm_config_releasedemo === 'true' ? '/aui-ng2' : ''
+            contextPath: process.env.npm_config_releasedemo === 'true' ? '/aui-ng2' : '',
+            appPrefix: 'auiNg'
         },
         entry: {
             main: './demo/main.ts',
