@@ -4,7 +4,7 @@ import {AuiNgMessageDialogComponent} from './message-dialog.component';
 import {AuiNgDialog} from './dialog';
 import {AuiNgDialogService} from './dialog.service';
 import {AuiNgDialogOptions} from './dialog-options';
-import {AuiNgMessageType, AuiNgMessageDialogOptions} from './message-dialog.component';
+import {AUI_NG_MESSAGE_TYPE, AuiNgMessageDialogOptions} from './message-dialog.component';
 
 export {
     AuiNgDialog,
@@ -12,7 +12,7 @@ export {
     AuiNgMessageDialogComponent,
     AuiNgDialogService,
     AuiNgDialogOptions,
-    AuiNgMessageType,
+    AUI_NG_MESSAGE_TYPE,
     AuiNgMessageDialogOptions
 };
 

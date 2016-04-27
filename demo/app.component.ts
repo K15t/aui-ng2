@@ -7,10 +7,10 @@ import {TooltipDemoComponent} from './tooltip/tooltip-demo.component';
 import {Select2DemoComponent} from './select2/select2-demo.component';
 import {LogService, LogLevel} from '../src/common/services/log.service.ts';
 import {IS_DEV_MODE} from './constants';
-import {RadioButtonGroupDemoComponent} from "./radio-button-group/radio-button-group-demo.component";
+import {RadioButtonGroupDemoComponent} from './radio-button-group/radio-button-group-demo.component';
 
 @Component({
-    selector: 'app',
+    selector: 'auiNgDemoApp',
     directives: [...ROUTER_DIRECTIVES],
     styles: [`
         .aui-ng-page {
@@ -70,7 +70,7 @@ import {RadioButtonGroupDemoComponent} from "./radio-button-group/radio-button-g
     {path: '/radio-button-group', name: 'RadioButtonGroupDemoComponent', component: RadioButtonGroupDemoComponent},
     {path: '/', redirectTo: ['DialogDemoComponent']}
 ])
-export class App {
+export class AuiNgDemoAppComponent {
 
     constructor(
         private logService: LogService,

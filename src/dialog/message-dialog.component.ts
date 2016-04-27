@@ -3,7 +3,7 @@ import {AuiNgDialogComponent} from './dialog.component';
 import {Observable} from 'rxjs/Rx';
 import {Observer} from 'rxjs/Observer';
 import {AuiNgDialog} from './dialog';
-import {TranslatePipe} from "ng2-translate/ng2-translate";
+import {TranslatePipe} from 'ng2-translate/ng2-translate';
 
 @Component({
     selector: 'auiNgMessageDialog',
@@ -56,7 +56,7 @@ export interface AuiNgMessageDialogOptions {
     type: string;
 }
 
-export const AuiNgMessageType = {
+export const AUI_NG_MESSAGE_TYPE = {
     ERROR: 'error',
     WARN: 'warning',
     SUCCESS: 'success',

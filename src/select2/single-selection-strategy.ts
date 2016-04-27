@@ -1,10 +1,11 @@
-import {SelectionStrategy} from "./selection-strategy";
+import {SelectionStrategy} from './selection-strategy';
 
 export class SingleSelectionStrategy implements SelectionStrategy {
-    private idGetter: (any) => string;
-    private labelGetter: (any) => string;
 
-    selection: any;
+    public selection: any;
+
+    private idGetter: (item: any) => string;
+    private labelGetter: (item: any) => string;
 
     constructor(idGetter, lableGetter, selection) {
         this.idGetter = idGetter;

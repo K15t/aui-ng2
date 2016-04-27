@@ -41,10 +41,10 @@ export class AuiNgRadioButtonGroupComponent {
     }
 
     private getLabel(item: any): string {
-        if (typeof this.labelProperty === "function") {
+        if (typeof this.labelProperty === 'function') {
             return this.labelProperty(item);
         }
-        return item&& item[this.labelProperty];
+        return item && item[this.labelProperty];
     }
 
     private getId(item:any):string {

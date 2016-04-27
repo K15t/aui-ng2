@@ -12,7 +12,7 @@ interface ColorItem {
 }
 
 @Component({
-    selector: 'demoRadioButtonGroup',
+    selector: 'auiNgDemoRadioButtonGroup',
     directives: [...FORM_DIRECTIVES, AuiNgCodeBlockComponent, ...AUI_NG2_RADIO_BUTTON_GROUP_DIRECTIVES],
     template: require('./radio-button-group-demo.component.html')
 })

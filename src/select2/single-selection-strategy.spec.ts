@@ -1,12 +1,11 @@
-import {it, beforeEach} from "angular2/testing";
-import {SingleSelectionStrategy} from "./single-selection-strategy";
+import {it, beforeEach} from 'angular2/testing';
+import {SingleSelectionStrategy} from './single-selection-strategy';
 
 describe('Single Selection Strategy', () => {
 
     function labelGetter(obj) {
         return obj.label;
     }
-
 
     function idGetter(obj) {
         return obj.id;
@@ -19,7 +18,6 @@ describe('Single Selection Strategy', () => {
     beforeEach(() => {
         items = [{id: 1,  label: 'foo', color: 'red'}, {id: 2, label: 'bar'}];
         selection = items[0];
-
         selectionStrategy = new SingleSelectionStrategy(idGetter, labelGetter, selection);
     });
 

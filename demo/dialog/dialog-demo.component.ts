@@ -1,12 +1,12 @@
 import {Component, ElementRef} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
-import {AuiNgDialogService, AuiNgMessageType} from '../../src/dialog/index';
+import {AuiNgDialogService, AUI_NG_MESSAGE_TYPE} from '../../src/dialog/index';
 import {AuiNgCodeBlockComponent} from '../common/code-block.component';
 import {CustomDialogComponent} from './custom-dialog.component';
 import {LogService} from '../../src/common/services/log.service.ts';
 
 @Component({
-    selector: 'demoDialog',
+    selector: 'auiNgDemoDialog',
     providers: [AuiNgDialogService],
     directives: [...FORM_DIRECTIVES, AuiNgCodeBlockComponent],
     template: require('./dialog-demo.component.html')
@@ -19,16 +19,16 @@ export class DialogDemoComponent {
     ) {}
 
     showDialog(type: string, title: string, msg: string) {
-        if (AuiNgMessageType[type] === AuiNgMessageType.ERROR) {
-            this.logService.logError("Error ... ");
-        } else if (AuiNgMessageType[type] === AuiNgMessageType.INFO) {
-            this.logService.logInfo("Info ... ");
-        } else if (AuiNgMessageType[type] === AuiNgMessageType.WARN) {
-            this.logService.logWarn("Warning ... ");
+        if (AUI_NG_MESSAGE_TYPE[type] === AUI_NG_MESSAGE_TYPE.ERROR) {
+            this.logService.logError('Error ... ');
+        } else if (AUI_NG_MESSAGE_TYPE[type] === AUI_NG_MESSAGE_TYPE.INFO) {
+            this.logService.logInfo('Info ... ');
+        } else if (AUI_NG_MESSAGE_TYPE[type] === AUI_NG_MESSAGE_TYPE.WARN) {
+            this.logService.logWarn('Warning ... ');
         } else {
-            this.logService.logError("General ... ");
+            this.logService.logError('General ... ');
         }
-        this.dialogService.openMessageDialog(title, msg, AuiNgMessageType[type], this.element);
+        this.dialogService.openMessageDialog(title, msg, AUI_NG_MESSAGE_TYPE[type], this.element);
     }
 
     showCustomDialog() {

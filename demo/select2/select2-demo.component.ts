@@ -4,7 +4,7 @@ import {AUI_NG2_SELECT2_DIRECTIVES} from '../../src/select2/index';
 import {AuiNgCodeBlockComponent} from '../common/code-block.component';
 
 @Component({
-    selector: 'demoSelect2',
+    selector: 'auiNgDemoSelect2',
     directives: [...FORM_DIRECTIVES, AuiNgCodeBlockComponent, ...AUI_NG2_SELECT2_DIRECTIVES],
     template: require('./select2-demo.component.html')
 })
@@ -34,7 +34,7 @@ export class Select2DemoComponent {
 
                 var items = [], i, j, s;
                 for (i = 1; i < 5; i++) {
-                    s = "";
+                    s = '';
                     for (j = 0; j < i; j++) {
                         s = s + query.term;
                     }

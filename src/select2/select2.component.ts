@@ -1,6 +1,6 @@
 import {Component, Input, Output, OnChanges, AfterViewInit, ElementRef, SimpleChange, EventEmitter} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
-import {SelectionStrategy} from "./selection-strategy";
+import {SelectionStrategy} from './selection-strategy';
 import {MultiSelectionStrategy} from './multi-selection-strategy';
 import {SingleSelectionStrategy} from './single-selection-strategy';
 import {AJS} from '../common/libs/aui';
@@ -136,7 +136,7 @@ export class AuiNgSelect2Component implements OnChanges, AfterViewInit {
     }
 
     getLabel(item: any): string {
-        if (typeof this.labelProperty === "function") {
+        if (typeof this.labelProperty === 'function') {
             return this.labelProperty(item);
         }
         return item[this.labelProperty];

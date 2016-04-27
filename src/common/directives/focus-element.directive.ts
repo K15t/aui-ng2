@@ -6,7 +6,7 @@ import {Component, AfterViewInit, Directive, ElementRef} from 'angular2/core';
 @Directive({
     selector: '[auiNgAutoFocus]'
 })
-export class AuiNgAutoFocus implements AfterViewInit {
+export class AuiNgAutoFocusDirective implements AfterViewInit {
 
     constructor(
         private elementRef: ElementRef

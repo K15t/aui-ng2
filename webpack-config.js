@@ -26,13 +26,16 @@ if (process.env.testMode === 'true') {
 
     if (process.env.release === 'true') {
         targetDir = './dist';
-    } else if (process.env.npm_config_releaseDemo === 'true') {
+    } else if (process.env.npm_config_releasedemo === 'true') {
         targetDir = './public';
     } else {
         targetDir = './target';
     }
 
     module.exports = master({
+        metadata: {
+            contextPath: process.env.npm_config_releasedemo === 'true' ? '/aui-ng2' : ''
+        },
         entry: {
             main: './demo/main.ts',
             vendor: './demo/vendor.ts'
