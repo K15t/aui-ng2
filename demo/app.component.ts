@@ -10,7 +10,7 @@ import {IS_DEV_MODE} from './constants';
 import {RadioButtonGroupDemoComponent} from './radio-button-group/radio-button-group-demo.component';
 
 @Component({
-    selector: 'auiNgApp',
+    selector: 'auiNgDemoApp',
     directives: [...ROUTER_DIRECTIVES],
     styles: [`
         .aui-ng-page {
@@ -70,7 +70,7 @@ import {RadioButtonGroupDemoComponent} from './radio-button-group/radio-button-g
     {path: '/radio-button-group', name: 'RadioButtonGroupDemoComponent', component: RadioButtonGroupDemoComponent},
     {path: '/', redirectTo: ['DialogDemoComponent']}
 ])
-export class AppComponent {
+export class AuiNgDemoAppComponent {
 
     constructor(
         private logService: LogService,
