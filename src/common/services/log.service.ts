@@ -17,31 +17,31 @@ export class LogService {
     }
 
     log(msg: any): void {
-        if (this.logLevel >= LogLevel.INFO || this.logLevel === LogLevel.DEBUG) {
+        if (this.logLevel <= LogLevel.INFO || this.logLevel === LogLevel.DEBUG) {
             console.log(msg);
         }
     }
 
     logError(msg: any): void {
-        if (this.logLevel >= LogLevel.ERROR || this.logLevel === LogLevel.DEBUG) {
+        if (this.logLevel <= LogLevel.ERROR || this.logLevel === LogLevel.DEBUG) {
             console.error(msg);
         }
     }
 
     logInfo(msg: any): void {
-        if (this.logLevel >= LogLevel.INFO || this.logLevel === LogLevel.DEBUG) {
+        if (this.logLevel <= LogLevel.INFO || this.logLevel === LogLevel.DEBUG) {
             console.info(msg);
         }
     }
 
     logDebug(msg: any): void {
-        if (this.logLevel >= LogLevel.DEBUG) {
+        if (this.logLevel <= LogLevel.DEBUG) {
             console.debug(msg);
         }
     }
 
     logWarn(msg: any): void {
-        if (this.logLevel >= LogLevel.WARN || this.logLevel === LogLevel.DEBUG) {
+        if (this.logLevel <= LogLevel.WARN || this.logLevel === LogLevel.DEBUG) {
             console.warn(msg);
         }
     }
