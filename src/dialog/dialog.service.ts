@@ -1,4 +1,4 @@
-import {Injectable, DynamicComponentLoader, ComponentRef, ElementRef} from 'angular2/core';
+import {Injectable, DynamicComponentLoader, ComponentRef, ViewContainerRef} from 'angular2/core';
 import {Observable} from 'rxjs/Rx';
 import {AuiNgMessageDialogComponent} from './message-dialog.component';
 import {ConcreteType} from 'angular2/src/facade/lang';
@@ -14,13 +14,13 @@ export class AuiNgDialogService {
     closeDialog() {
     }
 
-    openDialog(componentType: ConcreteType, parentElement: ElementRef, opts?: any): Observable<any> {
+    openDialog(componentType: ConcreteType, viewContainerRef: ViewContainerRef, opts?: any): Observable<any> {
+        let observable = Observable.fromPromise(this.componentLoader.loadNextToLocation(componentType, viewContainerRef));
 
-        let observable = Observable.fromPromise(this.componentLoader.loadNextToLocation(componentType, parentElement));
         observable.subscribe((containerRef: ComponentRef) => {
                 if (containerRef.instance.hidden === undefined || !!containerRef.instance.hidden) {
                     containerRef.instance.init(opts).subscribe(() => {
-                        containerRef.dispose();
+                        containerRef.destroy();
                     });
                     containerRef.instance.open();
                 }
@@ -31,8 +31,8 @@ export class AuiNgDialogService {
         return observable;
     }
 
-    openMessageDialog(title: string, msg: string, type: string, parentElement: ElementRef): Observable<any> {
-        return this.openDialog(AuiNgMessageDialogComponent, parentElement, {
+    openMessageDialog(title: string, msg: string, type: string, viewContainerRef: ViewContainerRef): Observable<any> {
+        return this.openDialog(AuiNgMessageDialogComponent, viewContainerRef, {
             title: title,
             message: msg,
             type: type

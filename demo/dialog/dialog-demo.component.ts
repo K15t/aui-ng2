@@ -1,4 +1,4 @@
-import {Component, ElementRef} from 'angular2/core';
+import {Component, ViewContainerRef} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 import {AuiNgDialogService, AUI_NG_MESSAGE_TYPE} from '../../src/dialog/index';
 import {AuiNgCodeBlockComponent} from '../common/code-block.component';
@@ -13,7 +13,7 @@ import {LogService} from '../../src/common/services/log.service.ts';
 })
 export class DialogDemoComponent {
     constructor(
-        private element: ElementRef,
+        private viewContainerRef: ViewContainerRef,
         private dialogService: AuiNgDialogService,
         private logService: LogService
     ) {}
@@ -28,11 +28,11 @@ export class DialogDemoComponent {
         } else {
             this.logService.logError('General ... ');
         }
-        this.dialogService.openMessageDialog(title, msg, AUI_NG_MESSAGE_TYPE[type], this.element);
+        this.dialogService.openMessageDialog(title, msg, AUI_NG_MESSAGE_TYPE[type], this.viewContainerRef);
     }
 
     showCustomDialog() {
-        this.dialogService.openDialog(CustomDialogComponent, this.element);
+        this.dialogService.openDialog(CustomDialogComponent, this.viewContainerRef);
     }
 
 }

@@ -1,6 +1,6 @@
 <div class="aui-tabs horizontal-tabs" [style.visibility]="tabContainerVisibility" [style.width.px]="maxWidthPx">
   <ul class="tabs-menu aui-ng-tabs-menu" #tabsMenu>
-    <li class="menu-item" style="max-width: 300px" [ngClass]="{'active-tab': tab.active}" *ngFor="#tab of tabs;" auiNgTabHeaderElementRef>
+    <li class="menu-item" style="max-width: 300px" [ngClass]="{'active-tab': tab.active}" *ngFor="let tab of tabs;" auiNgTabHeaderElementRef>
       <a (click)="setActiveTab(tab)" class="aui-ng-menu-item">{{ tab.title }}</a>
     </li>
     <li *ngIf="tabsDropDown.length > 0" class="menu-item aui-ng-dropdown-container" [style.max-width.px]="maxWidthDropdownPx"
@@ -14,7 +14,7 @@
       </div>
       <div class="aui-ng-dropdown-options-container" [hidden]="!showOptions" *ngIf="showOptions" [style.right]="dropdownListOrientation">
         <ul class="aui-ng-dropdown-options aui-list-truncate" (blur)="hideDropdownOptions()" tabindex="-1" auiNgAutoFocus>
-          <li *ngFor="#tab of tabsDropDown" (click)="setActiveTab(tab); selectedDropdownTab = tab;" [hidden]="selectedDropdownTab == tab" class="aui-ng-dropdown-option">
+          <li *ngFor="let tab of tabsDropDown" (click)="setActiveTab(tab); selectedDropdownTab = tab;" [hidden]="selectedDropdownTab == tab" class="aui-ng-dropdown-option">
             {{ tab.title }}
           </li>
         </ul>
