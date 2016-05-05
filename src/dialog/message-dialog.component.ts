@@ -15,7 +15,7 @@ import {TranslatePipe} from 'ng2-translate/ng2-translate';
                 <div class="aui-message aui-message-{{type}}">{{msg}}</div>
             </auiNgDialogContent>
             <auiNgDialogFooter>
-                <button class="aui-button" (click)="onDialogClosed($event)">{{'auing.close'| translate}}</button>
+                <button class="aui-button" (click)="onDialogClosed($event)">{{'auing.close' | translate}}</button>
             </auiNgDialogFooter>
         </auiNgDialog>
     `,

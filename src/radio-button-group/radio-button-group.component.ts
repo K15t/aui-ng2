@@ -14,7 +14,7 @@ import {FORM_DIRECTIVES} from 'angular2/common';
       <fieldset class="group aui-ng2-orientation-{{orientation}}">
         <legend><span>{{title}}</span></legend>
         <div class="radio"
-             *ngFor="#item of items">
+             *ngFor="let item of items">
             <input class="radio" type="radio" name="{{name}}"
                    id="{{name}}-{{getId(item)}}"
                    (change)="onChange(item)"

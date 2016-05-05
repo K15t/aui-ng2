@@ -47,8 +47,8 @@ import {WizardStep} from './wizard-step';
 export class AuiNgWizardComponent implements OnInit {
 
     @Input() navigation: boolean = true;
-    @Output() next: EventEmitter<WizardStep> = new EventEmitter(false);
-    @Output() previous: EventEmitter<WizardStep> = new EventEmitter(false);
+    @Output() next: EventEmitter<WizardStep> = new EventEmitter<WizardStep>(false);
+    @Output() previous: EventEmitter<WizardStep> = new EventEmitter<WizardStep>(false);
 
     private steps: Array<WizardStep> = [];
     private indexCurrentStep: number = 0;

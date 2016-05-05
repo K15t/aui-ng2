@@ -1,6 +1,7 @@
 import {provide, enableProdMode} from 'angular2/core';
 import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
-import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
+import {ROUTER_PROVIDERS} from 'angular2/router';
+import {LocationStrategy, HashLocationStrategy} from 'angular2/platform/common';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {TRANSLATE_PROVIDERS} from 'ng2-translate/ng2-translate';
 import {AuiNgDemoAppComponent} from './app.component';

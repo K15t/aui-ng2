@@ -32,14 +32,14 @@
     "ADG"
   ],
   "dependencies": {
-    "angular2": "2.0.0-beta.14",
-    "codemirror": "5.13.4",
+    "angular2": "2.0.0-beta.17",
+    "codemirror": "5.14.2",
     "es6-shim": "0.35.0",
-    "jquery": "2.2.1",
+    "jquery": "2.2.3",
     "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.2",
-    "zone.js": "0.6.10",
-    "ng2-translate": "1.11.0"
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "0.6.12",
+    "ng2-translate": "2.0.0"
   },
   "devDependencies": {
     "k15t-webpack-build": "0.0.x",

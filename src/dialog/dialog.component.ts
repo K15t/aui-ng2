@@ -18,7 +18,7 @@ export class AuiNgDialogComponent {
     @Input() showXIcon: string = 'true';
     @Input() showBlanket: string = 'true';
 
-    @Output() dialogClosed: EventEmitter<Event> = new EventEmitter(false);
+    @Output() dialogClosed: EventEmitter<Event> = new EventEmitter<Event>(false);
 
     onDialogClose($event: Event) {
         $event.preventDefault();
