@@ -38,8 +38,8 @@ import {WizardStep} from './wizard-step';
         <div (onResetTabs)="reset($event)">
             <ng-content></ng-content>
             <div *ngIf="navigation == 'true'">
-                <button (click)="previous()" *ngIf="indexCurrentStep > 0" class="aui-button aui-ng-nav-item">Previous</button>
-                <button (click)="next()" *ngIf="indexCurrentStep <= steps.length -1" class="aui-button aui-ng-nav-item">Next</button>
+                <button (click)="previousStep()" *ngIf="indexCurrentStep > 0" class="aui-button aui-ng-nav-item">Previous</button>
+                <button (click)="nextStep()" *ngIf="indexCurrentStep <= steps.length -1" class="aui-button aui-ng-nav-item">Next</button>
             </div>
         </div>
     `
@@ -75,7 +75,7 @@ export class AuiNgWizardComponent implements OnInit {
         return this.indexCurrentStep;
     }
 
-    next() {
+    nextStep() {
         if (this.indexCurrentStep < this.steps.length - 1 && this.steps[this.indexCurrentStep].validate()) {
             let data = this.steps[this.indexCurrentStep].getData();
             this.steps[this.indexCurrentStep].hide();
@@ -86,7 +86,7 @@ export class AuiNgWizardComponent implements OnInit {
         }
     }
 
-    previous() {
+    previousStep() {
         if (this.indexCurrentStep > 0 && this.steps.length - 1 && this.steps[this.indexCurrentStep].validate()) {
             let data = this.steps[this.indexCurrentStep].getData();
             this.steps[this.indexCurrentStep].hide();
