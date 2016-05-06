@@ -17,7 +17,7 @@
     "create:docs": "typedoc --options k15t-webpack-build/build/typedoc.json  src/**/*.ts --out  ./target/doc",
     "deploy": "npm run --releasedemo=true build && git add -A public && git commit -am 'Publish new release to gh-pages' && git subtree push --prefix=public origin gh-pages",
     "prepare:release": "rimraf dist target && release=true npm run build:prod && rimraf dist/demo && rimraf dist/*.js",
-    "release": "npm run prepare:release && npm publish && npm run delpoy"
+    "release": "npm run prepare:release && npm publish && npm run deploy"
   },
   "main": "dist",
   "files": [
