@@ -8,11 +8,11 @@ describe('Select2 Component', () => {
         {id: 2, name: 'bar'},
         {id: 3, name: 'baz'}
     ];
-    let select2 : ComponentFixture;
+    let select2 : ComponentFixture<AuiNgSelect2Component>;
 
     beforeEach(injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         return tcb.createAsync(AuiNgSelect2Component)
-            .then((componentFixture: ComponentFixture) => {
+            .then((componentFixture: ComponentFixture<AuiNgSelect2Component>) => {
                 select2 = componentFixture;
                 select2.componentInstance.items = items;
                 select2.componentInstance.idProperty = 'id';

@@ -8,13 +8,13 @@ describe('RadioButtonGroup Component', () => {
         {id: 2, name: 'bar'},
         {id: 3, name: 'baz'}
     ];
-    let radioButtonGroup : ComponentFixture;
+    let radioButtonGroup : ComponentFixture<AuiNgRadioButtonGroupComponent>;
 
     let changes = [];
 
     beforeEach(injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         return tcb.createAsync(AuiNgRadioButtonGroupComponent)
-            .then((componentFixture: ComponentFixture) => {
+            .then((componentFixture: ComponentFixture<AuiNgRadioButtonGroupComponent>) => {
                 radioButtonGroup = componentFixture;
                 radioButtonGroup.componentInstance.items = items;
                 radioButtonGroup.componentInstance.selection = items[0];
