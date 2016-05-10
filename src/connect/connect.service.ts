@@ -1,4 +1,4 @@
-import {Injectable, Inject, Optional} from 'angular2/core';
+import {Injectable, Inject, Optional} from '@angular/core';
 import {AuiNgRequestProperties} from './request-parameters';
 import {BASE_URL} from '../common/constants';
 

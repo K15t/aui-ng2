@@ -1,4 +1,4 @@
-import {it, beforeEach} from 'angular2/testing';
+import {it, beforeEach} from '@angular/core/testing';
 import {MultiSelectionStrategy} from './multi-selection-strategy';
 
 describe('Single Selection Strategy', () => {

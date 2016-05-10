@@ -1,5 +1,5 @@
-import {Component, Inject} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component, Inject} from '@angular/core';
+import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 import {DialogDemoComponent} from './dialog/dialog-demo.component';
 import {TabsDemoComponent} from './tabs/tabs-demo.component';

@@ -1,4 +1,5 @@
-import {it, injectAsync, TestComponentBuilder, beforeEach, ComponentFixture} from 'angular2/testing';
+import {TestComponentBuilder, ComponentFixture} from '@angular/compiler/testing'
+import {it, injectAsync, beforeEach} from '@angular/core/testing';
 import {AuiNgRadioButtonGroupComponent} from "./radio-button-group.component";
 
 describe('RadioButtonGroup Component', () => {

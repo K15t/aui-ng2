@@ -1,4 +1,4 @@
-import {Component, AfterViewInit, Directive, ElementRef} from 'angular2/core';
+import {AfterViewInit, Directive, ElementRef} from '@angular/core';
 
 /**
  * Directive to move the focus to element where the directive it defined as attribute.

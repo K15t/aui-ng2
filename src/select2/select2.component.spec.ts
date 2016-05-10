@@ -1,4 +1,5 @@
-import {it, injectAsync, TestComponentBuilder, beforeEach, ComponentFixture} from 'angular2/testing';
+import {TestComponentBuilder, ComponentFixture} from '@angular/compiler/testing'
+import {it, injectAsync, beforeEach} from '@angular/core/testing';
 import {AuiNgSelect2Component} from './select2.component';
 
 describe('Select2 Component', () => {

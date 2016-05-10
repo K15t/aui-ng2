@@ -1,5 +1,5 @@
-import {Component} from 'angular2/core';
-import {FORM_DIRECTIVES} from 'angular2/common';
+import {Component} from '@angular/core';
+import {FORM_DIRECTIVES} from '@angular/common';
 import {AuiNgDialog} from '../../src/dialog/dialog';
 import {AuiNgMessageDialogOptions} from '../../src/dialog/message-dialog.component';
 import {Observable} from 'rxjs/Rx';

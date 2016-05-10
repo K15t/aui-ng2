@@ -1,5 +1,5 @@
-import {Component, Input, Output, EventEmitter, HostListener} from 'angular2/core';
-import {FORM_DIRECTIVES} from 'angular2/common';
+import {Component, Input, Output, EventEmitter, HostListener} from '@angular/core';
+import {FORM_DIRECTIVES} from '@angular/common';
 import {AuiNgDialogUpdateEvent} from './dialog-update.event';
 
 @Component({

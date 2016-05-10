@@ -1,5 +1,5 @@
-import {Component, Input, ElementRef} from 'angular2/core';
-import {FORM_DIRECTIVES} from 'angular2/common';
+import {Component, Input} from '@angular/core';
+import {FORM_DIRECTIVES} from '@angular/common';
 import {AuiNgTabsComponent} from './tabs.component';
 
 /**

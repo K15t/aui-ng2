@@ -1,5 +1,5 @@
-import {Component, Input, Output, OnChanges, AfterViewInit, ElementRef, SimpleChange, EventEmitter} from 'angular2/core';
-import {FORM_DIRECTIVES} from 'angular2/common';
+import {Component, Input, Output, OnChanges, AfterViewInit, ElementRef, SimpleChange, EventEmitter} from '@angular/core';
+import {FORM_DIRECTIVES} from '@angular/common';
 import {SelectionStrategy} from './selection-strategy';
 import {MultiSelectionStrategy} from './multi-selection-strategy';
 import {SingleSelectionStrategy} from './single-selection-strategy';

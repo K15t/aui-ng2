@@ -1,3 +1,3 @@
-import {OpaqueToken} from 'angular2/core';
+import {OpaqueToken} from '@angular/core';
 
 export const IS_DEV_MODE: OpaqueToken = new OpaqueToken('isDevMode');
