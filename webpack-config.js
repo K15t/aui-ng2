@@ -15,8 +15,7 @@ if (process.env.testMode === 'true') {
         },
         module: {
             noParse: [
-                utils.getAbsolutePath('zone.js/dist'),
-                utils.getAbsolutePath('angular2/bundles')
+                utils.getAbsolutePath('zone.js/dist')
             ]
         }
     });

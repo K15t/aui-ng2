@@ -1,5 +1,5 @@
 import {AJS} from '../common/libs/aui';
-import {AfterViewInit, Directive, ElementRef} from 'angular2/core';
+import {AfterViewInit, Directive, ElementRef} from '@angular/core';
 
 @Directive({
     selector: '[auiNgTooltip]'

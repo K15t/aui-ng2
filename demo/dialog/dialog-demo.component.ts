@@ -1,5 +1,5 @@
-import {Component, ViewContainerRef} from 'angular2/core';
-import {FORM_DIRECTIVES} from 'angular2/common';
+import {Component, ViewContainerRef} from '@angular/core';
+import {FORM_DIRECTIVES} from '@angular/common';
 import {AuiNgDialogService, AUI_NG_MESSAGE_TYPE} from '../../src/dialog/index';
 import {AuiNgCodeBlockComponent} from '../common/code-block.component';
 import {CustomDialogComponent} from './custom-dialog.component';

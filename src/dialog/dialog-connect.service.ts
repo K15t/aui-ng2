@@ -1,4 +1,4 @@
-import {Injectable, DynamicComponentLoader} from 'angular2/core';
+import {Injectable, DynamicComponentLoader} from '@angular/core';
 import {AuiNgConnectService} from '../connect/connect.service';
 import {AuiNgDialogOptions} from './dialog-options';
 import {AuiNgDialogService} from './dialog.service';

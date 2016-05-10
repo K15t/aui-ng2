@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {AuiNgDialogComponent} from './dialog.component';
 import {Observable} from 'rxjs/Rx';
 import {Observer} from 'rxjs/Observer';

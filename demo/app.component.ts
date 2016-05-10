@@ -1,5 +1,5 @@
-import {Component, Inject} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component, Inject} from '@angular/core';
+import {Routes, ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 import {DialogDemoComponent} from './dialog/dialog-demo.component';
 import {TabsDemoComponent} from './tabs/tabs-demo.component';
@@ -8,6 +8,7 @@ import {Select2DemoComponent} from './select2/select2-demo.component';
 import {LogService, LogLevel} from '../src/common/services/log.service.ts';
 import {IS_DEV_MODE} from './constants';
 import {RadioButtonGroupDemoComponent} from './radio-button-group/radio-button-group-demo.component';
+
 
 @Component({
     selector: 'auiNgDemoApp',
@@ -38,19 +39,19 @@ import {RadioButtonGroupDemoComponent} from './radio-button-group/radio-button-g
                 <td class="aui-ng-nav" width="15%">
                     <ul>
                         <li router-active>
-                            <a [routerLink]=" ['DialogDemoComponent'] ">Dialog</a>
+                            <a [routerLink]="['/dialog'] ">Dialog</a>
                         </li>
                         <li router-active>
-                            <a [routerLink]=" ['TabsDemoComponent'] ">Tabs</a>
+                            <a [routerLink]=" ['/tabs'] ">Tabs</a>
                         </li>
                         <li router-active>
-                            <a [routerLink]=" ['TooltipDemoComponent']">Tooltips</a>
+                            <a [routerLink]=" ['/tooltip']">Tooltips</a>
                         </li>
                         <li router-active>
-                            <a [routerLink]=" ['Select2DemoComponent']">Select2</a>
+                            <a [routerLink]=" ['/select2']">Select2</a>
                         </li>
                         <li router-active>
-                            <a [routerLink]=" ['RadioButtonGroupDemoComponent']">Radio button group</a>
+                            <a [routerLink]=" ['/radio-button-group']">Radio button group</a>
                         </li>
                      </ul>
                 </td>
@@ -62,17 +63,18 @@ import {RadioButtonGroupDemoComponent} from './radio-button-group/radio-button-g
 
   `
 })
-@RouteConfig([
-    {path: '/dialog', name: 'DialogDemoComponent', component: DialogDemoComponent},
-    {path: '/tabs', name: 'TabsDemoComponent', component: TabsDemoComponent},
-    {path: '/tooltip', name: 'TooltipDemoComponent', component: TooltipDemoComponent},
-    {path: '/select2', name: 'Select2DemoComponent', component: Select2DemoComponent},
-    {path: '/radio-button-group', name: 'RadioButtonGroupDemoComponent', component: RadioButtonGroupDemoComponent},
-    {path: '/', redirectTo: ['DialogDemoComponent']}
+@Routes([
+    {path: '/', component: DialogDemoComponent}, // remove this entry as soon as useAsDefault is implemented
+    {path: '/dialog', component: DialogDemoComponent}, // add {useAsDefault: true}
+    {path: '/tabs', component: TabsDemoComponent},
+    {path: '/tooltip', component: TooltipDemoComponent},
+    {path: '/select2', component: Select2DemoComponent},
+    {path: '/radio-button-group', component: RadioButtonGroupDemoComponent},
 ])
 export class AuiNgDemoAppComponent {
 
     constructor(
+        private router: Router,
         private logService: LogService,
         @Inject(IS_DEV_MODE) private isDevMode: string,
         translate : TranslateService
@@ -85,5 +87,4 @@ export class AuiNgDemoAppComponent {
         translate.setTranslation('de', Object.assign({}, require('../src/assets/i18n/de.json'), require('./assets/i18n/de.json')));
         translate.use('en');
     }
-
 }

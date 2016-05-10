@@ -1,5 +1,5 @@
-import {Component, Directive, Input, AfterViewInit, ElementRef, ViewChildren, QueryList} from 'angular2/core';
-import {FORM_DIRECTIVES} from 'angular2/common';
+import {Component, Directive, Input, AfterViewInit, ElementRef, ViewChildren, QueryList} from '@angular/core';
+import {FORM_DIRECTIVES} from '@angular/common';
 import {AuiNgTabComponent} from './tab.component';
 import {LogService} from '../common/services/log.service.ts';
 import {AuiNgAutoFocusDirective} from '../common/directives/focus-element.directive';

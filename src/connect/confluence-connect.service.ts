@@ -1,4 +1,4 @@
-import {Injectable, Inject} from 'angular2/core';
+import {Injectable, Inject} from '@angular/core';
 import {Observer} from 'rxjs/Rx';
 import {AuiNgConnectService} from './connect.service';
 import {AuiNgConfluenceService} from '../common/services/confluence-service';

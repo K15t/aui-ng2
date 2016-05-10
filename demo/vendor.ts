@@ -1,6 +1,12 @@
-import 'angular2/bundles/angular2-polyfills';
-import 'angular2/platform/browser';
-import 'angular2/platform/common_dom';
-import 'angular2/router';
-import 'angular2/http';
-import 'angular2/core';
+require('reflect-metadata');
+require('zone.js');
+
+import '@angular/common';
+import '@angular/platform-browser';
+import '@angular/platform-browser-dynamic';
+import '@angular/router';
+import '@angular/http';
+import '@angular/core';
+
+import 'ng2-translate';
+

@@ -1,5 +1,5 @@
-import {Component} from 'angular2/core';
-import {FORM_DIRECTIVES} from 'angular2/common';
+import {Component} from '@angular/core';
+import {FORM_DIRECTIVES} from '@angular/common';
 import {AUI_NG2_RADIO_BUTTON_GROUP_DIRECTIVES} from '../../src/radio-button-group/index';
 import {AuiNgCodeBlockComponent} from '../common/code-block.component';
 

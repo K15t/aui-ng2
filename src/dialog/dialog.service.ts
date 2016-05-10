@@ -1,7 +1,6 @@
-import {Injectable, DynamicComponentLoader, ComponentRef, ViewContainerRef} from 'angular2/core';
+import {Injectable, DynamicComponentLoader, ComponentRef, ViewContainerRef} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
 import {AuiNgMessageDialogComponent} from './message-dialog.component';
-import {ConcreteType} from 'angular2/src/facade/lang';
 import {LogService} from '../common/services/log.service.ts';
 
 @Injectable()
@@ -14,10 +13,10 @@ export class AuiNgDialogService {
     closeDialog() {
     }
 
-    openDialog(componentType: ConcreteType, viewContainerRef: ViewContainerRef, opts?: any): Observable<any> {
+    openDialog(componentType, viewContainerRef: ViewContainerRef, opts?: any): Observable<any> {
         let observable = Observable.fromPromise(this.componentLoader.loadNextToLocation(componentType, viewContainerRef));
 
-        observable.subscribe((containerRef: ComponentRef) => {
+        observable.subscribe((containerRef: ComponentRef<AuiNgMessageDialogComponent>) => {
                 if (containerRef.instance.hidden === undefined || !!containerRef.instance.hidden) {
                     containerRef.instance.init(opts).subscribe(() => {
                         containerRef.destroy();
