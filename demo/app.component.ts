@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {Routes, ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 import {DialogDemoComponent} from './dialog/dialog-demo.component';
@@ -64,13 +64,14 @@ import {RadioButtonGroupDemoComponent} from './radio-button-group/radio-button-g
   `
 })
 @Routes([
-    {path: '/dialog', component: DialogDemoComponent /* useAsDefault: true // not yet implemented */},
+    {path: '/', component: DialogDemoComponent}, // remove this entry as soon as useAsDefault is implemented
+    {path: '/dialog', component: DialogDemoComponent}, // add {useAsDefault: true}
     {path: '/tabs', component: TabsDemoComponent},
     {path: '/tooltip', component: TooltipDemoComponent},
     {path: '/select2', component: Select2DemoComponent},
     {path: '/radio-button-group', component: RadioButtonGroupDemoComponent},
 ])
-export class AuiNgDemoAppComponent implements OnInit {
+export class AuiNgDemoAppComponent {
 
     constructor(
         private router: Router,
@@ -85,9 +86,5 @@ export class AuiNgDemoAppComponent implements OnInit {
         translate.setTranslation('en', Object.assign({}, require('../src/assets/i18n/en.json'), require('./assets/i18n/en.json')));
         translate.setTranslation('de', Object.assign({}, require('../src/assets/i18n/de.json'), require('./assets/i18n/de.json')));
         translate.use('en');
-    }
-
-    ngOnInit() {
-        this.router.navigate(['/dialog']);
     }
 }
