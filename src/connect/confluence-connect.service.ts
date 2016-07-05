@@ -13,7 +13,9 @@ export class AuiNgConfluenceConnectService implements AuiNgConfluenceService {
     getContentEntity(id: string, successCallback: Function, errorCallback: Function): void {
         this.connectService.getAP().request({
             url: `${this.connectService.getBaseUrl()}/rest/api/content/${id}?expand=version,container,space`,
-            success: successCallback,
+            success: function(data) {
+                successCallback(JSON.parse(data));
+            },
             error: errorCallback
         });
     }
@@ -34,7 +36,9 @@ export class AuiNgConfluenceConnectService implements AuiNgConfluenceService {
             type: 'POST',
             contentType: 'application/json',
             url: `${this.connectService.getBaseUrl()}/rpc/json-rpc/confluenceservice-v2/getSpaces`,
-            success: successCallback,
+            success: function(data) {
+                successCallback(JSON.parse(data));
+            },
             error: errorCallback
         });
     }
@@ -51,7 +55,9 @@ export class AuiNgConfluenceConnectService implements AuiNgConfluenceService {
         return this.connectService.getAP().request({
             contentType: 'application/json',
             url: `${this.connectService.getBaseUrl()}/rest/api/content/search?cql=${cql}&limit=${limit}&start=${start}`,
-            success: successCallback,
+            success: function(data) {
+                successCallback(JSON.parse(data));
+            },
             error: errorCallback
         });
     }
@@ -59,7 +65,9 @@ export class AuiNgConfluenceConnectService implements AuiNgConfluenceService {
     getMacroDetails(pageId: string, pageVersion: number, macroId: string, successCallback: Function, errorCallback: Function): void {
         this.connectService.getAP().request({
             url: `${this.connectService.getBaseUrl()}/rest/api/content/${pageId}/history/${pageVersion}/macro/id/${macroId}`,
-            success: successCallback,
+            success: function(data) {
+                successCallback(JSON.parse(data));
+            },
             error: errorCallback
         });
     }

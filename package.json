@@ -1,6 +1,6 @@
 {
   "name": "k15t-aui-ng2",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "license": "MIT",
   "author": "Sven Walter <sven@k15t.com> (http://www.k15t.com)",
   "scripts": {
@@ -49,7 +49,7 @@
     "zone.js": "0.6.12"
   },
   "devDependencies": {
-    "k15t-webpack-build": "0.0.x",
+    "k15t-webpack-build": "0.1.x",
     "jasmine-core": "2.4.x",
     "phantomjs": "1.9.x",
     "phantomjs-polyfill": "0.0.x",
