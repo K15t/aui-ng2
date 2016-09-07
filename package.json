@@ -61,7 +61,7 @@
     "phantomjs": "1.9.x",
     "phantomjs-polyfill": "0.0.x",
     "rimraf": "2.5.x",
-    "string-replace-loader": "^1.0.3"
+    "string-replace-loader": "1.0.x"
   },
   "repository": {
     "type": "git",
