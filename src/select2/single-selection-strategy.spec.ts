@@ -1,4 +1,3 @@
-import {it, beforeEach} from '@angular/core/testing';
 import {SingleSelectionStrategy} from './single-selection-strategy';
 
 describe('Single Selection Strategy', () => {

@@ -7,6 +7,9 @@ var path = require('path');
 
 if (process.env.testMode === 'true') {
     module.exports = master({
+        metadata: {
+            appPrefix: 'auiNg'
+        },
         basePath: '',
         autoWatch: true,
         autoWatchBatchDelay: 300,
@@ -23,6 +26,9 @@ if (process.env.testMode === 'true') {
 
     var targetDir;
 
+    var testingEnabled = (process.env.testMode === 'true' || process.env.testMode === true) || false;
+    var devModeEnabled = (process.env.devMode === 'true' || process.env.devMode === true) || false;
+
     if (process.env.release === 'true') {
         targetDir = './dist';
     } else if (process.env.npm_config_releasedemo === 'true') {
@@ -35,6 +41,50 @@ if (process.env.testMode === 'true') {
         metadata: {
             contextPath: process.env.npm_config_releasedemo === 'true' ? '/aui-ng2' : '',
             appPrefix: 'auiNg'
+        },
+        module: {
+            preLoaders: [
+                {
+                    test: /\.ts$/,
+                    loader: 'tslint-loader',
+                    exclude: [
+                        /node_modules/
+                    ]
+                },
+                {
+                    test: /\.ts|\.js$/,
+                    loader: 'string-replace',
+                    query: {
+                        search: '"use strict";',
+                        replace: '',
+                        flags: 'i'
+                    }
+                }],
+            loaders: [
+                {
+                    test: /\.ts$/,
+                    loader: 'ts-loader',
+                    query: {
+                        // remove TypeScript helpers to be injected below by DefinePlugin
+                        'compilerOptions': {
+                            'removeComments': !devModeEnabled,
+                            'noEmitHelpers': !devModeEnabled
+                        },
+                        'ignoreDiagnostics': [
+                            2403, // 2403 -> Subsequent variable declarations
+                            2300, // 2300 -> Duplicate identifier
+                            2374, // 2374 -> Duplicate number index signature
+                            2375  // 2375 -> Duplicate string index signature
+                        ]
+                    },
+                    compilerOptions: './tsconfig.json',
+                    exclude: testingEnabled ? [] : [/\.(spec)\.ts$/]
+                },
+
+                {test: /\.json$/, loader: 'json-loader'},
+                {test: /\.css$/, loader: 'raw-loader'},
+                {test: /\.html$/, loader: 'raw-loader'}
+            ]
         },
         entry: {
             main: './demo/main.ts',

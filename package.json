@@ -1,6 +1,6 @@
 {
   "name": "k15t-aui-ng2",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "license": "MIT",
   "author": "Sven Walter <sven@k15t.com> (http://www.k15t.com)",
   "scripts": {
@@ -15,7 +15,7 @@
     "demo": "devMode=true startDemo=true webpack-dev-server --config webpack-config.js --progress --profile --colors --display-error-details --display-cached --inline",
     "test": "testMode=true karma start",
     "create:docs": "typedoc --options k15t-webpack-build/build/typedoc.json  src/**/*.ts --out  ./target/doc",
-    "deploy": "npm run --releasedemo=true build && git add -A public && git commit -am 'Publish new release to gh-pages' && git subtree push --prefix=public origin gh-pages && git push",
+    "deploy": "npm run --releasedemo=true build && git add -A public && git commit -am 'Publish new release to gh-pages' && git subtree push --prefix=public origin gh-pages && git push --force",
     "prepare:release": "rimraf dist target && release=true npm run build:prod && rimraf dist/demo && rimraf dist/*.js",
     "release": "npm run prepare:release && npm publish && npm run deploy"
   },
@@ -32,35 +32,36 @@
     "ADG"
   ],
   "dependencies": {
-    "@angular/common": "2.0.0-rc.1",
-    "@angular/compiler": "2.0.0-rc.1",
-    "@angular/core": "2.0.0-rc.1",
-    "@angular/http": "2.0.0-rc.1",
-    "@angular/platform-browser": "2.0.0-rc.1",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.1",
-    "@angular/router": "2.0.0-rc.1",
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/http": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/router": "2.0.0-rc.2",
     "codemirror": "5.14.2",
     "es6-shim": "0.35.0",
     "es6-promise": "3.1.2",
     "jquery": "2.2.3",
-    "ng2-translate": "2.1.0",
+    "ng2-translate": "2.2.2",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.6",
-    "zone.js": "0.6.12"
+    "zone.js": "^0.6.12"
   },
   "devDependencies": {
-    "k15t-webpack-build": "0.1.x",
     "jasmine-core": "2.4.x",
-    "phantomjs": "1.9.x",
-    "phantomjs-polyfill": "0.0.x",
+    "k15t-webpack-build": "0.1.x",
     "karma": "0.13.x",
-    "karma-jasmine": "0.3.x",
     "karma-coverage": "0.5.x",
+    "karma-jasmine": "0.3.x",
     "karma-phantomjs-launcher": "0.2.x",
     "karma-sourcemap-loader": "0.3.x",
     "karma-verbose-summary-reporter": "0.0.x",
     "karma-webpack": "1.7.x",
-    "rimraf": "2.5.x"
+    "phantomjs": "1.9.x",
+    "phantomjs-polyfill": "0.0.x",
+    "rimraf": "2.5.x",
+    "string-replace-loader": "^1.0.3"
   },
   "repository": {
     "type": "git",

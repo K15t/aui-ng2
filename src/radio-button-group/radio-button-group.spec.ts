@@ -1,31 +1,30 @@
-import {TestComponentBuilder, ComponentFixture} from '@angular/compiler/testing'
-import {it, injectAsync, beforeEach} from '@angular/core/testing';
-import {AuiNgRadioButtonGroupComponent} from "./radio-button-group.component";
+import {async, inject, TestComponentBuilder, ComponentFixture} from '@angular/core/testing';
+import {AuiNgRadioButtonGroupComponent} from './radio-button-group.component';
 
 describe('RadioButtonGroup Component', () => {
-    let items : any[] = [
+    let items: any[] = [
         {id: 1, name: 'foo', color: 'blue'},
         {id: 2, name: 'bar'},
         {id: 3, name: 'baz'}
     ];
-    let radioButtonGroup : ComponentFixture<AuiNgRadioButtonGroupComponent>;
+    let radioButtonGroup: ComponentFixture<AuiNgRadioButtonGroupComponent>;
 
     let changes = [];
 
-    beforeEach(injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        return tcb.createAsync(AuiNgRadioButtonGroupComponent)
-            .then((componentFixture: ComponentFixture<AuiNgRadioButtonGroupComponent>) => {
-                radioButtonGroup = componentFixture;
-                radioButtonGroup.componentInstance.items = items;
-                radioButtonGroup.componentInstance.selection = items[0];
-                radioButtonGroup.componentInstance.name = 'foobar';
-                radioButtonGroup.componentInstance.title = 'My Options';
-                radioButtonGroup.componentInstance.idProperty = 'id';
-                radioButtonGroup.componentInstance.labelProperty = 'name';
+    beforeEach(async(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+        return tcb.createAsync(
+            AuiNgRadioButtonGroupComponent).then((componentFixture: ComponentFixture<AuiNgRadioButtonGroupComponent>) => {
+            radioButtonGroup = componentFixture;
+            radioButtonGroup.componentInstance.items = items;
+            radioButtonGroup.componentInstance.selection = items[0];
+            radioButtonGroup.componentInstance.name = 'foobar';
+            radioButtonGroup.componentInstance.title = 'My Options';
+            radioButtonGroup.componentInstance.idProperty = 'id';
+            radioButtonGroup.componentInstance.labelProperty = 'name';
 
-                radioButtonGroup.detectChanges();
-            });
-    }));
+            radioButtonGroup.detectChanges();
+        });
+    })));
 
 
     it('should have a title', () => {

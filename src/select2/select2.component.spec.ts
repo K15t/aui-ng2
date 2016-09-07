@@ -1,5 +1,4 @@
-import {TestComponentBuilder, ComponentFixture} from '@angular/compiler/testing'
-import {it, injectAsync, beforeEach} from '@angular/core/testing';
+import {async, inject, TestComponentBuilder, ComponentFixture} from '@angular/core/testing';
 import {AuiNgSelect2Component} from './select2.component';
 
 describe('Select2 Component', () => {
@@ -10,7 +9,7 @@ describe('Select2 Component', () => {
     ];
     let select2 : ComponentFixture<AuiNgSelect2Component>;
 
-    beforeEach(injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+    beforeEach(async(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         return tcb.createAsync(AuiNgSelect2Component)
             .then((componentFixture: ComponentFixture<AuiNgSelect2Component>) => {
                 select2 = componentFixture;
@@ -18,7 +17,7 @@ describe('Select2 Component', () => {
                 select2.componentInstance.idProperty = 'id';
                 select2.componentInstance.labelProperty = 'name';
             });
-    }));
+    })));
 
     describe('multi selection', () => {
 

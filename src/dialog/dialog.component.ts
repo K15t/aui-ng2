@@ -1,10 +1,8 @@
 import {Component, Input, Output, EventEmitter, HostListener} from '@angular/core';
-import {FORM_DIRECTIVES} from '@angular/common';
 import {AuiNgDialogUpdateEvent} from './dialog-update.event';
 
 @Component({
     selector: 'auiNgDialog',
-    directives: [...FORM_DIRECTIVES],
     styles: [require('./dialog.component.css')],
     template: require('./dialog.component.html')
 })

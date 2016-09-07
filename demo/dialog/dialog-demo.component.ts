@@ -1,5 +1,4 @@
 import {Component, ViewContainerRef} from '@angular/core';
-import {FORM_DIRECTIVES} from '@angular/common';
 import {AuiNgDialogService, AUI_NG_MESSAGE_TYPE} from '../../src/dialog/index';
 import {AuiNgCodeBlockComponent} from '../common/code-block.component';
 import {CustomDialogComponent} from './custom-dialog.component';
@@ -8,7 +7,7 @@ import {LogService} from '../../src/common/services/log.service.ts';
 @Component({
     selector: 'auiNgDemoDialog',
     providers: [AuiNgDialogService],
-    directives: [...FORM_DIRECTIVES, AuiNgCodeBlockComponent],
+    directives: [AuiNgCodeBlockComponent],
     template: require('./dialog-demo.component.html')
 })
 export class DialogDemoComponent {

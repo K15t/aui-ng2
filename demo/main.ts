@@ -1,5 +1,4 @@
 import {provide, enableProdMode} from '@angular/core';
-import {ELEMENT_PROBE_PROVIDERS} from '@angular/platform-browser';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {ROUTER_PROVIDERS} from '@angular/router';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
@@ -12,7 +11,6 @@ import {IS_DEV_MODE} from './constants';
 document.addEventListener('DOMContentLoaded', function main() {
     bootstrap(AuiNgDemoAppComponent, [
         provide(IS_DEV_MODE, {useValue: process.env.ENV === 'development'}),
-        ...('production' === process.env.ENV ? [] : ELEMENT_PROBE_PROVIDERS),
         ...HTTP_PROVIDERS,
         ...ROUTER_PROVIDERS,
         ...TRANSLATE_PROVIDERS,
