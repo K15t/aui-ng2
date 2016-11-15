@@ -1,3 +1,6 @@
+
+> *The project will not actively supported anymore. Please keep that in mind if you are want to use it!*
+
 # About aui-ng2
 
 aui-ng2 is a set of angular 2 components, directives and services to simplify the integration with Atlassian products based on AUI/ADG.
